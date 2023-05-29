@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import { RiSearchLine, RiCloseLine } from 'react-icons/ri';
 
 function App() {
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -25,16 +26,19 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Trang web tìm kiếm</h1>
-        <div id="search-bar">
-          <input type="text" placeholder="Nhập tên quán cà phê" value={cafeName} onChange={(e) => setCafeName(e.target.value)} />
-          <button onClick={handleSearchClick}>Tìm kiếm</button>
-        </div>
+        <h1>Tìm kiếm</h1>
+        <button className="search-button" onClick={handleSearchClick}>
+          <RiSearchLine />
+          <span>検索</span>
+        </button>
       </header>
 
       {isPopupOpen && (
         <div id="search-popup">
           <h2>Tìm kiếm</h2>
+          <button className="close-button" onClick={handlePopupClose}>
+            <RiCloseLine />
+          </button>
           <form onSubmit={handleSearchSubmit}>
             <label htmlFor="cafe-name">Tên quán cà phê:</label>
             <input type="text" id="cafe-name" value={cafeName} onChange={(e) => setCafeName(e.target.value)} />
