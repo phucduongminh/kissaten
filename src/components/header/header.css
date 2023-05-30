@@ -1,0 +1,78 @@
+.header {
+  background: #feebc0;
+  border-bottom: 20px solid #c68b59;
+}
+.header .wrap {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.header-logo .image {
+  width: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.header-logo .name {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.header-search {
+  flex: 1;
+}
+
+.header-search .form-input {
+  text-align: center;
+  padding: 5px;
+  background: var(--primary-color);
+  width: fit-content;
+  border-radius: 5px;
+  display: flex;
+  gap: 10px;
+}
+
+.header-search .form-input input {
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
+  border: none;
+
+}
+
+/* .header-search .form-input .btn {
+  border-radius: 5px;
+  outline: none;
+  border: none;
+} */
+
+.header-login {
+  flex: 1;
+  text-align: center;
+}
+
+
+.header-login .btn {
+  padding: 5px 40px;
+  background: var(--primary-color);
+  color: white;
+  position: relative;
+}
+.header-login .btn i {
+  position: absolute;
+  padding: 10px;
+  background: white;
+  color: var(--primary-color);
+  border-radius: 50%;
+  top: -5px;
+  left: -10px;
+  border: 2px solid gray;
+}
