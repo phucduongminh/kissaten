@@ -46,11 +46,11 @@ const InforShop = () => {
               <p className='content'>22 Hoàn kiếm, Hà Nội</p>
             </div>
             <div className="info">
-              <div className="title">Địa chỉ</div>
-              <p className='content'>22 Hoàn kiếm, Hà Nội</p>
+              <div className="title">Thời gian mở cửa</div>
+              <p className='content'>8AM-22PM</p>
             </div>
             <div className="info">
-              <div className="title">Địa chỉ</div>
+              <div className="title">Giới thiệu về quán</div>
               <p className='content'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta sint dolor aliquid voluptate voluptatem fuga laboriosam aut labore aperiam nulla voluptatibus repudiandae facere minus qui, aspernatur cupiditate tenetur provident deleniti id facilis asperiores! Ipsum veritatis qui nobis dolore. Necessitatibus, rerum minima quae beatae dignissimos officia est dolor distinctio quod voluptas!</p>
             </div>
             </div>
