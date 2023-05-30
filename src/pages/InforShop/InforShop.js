@@ -11,19 +11,19 @@ const InforShop = () => {
             <img src="https://toohotel.com/wp-content/uploads/2022/09/TOO_restaurant_Panoramique_vue_Paris_Seine_Tour_Eiffel_2.jpg" alt="" />
           </div>
           <div className="service">
-            <h3 className='type'>Loại dịch vụ</h3>
+            <h3 className='type'>カテゴリー</h3>
             <div className="buttons">
-              <button className='btn'>Điều hòa</button>
-              <button className='btn'>Vận chuyển</button>
+              <button className='btn'>エアコン</button>
+              <button className='btn'>デリバリー</button>
             </div>
             <div className="title">
-              <h4>Text: </h4>
-              <button className='btn'>Button</button>
+              <h4>混雑状況: </h4>
+              <button className='btn'>混雑した</button>
             </div>
           </div> 
         </div>
         <div className="inforShop-right">
-          <h2>Tên cửa hàng</h2>
+          <h2>喫茶店名</h2>
           <div className="rating">
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
@@ -33,25 +33,31 @@ const InforShop = () => {
           </div>
           <div className="buttons">
             <button className={change ? "btn active" : "btn"} onClick={() => setChange(true)}>
-              Chi tiết
+              ディテール
             </button>
             <button className={!change ? "btn active" : "btn"} onClick={() => setChange(false)}>
-              Đánh giá
+              レビュー
             </button>
           </div>
           {change ? 
             <div className="list-info">
             <div className="info">
-              <div className="title">Địa chỉ</div>
+              <div className="title">アドレス</div>
               <p className='content'>22 Hoàn kiếm, Hà Nội</p>
             </div>
             <div className="info">
-              <div className="title">Thời gian mở cửa</div>
-              <p className='content'>8AM-22PM</p>
+              <div className="title">営業時間</div>
+              <p className='content'>8:00-22:00毎日</p>
             </div>
             <div className="info">
-              <div className="title">Giới thiệu về quán</div>
-              <p className='content'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta sint dolor aliquid voluptate voluptatem fuga laboriosam aut labore aperiam nulla voluptatibus repudiandae facere minus qui, aspernatur cupiditate tenetur provident deleniti id facilis asperiores! Ipsum veritatis qui nobis dolore. Necessitatibus, rerum minima quae beatae dignissimos officia est dolor distinctio quod voluptas!</p>
+              <div className="title">詳細な情報</div>
+              <p className='content'>
+              近鉄名古屋線 湯の山線 「近鉄四日市駅」 近くにあるカフェ、 「cafe neuf (カフェヌフ)」。        
+              当店は、商店街のメイン スリートから一本中に入ったところにあります。 開放感の中に感じられるぬくもりに加え、
+              カウンター中央に飾られる 季節の花や、店主が愛情込めてつくるカフェメニューが人気の秘密です。 ガラス張りの店内には、
+              光がやわらかく 差し込みます。 ドリンクのお代わりが自由なモーニング。 お腹いっぱい食べたいランチタイム。 
+              自分の時間を楽しむカ フェタイム。 お酒を片手に過ごす　ディナータイム。 朝から夜まで自由気ままに過ごせる、 使い勝手の良いカフェです。
+              </p>
             </div>
             </div>
             :
@@ -64,7 +70,7 @@ const InforShop = () => {
                </div>
                <div className="content">
                  <div className="top">
-                   <div className="name">Lê bảo anh</div>
+                   <div className="name">Le Trung Kien</div>
                    <div className="status">
                      <div className="icon">
                        <span>(1)</span> <i class="fa-solid fa-thumbs-up purple"></i>
@@ -85,7 +91,7 @@ const InforShop = () => {
                      <i class="fa-solid fa-star"></i>
                      <i class="fa-solid fa-star"></i>
                    </div>
-                   <div className="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, iste placeat culpa dicta cumque odit saepe earum distinctio a quaerat possimus harum eos asperiores? Eveniet molestiae modi praesentium dolor earum!</div>
+                   <div className="text">素晴らしい！！本当にきれい！！</div>
                  </div>
                </div>
              </div>
@@ -95,7 +101,7 @@ const InforShop = () => {
                </div>
                <div className="content">
                  <div className="top">
-                   <div className="name">Lê bảo anh</div>
+                   <div className="name">Dang Dinh Minh</div>
                    <div className="status">
                      <div className="icon">
                        <span>(1)</span> <i class="fa-solid fa-thumbs-up purple"></i>
@@ -116,7 +122,7 @@ const InforShop = () => {
                      <i class="fa-solid fa-star"></i>
                      <i class="fa-solid fa-star"></i>
                    </div>
-                   <div className="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, iste placeat culpa dicta cumque odit saepe earum distinctio a quaerat possimus harum eos asperiores? Eveniet molestiae modi praesentium dolor earum!</div>
+                   <div className="text">サービスがとてもいいと思いますね！！！</div>
                  </div>
                </div>
              </div>
@@ -126,7 +132,7 @@ const InforShop = () => {
                </div>
                <div className="content">
                  <div className="top">
-                   <div className="name">Lê bảo anh</div>
+                   <div className="name">Pham Thanh Nam</div>
                    <div className="status">
                      <div className="icon">
                        <span>(1)</span> <i class="fa-solid fa-thumbs-up purple"></i>
@@ -147,14 +153,14 @@ const InforShop = () => {
                      <i class="fa-solid fa-star"></i>
                      <i class="fa-solid fa-star"></i>
                    </div>
-                   <div className="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, iste placeat culpa dicta cumque odit saepe earum distinctio a quaerat possimus harum eos asperiores? Eveniet molestiae modi praesentium dolor earum!</div>
+                   <div className="text">この喫茶店の価格は本当に合理的なです。</div>
                  </div>
                </div>
              </div>
            </div>
            <div className="input-comment">
              <textarea name="" id="" cols="30" rows="10"></textarea>
-             <button className='btn'>Send</button>
+             <button className='btn'>発信</button>
            </div>
           </div>  
           }

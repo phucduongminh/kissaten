@@ -14,7 +14,7 @@ const Header = () => {
         </div>
         <div className="header-search">
           <div className="form-input">
-            <input type="text" placeholder='Search' />
+            <input type="text" placeholder='検索' />
             <button className='btn'><i class="fa-solid fa-magnifying-glass"></i></button>
           </div>
         </div>
