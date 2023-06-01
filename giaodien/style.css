@@ -1,0 +1,102 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+.container{
+    width: 980px;
+    margin: 0 auto;
+}
+
+.imageChange {
+    max-width: 100px;
+    height: auto;
+    }
+
+header{
+    width: 980px;
+    height: 100px;
+    background: #db9f4b;
+}
+header img{
+    padding-left: 30px;
+}
+nav{
+    height: 10px;
+    background: #e98f09;
+    margin-bottom: 5px;
+}
+/*chia slide dau tien*/
+.chia{
+    width: 28%;
+    padding 2%;
+    float: right;
+}
+
+.button {
+    border: none;
+    color: white;
+    
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+    padding: 10px 15px;
+  }
+  
+  .button1:hover {
+    background-color: #4CAF50;
+    color: white;
+
+  }
+  
+  .button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #211d22;
+    padding: 10px 25px;
+  }
+  
+  .button2:hover {
+    background-color: #c43957;
+    color: white;
+  }
+  .a {
+    font-size: 40px;
+    color: rgb(119, 64, 170);
+    text-decoration: none;
+    margin: 0px auto;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  .gocPhai{
+    float: right;
+  }
+  /* -----------bai viet-------------- */
+  .border{
+    border-style: solid;
+    padding-top: 0 15px;
+  }
+  /*chia lai ty le tung quan cafe o quancafe*/
+
+/*cho ten quan danh gia dia chi thoi gian mo cua rieng sang 1 ben so voi anh*/
+.chia1{
+    width: 100%;
+    float:left;
+    padding: 2%;
+    margin-right: 4%;
+}
+#fix{
+    margin-right: 0;
+}
+    
