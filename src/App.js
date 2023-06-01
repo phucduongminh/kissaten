@@ -36,20 +36,20 @@ function App() {
       {isPopupOpen && (
         <div className="search-popup">
           <div className="popup-content">
-            <h2>Tìm kiếm</h2>
+            <h2>検索</h2>
             <button className="close-button" onClick={handlePopupClose}>
               <RiCloseLine />
             </button>
             <form onSubmit={handleSearchSubmit}>
               <div className="form-group">
-                <label htmlFor="cafe-name">Tên quán cà phê:</label>
+                <label htmlFor="cafe-name">喫茶店の名:</label>
                 <input type="text" id="cafe-name" value={cafeName} onChange={(e) => setCafeName(e.target.value)}/>
               </div>
 
               <div className="form-group">
-                <label htmlFor="area">Khu vực:</label>
+                <label htmlFor="area">検索エリア:</label>
                 <select id="area" value={area} onChange={(e) => setArea(e.target.value)}>
-                  <option value="all">Tất cả</option>
+                  <option value="all">全部</option>
                   <option value="A">Hai Bà Trưng</option>
                   <option value="B">Đống Đa</option>
                   <option value="C">Hoàn Kiếm</option>
@@ -57,20 +57,20 @@ function App() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="has-ac">Có máy điều hòa:</label>
+                <label htmlFor="has-ac">エアコン:</label>
                 <input type="checkbox" className="checkbox-1" id="has-ac" checked={hasAC} onChange={(e) => setHasAC(e.target.checked)} />
               </div>
 
               <div className="form-group">
-                <label htmlFor="status">Trạng thái:</label>
+                <label htmlFor="status">営業時間:</label>
                 <select id="status" value={status} onChange={(e) => setStatus(e.target.value)}>
-                  <option value="all">Tất cả</option>
-                  <option value="open">Đang mở cửa</option>
+                  <option value="all">全部</option>
+                  <option value="open">開いている</option>
                 </select>
               </div>
 
               <div className="button-group">
-                <button type="submit">Tìm kiếm</button>
+                <button type="submit">検索</button>
               </div>
             </form>
           </div>
