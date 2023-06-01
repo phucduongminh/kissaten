@@ -10,14 +10,15 @@
 .header-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   flex: 1;
 }
 
 .header-logo .image {
   width: 50px;
   border-radius: 50%;
-  overflow: hidden;
+  background: transparent;
+  background-repeat: no-repeat;
 }
 
 .header-logo .name {
