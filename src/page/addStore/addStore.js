@@ -19,53 +19,53 @@ const AddStore = () => {
   return (
 
     <div class="container">
-      <h1>Thêm quán</h1>
+      <h1>喫茶店追加</h1>
       <form>
 
         <div class="left-section">
           <div class="form-group">
-            <label for="name">Tên quán:</label>
+            <label for="name">喫茶店名:</label>
             <input type="text" id="name" name="name" required />
           </div>
           <div class="form-group time">
-            <label for="opening-time">Giờ mở:</label>
+            <label for="opening-time">開館時間:</label>
             <select id="opening-time" name="opening-time" required>
-              <option value="">Chọn giờ mở</option>
+              <option value="">開館時間</option>
               <option value="08:00">08:00</option>
               <option value="09:00">09:00</option>
               <option value="10:00">10:00</option>
             </select>
           </div>
           <div class="form-group time">
-            <label for="closing-time">Giờ đóng:</label>
+            <label for="closing-time">閉館時間:</label>
             <select id="closing-time" name="closing-time" required>
-              <option value="">Chọn giờ đóng</option>
+              <option value="">閉館時間</option>
               <option value="18:00">18:00</option>
               <option value="19:00">19:00</option>
               <option value="20:00">20:00</option>
             </select>
           </div>
           <div class="form-group">
-            <label class="description-label" for="description">Giới thiệu:</label>
+            <label class="description-label" for="description">紹介:</label>
             <textarea id="description" name="description" required></textarea>
           </div>
         </div>
         <div class="right-section">
           <div class="form-group">
-            <label for="service">Dịch vụ:</label>
+            <label for="service">サービス:</label>
             <select id="service" name="service" required>
-              <option value="">Chọn dịch vụ</option>
-              <option value="Dịch vụ A">Dịch vụ A</option>
-              <option value="Dịch vụ B">Dịch vụ B</option>
-              <option value="Dịch vụ C">Dịch vụ C</option>
+              <option value="">サービス</option>
+              <option value="Dịch vụ A">サービス A</option>
+              <option value="Dịch vụ B">サービス B</option>
+              <option value="Dịch vụ C">サービス C</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="address">Địa chỉ:</label>
+            <label for="address">アドレス:</label>
             <input type="text" id="address" name="address" required></input>
           </div>
           <div class="form-group">
-            <label for="image">Hình ảnh:</label>
+            <label for="image">イメージ:</label>
 
           </div>
           <div className="square form-group">
@@ -88,7 +88,7 @@ const AddStore = () => {
               </label>
             )}
           </div>
-          <button className="add-button">Thêm</button>
+          <button className="add-button">追加</button>
 
         </div>
       </form>
