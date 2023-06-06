@@ -56,22 +56,38 @@ function Search() {
                 </select>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="has-ac">エアコン:</label>
-                <input type="checkbox" className="checkbox-1" id="has-ac" checked={hasAC} onChange={(e) => setHasAC(e.target.checked)} />
+              <div class="left-section">
+              <li>
+                <label >営業時間:</label>
+              <section>
+                <input type="radio" class="form-check-input"  id="status1" value="open" check={status} onChange={(e) => setStatus(e.target.value)} />
+                  <p class="form-check-label" htmlFor="status1">
+                    開いている
+                  </p>
+              </section>
+              <section>
+                <input type="radio" class="form-check-input" id="status2" value="all" check={status} onChange={(e) => setStatus(e.target.value)} />
+                  <p class="form-check-label" htmlFor="status2">
+                    すべて
+                  </p>
+              </section>
+              </li>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="status">営業時間:</label>
-                <select id="status" value={status} onChange={(e) => setStatus(e.target.value)}>
-                  <option value="all">全部</option>
-                  <option value="open">開いている</option>
-                </select>
+              <div class="right-section">
+              <li>
+              <label >サービス:</label>
+              <section>
+                <input type="checkbox" className="checkbox" id="has-ac" checked={hasAC} onChange={(e) => setHasAC(e.target.checked)} />
+                <p className="checkbox-label" htmlFor="has-ac">エアコン</p>
+              </section>
+              </li>
               </div>
 
               <div className="button-group">
                 <button type="submit">検索</button>
               </div>
+              
             </form>
           </div>
         </div>

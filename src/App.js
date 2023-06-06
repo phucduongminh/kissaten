@@ -1,4 +1,4 @@
-import './App.css';
+//import './App.css';
 import Search from './pages/searchbar/search';
 
 function App() {
