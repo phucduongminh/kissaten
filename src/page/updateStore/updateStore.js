@@ -95,7 +95,7 @@ const AddStore = () => {
 
             {imageUrl ? (
               <div className="image-square">
-                <img src={imageUrl} alt="Uploaded Image" className="image" />
+                <img src={imageUrl} alt="Uploaded" className="image" />
               </div>
             ) : (
 
@@ -114,7 +114,7 @@ const AddStore = () => {
           <div class="form-group">
             <label for="status" id='status-label'>Tình trạng:</label>
 
-            <input type="checkbox" id="status" name="status"></input> Quán đông
+            Quán đông<input type="checkbox" id="status" name="status"></input> 
           </div>
           
           

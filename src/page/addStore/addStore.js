@@ -72,7 +72,7 @@ const AddStore = () => {
 
             {imageUrl ? (
               <div className="image-square">
-                <img src={imageUrl} alt="Uploaded Image" className="image" />
+                <img src={imageUrl} alt="Uploaded" className="image" />
               </div>
             ) : (
 
