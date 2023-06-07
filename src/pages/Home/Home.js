@@ -5,7 +5,7 @@ const Home = () => {
     <section className='home'>
       <div className="wrap">
         <div className="home-heading">
-          <h2 className="title">Title</h2>
+          <h2 className="title">ホームページ</h2>
           <div className="filter">
             <label htmlFor="">Sort by</label>
             <select name="" id="">

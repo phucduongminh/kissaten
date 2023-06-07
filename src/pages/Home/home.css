@@ -4,9 +4,10 @@
 }
 
 .home-heading .filter label {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 .home-heading .filter select {
+  margin-left: 20px;
   padding: 5px;
 }
 
