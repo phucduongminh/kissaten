@@ -1,6 +1,13 @@
 import React from 'react'
 import './home.css'
+import { useNavigate } from "react-router-dom";
+
 const Home = () => {
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/infor+id`; 
+    navigate(path);
+  }
   return (
     <section className='home'>
       <div className="wrap">
@@ -9,14 +16,14 @@ const Home = () => {
           <div className="filter">
             <label htmlFor="">Sort by</label>
             <select name="" id="">
-              <option value="">AAAAAAA</option>
-              <option value="">AAAAAAAAAA</option>
-              <option value="">AAAAAAAAAAAAA</option>
+              <option value="">1</option>
+              <option value="">2</option>
+              <option value="">3</option>
             </select>
           </div>
         </div>
         <div className="home-list">
-          <div className="home-item">
+          <div className="home-item" type="button" outline onClick={routeChange}>
             <div className="image">
               <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" alt="" />
             </div>
