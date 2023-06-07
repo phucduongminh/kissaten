@@ -78,6 +78,16 @@
   border: 2px solid gray;
 }
 
+.header-add .btn{
+  background: var(--primary-color);
+  padding: 6px;
+}
+
+.header-add .btn i{
+  color: white;
+  border-radius: 50%;
+}
+
 .search-popup {
   position: fixed;
   top: 0;
@@ -147,6 +157,16 @@
   justify-content: flex-end;
 }
 
+.left-section1,
+  .right-section1 {
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+    vertical-align: top;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
 .button-group button {
   padding: 10px 20px;
   background-color: #f8ac39;
@@ -180,4 +200,85 @@ li section p{
 li{
   float: left;
   clear: left;
+}
+
+.form-group textarea {
+  width: 100%;
+  height: 60px;
+  resize: none;
+  overflow: scroll;
+}
+
+.form-submit {
+  margin-top: 20px;
+}
+
+.time {
+  display: inline-block;
+}
+
+.description-label {
+  display: block !important;
+}
+
+.add-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: #f1c707;
+  color: #433462;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 30px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.square {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.plus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+}
+
+.square:hover .plus {
+  visibility: hidden;
+}
+
+.image-square {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  background-color: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
 }

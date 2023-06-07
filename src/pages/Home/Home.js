@@ -125,19 +125,19 @@ const Home = () => {
           </div>
         </div>
         <div className="home-pagination">
-          <a className='page' href="">
+          <a className='page' href="!">
             <i class="fa-solid fa-chevron-left"></i>
           </a>
-          <a className='page' href="">
+          <a className='page' href="!">
             1
           </a>
-          <a className='page' href="">
+          <a className='page' href="!">
             2
           </a>
-          <a className='page' href="">
+          <a className='page' href="!">
             3
           </a>
-          <a className='page' href="">
+          <a className='page' href="!">
             <i class="fa-solid fa-chevron-right"></i>
           </a>
         </div>
