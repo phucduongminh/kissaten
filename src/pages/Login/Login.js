@@ -20,11 +20,11 @@ const Login = () => {
             <input type="text" />
           </div>
           <div className="form-group">
-            <div className="title">Tên đăng nhập</div>
-            <input type="text" />
+            <div className="title">Mật khẩu</div>
+            <input type="password" />
           </div>
           <button>BUTTON</button>
-          <a href="">Link + Lorem ipsum dolor sit amet consectetur</a>
+          <a href="!">Link + Lorem ipsum dolor sit amet consectetur</a>
         </div>
       </div>
     </section>

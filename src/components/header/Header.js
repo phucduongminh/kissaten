@@ -37,42 +37,66 @@ const Header = () => {
     const reader = new FileReader();
 
     reader.onload = () => {
-      setImageUrl(reader.result);
+      setImageCover(reader.result);
     };
 
     reader.readAsDataURL(file);
   };
 
   const [isPopupOpen1, setPopupOpen1] = useState(false);
-  const [imageUrl, setImageUrl] = useState(null);
-  const [addName, setAddName] = useState('');
-  const [openTime, setOpenTime] = useState('');
-  const [closeTime, setCloseTime] = useState('');
+  const [imageCover, setImageCover] = useState(null);
+  const [name, setName] = useState('');
+  const [openHour, setOpenHour] = useState('');
+  const [closeHour, setCloseHour] = useState('');
   const [description, setDescription] = useState('');
   const [service, setService] = useState('');
   const [address, setAddress] = useState('');
 
-  const handleAddSubmit = async () => {
+  /*const handleAddSubmit = async () => {
     try {
-        const formData = new FormData();
-        formData.append('id', 1);
-        formData.append('name', addName);
-        formData.append('openHour', openTime);
-        formData.append('closeHour', closeTime);
-        formData.append('description', description);
-        formData.append('address', address);
-        formData.append('service', service);
-        formData.append('imageCover', imageUrl);
 
         const response = await axios.post(
-            '/api/CoffeeShop/AddCoffeeShop',
-            formData,
+            'api/CoffeeShop/AddCoffeeShop',
+            {
+              id: "0",
+              name: name,
+              openHour: openHour,
+              closeHour: closeHour,
+              imageCover: imageCover,
+              description: description,
+              address: address,
+              service:service
+            }
         );
         if (response.status === 200) {
             setMessage("Shop added successfully");
             console.log("Shop added successfully");
         } else {
-          
+
+        }
+        // Xử lý phản hồi từ backend (nếu cần)
+    } catch (error) {
+        // Xử lý lỗi (nếu có)
+        setMessage("Error");
+        console.error(error);
+    }
+  };*/
+
+  const id =1;
+  const user={id,name,openHour,closeHour,description,address,service,imageCover};
+
+const handleAddSubmit = async () => {
+    try {
+
+        const response = await axios.post(
+            'api/CoffeeShop/AddCoffeeShop',
+            user,
+        );
+        if (response.status === 200) {
+            setMessage("Shop added successfully");
+            console.log("Shop added successfully");
+        } else {
+
         }
         // Xử lý phản hồi từ backend (nếu cần)
     } catch (error) {
@@ -176,11 +200,11 @@ const Header = () => {
               <div className="left-section1">
                 <div className="form-group">
                   <label htmlFor="name">喫茶店名:</label>
-                  <input type="text" id="name" name="name" required value={addName} onChange={(e) => setAddName(e.target.value)} />
+                  <input type="text" id="name" name="name" required value={name} onChange={(e) => setName(e.target.value)} />
                 </div>
                 <div className="form-group time">
                   <label htmlFor="opening-time">開館時間:</label>
-                  <select id="opening-time" name="opening-time" required value={openTime} onChange={(e) => setOpenTime(e.target.value)}>
+                  <select id="opening-time" name="opening-time" required value={openHour} onChange={(e) => setOpenHour(e.target.value)}>
                     <option value="">開館時間</option>
                     <option value="08:00">08:00</option>
                     <option value="09:00">09:00</option>
@@ -189,7 +213,7 @@ const Header = () => {
                 </div>
                 <div className="form-group time">
                   <label htmlFor="closing-time">閉館時間:</label>
-                  <select id="closing-time" name="closing-time" required value={closeTime} onChange={(e) => setCloseTime(e.target.value)}>
+                  <select id="closing-time" name="closing-time" required value={closeHour} onChange={(e) => setCloseHour(e.target.value)}>
                     <option value="">閉館時間</option>
                     <option value="18:00">18:00</option>
                     <option value="19:00">19:00</option>
@@ -218,9 +242,9 @@ const Header = () => {
                   <label htmlFor="image">イメージ:</label>
                 </div>
                 <div className="square form-group">
-                  {imageUrl ? (
+                  {imageCover ? (
                     <div className="image-square">
-                      <img src={imageUrl} alt="Uploaded" className="image" />
+                      <img src={imageCover} alt="Uploaded" className="image" />
                     </div>
                   ) : (
                     <label htmlFor="image-upload" className="upload-label">
