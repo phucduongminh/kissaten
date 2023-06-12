@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import './header.css'
 
 const Header = () => {
@@ -52,20 +52,57 @@ const Header = () => {
   const [service, setService] = useState('');
   const [address, setAddress] = useState('');
 
+  const handleAddSubmit = async () => {
+    try {
+      const response = await fetch("https://localhost:7263/api/CoffeeShop/AddCoffeeShop", {
+  method: 'POST',
+  headers: {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'Access-Control-Allow-Origin':'*'},
+  
+  body: JSON.stringify({
+    "id": 14,
+    "name": "The Coffee House",
+    "address": "Hai Ba Trung",
+    "gmail": "",
+    "contactNumber": 0,
+    "imageCover": "",
+    "averageRating": 4.7,
+    "openHour": "2023-06-09T09:48:16.054Z",
+    "closeHour": "2023-06-09T09:48:16.054Z",
+    "service": true,
+    "description": "nice",
+    "status": "",
+    "postedByUser": 0,
+    "approved": 0
+  })
+});
+if (response.status === 200) {
+    setMessage("Shop added successfully");
+    console.log("Shop added successfully");
+} else {
+
+}
+}  catch (error) {
+  setMessage("Error");
+  console.error(error);
+}
+};
+
   /*const handleAddSubmit = async () => {
     try {
-
         const response = await axios.post(
-            'api/CoffeeShop/AddCoffeeShop',
+            'https://jsonplaceholder.typicode.com/todos/1',
             {
-              id: "0",
-              name: name,
-              openHour: openHour,
-              closeHour: closeHour,
-              imageCover: imageCover,
-              description: description,
-              address: address,
-              service:service
+              id: '3',
+              name: 'name',
+              openHour: '2023-06-09T09:48:16.054Z',
+              closeHour: '2023-06-09T09:48:16.054Z',
+              imageCover: 'imageCover',
+              description: 'description',
+              address: 'address',
+              service: true
             }
         );
         if (response.status === 200) {
@@ -82,7 +119,7 @@ const Header = () => {
     }
   };*/
 
-  const id =1;
+  /*const id =1;
   const user={id,name,openHour,closeHour,description,address,service,imageCover};
 
 const handleAddSubmit = async () => {
@@ -103,7 +140,7 @@ const handleAddSubmit = async () => {
         // Xử lý lỗi (nếu có)
         console.error(error);
     }
-  };
+  };*/
 
   return (
     <header className='header'>
@@ -193,7 +230,7 @@ const handleAddSubmit = async () => {
         <div className="search-popup">
           <div className="popup-content">
             <h2>喫茶店追加</h2>
-            <form onSubmit={handleAddSubmit}>
+            <form >
               <button className="close-button" onClick={handlePopupClose1}>
                 <i class="fa-sharp fa-solid fa-xmark"></i>
               </button>
@@ -260,7 +297,7 @@ const handleAddSubmit = async () => {
                   )}
                 </div>
                 
-                <button className="add-button" type="submit">追加</button>
+                <button className="add-button" type="submit" onClick={handleAddSubmit} >追加</button>
               </div>
               <div className="message">{message ? <p>{message}</p> : null}</div>
             </form>
