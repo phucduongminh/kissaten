@@ -1,0 +1,17 @@
+ERROR
+Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `App`.
+Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `App`.
+    at createFiberFromTypeAndProps (http://localhost:3000/static/js/bundle.js:37945:21)
+    at createFiberFromElement (http://localhost:3000/static/js/bundle.js:37966:19)
+    at updateElement (http://localhost:3000/static/js/bundle.js:26491:23)
+    at updateSlot (http://localhost:3000/static/js/bundle.js:26584:26)
+    at reconcileChildrenArray (http://localhost:3000/static/js/bundle.js:26730:26)
+    at reconcileChildFibers (http://localhost:3000/static/js/bundle.js:27117:20)
+    at reconcileChildren (http://localhost:3000/static/js/bundle.js:30056:32)
+    at updateHostComponent (http://localhost:3000/static/js/bundle.js:30693:7)
+    at beginWork (http://localhost:3000/static/js/bundle.js:32138:18)
+    at beginWork$1 (http://localhost:3000/static/js/bundle.js:37077:18)

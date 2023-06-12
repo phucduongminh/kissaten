@@ -51,6 +51,8 @@ const Header = () => {
   const [description, setDescription] = useState('');
   const [service, setService] = useState('');
   const [address, setAddress] = useState('');
+  //const boolservice = Boolean(service);
+  const boolservice = (service.toLowerCase() === "true");
 
   const handleAddSubmit = async () => {
     try {
@@ -62,17 +64,17 @@ const Header = () => {
   'Access-Control-Allow-Origin':'*'},
   
   body: JSON.stringify({
-    "id": 14,
-    "name": "The Coffee House",
-    "address": "Hai Ba Trung",
+    "id": 7,
+    "name": name,
+    "address": address,
     "gmail": "",
     "contactNumber": 0,
-    "imageCover": "",
-    "averageRating": 4.7,
-    "openHour": "2023-06-09T09:48:16.054Z",
-    "closeHour": "2023-06-09T09:48:16.054Z",
-    "service": true,
-    "description": "nice",
+    "imageCover": imageCover,
+    "averageRating": 0,
+    "openHour": "2023-06-12T16:11:07.153Z",
+    "closeHour": "2023-06-12T16:11:07.153Z",
+    "service": boolservice,
+    "description": description,
     "status": "",
     "postedByUser": 0,
     "approved": 0
