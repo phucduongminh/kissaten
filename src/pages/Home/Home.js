@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './home.css'
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+
+  const [id, setId] = useState();
+  
   let navigate = useNavigate(); 
-  const routeChange = () =>{ 
-    let path = `/infor/:id`; 
+  const routeChange = () =>{
+    setId(15);
+    let path = `/infor/${id}`; 
     navigate(path);
   }
   return (

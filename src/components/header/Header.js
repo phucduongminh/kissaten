@@ -64,7 +64,7 @@ const Header = () => {
   'Access-Control-Allow-Origin':'*'},
   
   body: JSON.stringify({
-    "id": 7,
+    "id": 20,
     "name": name,
     "address": address,
     "gmail": "",
@@ -117,29 +117,6 @@ if (response.status === 200) {
     } catch (error) {
         // Xử lý lỗi (nếu có)
         setMessage("Error");
-        console.error(error);
-    }
-  };*/
-
-  /*const id =1;
-  const user={id,name,openHour,closeHour,description,address,service,imageCover};
-
-const handleAddSubmit = async () => {
-    try {
-
-        const response = await axios.post(
-            'api/CoffeeShop/AddCoffeeShop',
-            user,
-        );
-        if (response.status === 200) {
-            setMessage("Shop added successfully");
-            console.log("Shop added successfully");
-        } else {
-
-        }
-        // Xử lý phản hồi từ backend (nếu cần)
-    } catch (error) {
-        // Xử lý lỗi (nếu có)
         console.error(error);
     }
   };*/

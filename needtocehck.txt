@@ -15,3 +15,59 @@ Check the render method of `App`.
     at updateHostComponent (http://localhost:3000/static/js/bundle.js:30693:7)
     at beginWork (http://localhost:3000/static/js/bundle.js:32138:18)
     at beginWork$1 (http://localhost:3000/static/js/bundle.js:37077:18)
+
+
+
+(
+            <div className="comments">
+              <div className="list">
+                {shopInfo.reviews.map((review, index) => (
+                  <div className="item" key={index}>
+                    <div className="image">
+                      <img src={review.avatar} alt="" />
+                    </div>
+                    <div className="content">
+                      <div className="top">
+                        <div className="name">{review.name}</div>
+                        <div className="status">
+                          <div className="icon">
+                            <span>({review.likes})</span>{' '}
+                            <i className="fa-solid fa-thumbs-up purple"></i>
+                          </div>
+                          <div className="icon">
+                            <span>({review.dislikes})</span>{' '}
+                            <i className="fa-solid fa-thumbs-down red"></i>
+                          </div>
+                          <div className="icon">
+                            <i className="fa-solid fa-trash red"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bottom">
+                        <div className="rating">
+                          {[...Array(5)].map((_, index) => (
+                            <i className="fa-solid fa-star" key={index}></i>
+                          ))}
+                        </div>
+                        <div className="text">{review.comment}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="input-comment">
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <button className="btn">発信</button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
+      An unhandled exception has occurred while executing the request.
+      System.IO.IOException: The client reset the request stream.
