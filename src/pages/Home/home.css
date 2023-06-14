@@ -63,9 +63,6 @@ i.fill {
   margin-right: 10px;
 }
 
-.home-item .icon {
-  font-size: 20px;
-}
 .home-pagination {
   display: flex;
   align-items: center;

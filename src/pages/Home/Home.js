@@ -1,6 +1,42 @@
 import React from 'react'
 import './home.css'
+import { useNavigate } from 'react-router-dom'
 const Home = () => {
+  const navigate = useNavigate()
+  const data = [
+    {
+      id: 1,
+      image: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
+      name: 'Name 1',
+      address: 'Address 1',
+      time: 'Time 1',
+      description: 'Description 1',
+    },
+    {
+      id: 2,
+      image: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
+      name: 'Name 1',
+      address: 'Address 1',
+      time: 'Time 1',
+      description: 'Description 1',
+    },
+    {
+      id: 3,
+      image: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
+      name: 'Name 1',
+      address: 'Address 1',
+      time: 'Time 1',
+      description: 'Description 1',
+    },
+    {
+      id: 4,
+      image: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
+      name: 'Name 1',
+      address: 'Address 1',
+      time: 'Time 1',
+      description: 'Description 1',
+    },
+  ]
   return (
     <section className='home'>
       <div className="wrap">
@@ -16,7 +52,33 @@ const Home = () => {
           </div>
         </div>
         <div className="home-list">
-          <div className="home-item">
+          {data.map((item, index) => {
+            return (
+                <div className="home-item" key={index} onClick={() => navigate(`/inforshop/${item.id}`)}>
+                <div className="image">
+                  <img src={item.image} alt="" />
+                </div>
+                <div className="content">
+                  <div className="name">{item.name}</div>
+                  <div className="rating">
+                    <i class="fa-solid fa-star fill"></i>
+                    <i class="fa-solid fa-star fill"></i>
+                    <i class="fa-solid fa-star fill"></i>
+                    <i class="fa-solid fa-star fill"></i>
+                    <i class="fa-solid fa-star fill"></i>
+                  </div>
+                  <div className="description">
+                    <i class="fa-solid fa-location-dot"></i>
+                      {item.address}
+                  </div>
+                  <div className="description">
+                    <i class="fa-solid fa-clock"></i>{item.time}
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+          {/* <div className="home-item">
             <div className="image">
               <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" alt="" />
             </div>
@@ -37,7 +99,7 @@ const Home = () => {
                 <i class="fa-solid fa-clock"></i>155 Cầu Giấy
               </div>
             </div>
-            <div className='icon'>
+            <div className="icon">
               <i class="fa-regular fa-bookmark"></i>
             </div>
           </div>
@@ -62,9 +124,6 @@ const Home = () => {
                 <i class="fa-solid fa-clock"></i>155 Cầu Giấy
               </div>
             </div>
-            <div className='icon'>
-              <i class="fa-regular fa-bookmark"></i>
-            </div>
           </div>
           <div className="home-item">
             <div className="image">
@@ -87,35 +146,7 @@ const Home = () => {
                 <i class="fa-solid fa-clock"></i>155 Cầu Giấy
               </div>
             </div>
-            <div className='icon'>
-              <i class="fa-regular fa-bookmark"></i>
-            </div>
-          </div>
-          <div className="home-item">
-            <div className="image">
-              <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" alt="" />
-            </div>
-            <div className="content">
-              <div className="name">Name</div>
-              <div className="rating">
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
-              </div>
-              <div className="description">
-                <i class="fa-solid fa-location-dot"></i>
-                 &nbsp;155 Cầu Giấy
-              </div>
-              <div className="description">
-                <i class="fa-solid fa-clock"></i>155 Cầu Giấy
-              </div>
-            </div>
-            <div className='icon'>
-              <i class="fa-regular fa-bookmark"></i>
-            </div>
-          </div>
+          </div> */}
         </div>
         <div className="home-pagination">
           <a className='page' href="">
