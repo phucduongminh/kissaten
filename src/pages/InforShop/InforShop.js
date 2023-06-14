@@ -9,6 +9,7 @@ const InforShop = () => {
   const [shopInfo, setShopInfo] = useState(null);
   const [isDetailMode, setChange] = useState(true)
   const { id } = useParams();
+  const numberId = parseInt(id);
   /*const numberId = parseInt(id);
 
   useEffect(() => {
@@ -31,12 +32,12 @@ const InforShop = () => {
     fetchShopInfo();
   }, []);*/
   useEffect(() => {
-  const fetchShopInfo = async () => {
-  const response = await axios.post("https://localhost:7263/api/CoffeeShop/GetInfoCoffeeShop/12");
+  const axiosShopInfo = async () => {
+  const response = await axios.post(`https://localhost:7263/api/CoffeeShop/GetInfoCoffeeShop/${numberId}`);
   const data = await response.data;
   setShopInfo(data);}
-  fetchShopInfo();
-  }, []);
+  axiosShopInfo();
+  }, [numberId]);
 
   if (!shopInfo) {
     return <div>Loading...</div>;
@@ -48,7 +49,7 @@ const InforShop = () => {
         {/* Truy cập và sử dụng thông tin quán cà phê trong shopInfo */}
         <div className="inforShop-left">
           <div className="image">
-            <img src={shopInfo.image} alt="" />
+            <img src={shopInfo.imageCover} alt="" />
           </div>
           <div className="service">
             <h3 className="type">サービス</h3>
@@ -58,7 +59,7 @@ const InforShop = () => {
             </div>
             <div className="title">
               <h4>状態:</h4>
-              <button className="btn">{shopInfo.status}</button>
+              <button className="btn">{shopInfo.status ? <p></p> : null}</button>
             </div>
           </div>
         </div>
@@ -100,11 +101,6 @@ const InforShop = () => {
               <div className="title">詳細な情報</div>
               <p className='content'>
               {shopInfo.description}
-              近鉄名古屋線 湯の山線 「近鉄四日市駅」 近くにあるカフェ、 「cafe neuf (カフェヌフ)」。        
-              当店は、商店街のメイン スリートから一本中に入ったところにあります。 開放感の中に感じられるぬくもりに加え、
-              カウンター中央に飾られる 季節の花や、店主が愛情込めてつくるカフェメニューが人気の秘密です。 ガラス張りの店内には、
-              光がやわらかく 差し込みます。 ドリンクのお代わりが自由なモーニング。 お腹いっぱい食べたいランチタイム。 
-              自分の時間を楽しむカ フェタイム。 お酒を片手に過ごすディナータイム。 朝から夜まで自由気ままに過ごせる、 使い勝手の良いカフェです。
               </p>
             </div>
             </div>
