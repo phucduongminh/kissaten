@@ -2,6 +2,8 @@ import Header from './components/header/Header';
 import InforShop from './pages/InforShop/InforShop';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
+import Bookmark from './pages/Bookmark/Bookmark';
+import Approve from './pages/Approve/Approve';
 
 import './App.css'
 
@@ -17,9 +19,11 @@ function App() {
       
       <Routes >
         <Route path='/' element={<div><Header /> <Home/></div>} />
-        <Route path='/login' element={<div><Header /> <Login /></div>} />
-        <Route path='/infor/:id' element={<div><Header /> <InforShop /></div>} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/inforshop/:id' element={<div><Header /> <InforShop /></div>} />
         <Route path='/home' element={<div><Header /> <Home /></div>} />
+        <Route path ='/bookmark' element={<div><Header /><Bookmark/></div>} />
+        <Route path ='/approve' element= {<div><Header /><Approve /></div>} />
       </Routes >
     </div>
   );

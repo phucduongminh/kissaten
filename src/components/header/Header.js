@@ -208,54 +208,54 @@ if (response.status === 200) {
       {isPopupOpen1 && (
         <div className="search-popup">
           <div className="popup-content">
-            <h2>喫茶店追加</h2>
+            <h2>Thêm Quán</h2>
             <form >
               <button className="close-button" onClick={handlePopupClose1}>
                 <i class="fa-sharp fa-solid fa-xmark"></i>
               </button>
               <div className="left-section1">
                 <div className="form-group">
-                  <label htmlFor="name">喫茶店名:</label>
+                  <label htmlFor="name">Tên quán:</label>
                   <input type="text" id="name" name="name" required value={name} onChange={(e) => setName(e.target.value)} />
                 </div>
                 <div className="form-group time">
-                  <label htmlFor="opening-time">開館時間:</label>
+                  <label htmlFor="opening-time">Giờ mở cửa:</label>
                   <select id="opening-time" name="opening-time" required value={openHour} onChange={(e) => setOpenHour(e.target.value)}>
-                    <option value="">開館時間</option>
+                    <option value=""></option>
                     <option value="08:00">08:00</option>
                     <option value="09:00">09:00</option>
                     <option value="10:00">10:00</option>
                   </select>
                 </div>
                 <div className="form-group time">
-                  <label htmlFor="closing-time">閉館時間:</label>
+                  <label htmlFor="closing-time">Giờ đóng cửa:</label>
                   <select id="closing-time" name="closing-time" required value={closeHour} onChange={(e) => setCloseHour(e.target.value)}>
-                    <option value="">閉館時間</option>
+                    <option value=""></option>
                     <option value="18:00">18:00</option>
                     <option value="19:00">19:00</option>
                     <option value="20:00">20:00</option>
                   </select>
                 </div>
                 <div className="form-group">
-                  <label className="description-label" htmlFor="description">紹介:</label>
+                  <label className="description-label" htmlFor="description">Giới thiệu:</label>
                   <textarea id="description" name="description" required value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                 </div>
               </div>
               <div className="right-section1">
                 <div className="form-group">
-                  <label htmlFor="service">サービス:</label>
+                  <label htmlFor="service">Dịch vụ:</label>
                   <select id="service" name="service" required value={service} onChange={(e) => setService(e.target.value)}>
-                    <option value="">サービス</option>
-                    <option value="true">エアコンがある</option>
-                    <option value="false">エアコンがない</option>
+                    <option value=""></option>
+                    <option value="true">Có điều hòa</option>
+                    <option value="false">không có điều hòa</option>
                   </select>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="address">アドレス:</label>
+                  <label htmlFor="address">Địa chỉ:</label>
                   <input type="text" id="address" name="address" required value={address} onChange={(e) => setAddress(e.target.value)}></input>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="image">イメージ:</label>
+                  <label htmlFor="image">Hình ảnh:</label>
                 </div>
                 <div className="square form-group">
                   {imageCover ? (
@@ -276,7 +276,7 @@ if (response.status === 200) {
                   )}
                 </div>
                 
-                <button className="add-button" type="submit" onClick={handleAddSubmit} >追加</button>
+                <button className="add-button" type="submit" onClick={handleAddSubmit} >Thêm</button>
               </div>
               <div className="message">{message ? <p>{message}</p> : null}</div>
             </form>

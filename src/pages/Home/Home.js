@@ -20,8 +20,9 @@ const Home = () => {
           <div className="filter">
             <label htmlFor="">Sort by</label>
             <select name="" id="">
-              <option value="">平均評価</option>
-              <option value="">人気がある </option>
+              <option value="">全部</option>
+              <option value="1">平均評価</option>
+              <option value="2">人気がある </option>
             </select>
           </div>
         </div>
