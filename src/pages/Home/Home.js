@@ -1,7 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './home.css'
 import { useNavigate } from 'react-router-dom'
+import Bookmark from '../../components/Bookmark/bookmark'
+
 const Home = () => {
+  const [bookmarkedItemIds, setBookmarkedItemIds] = useState([]);
+
+  const handleBookmarkClick = (itemId) => {
+    if (bookmarkedItemIds.includes(itemId)) {
+      setBookmarkedItemIds(bookmarkedItemIds.filter((id) => id !== itemId)); // Remove item from bookmarkedItemIds if already bookmarked
+    } else {
+      setBookmarkedItemIds([...bookmarkedItemIds, itemId]); // Add item to bookmarkedItemIds
+    }
+  };
+
   const navigate = useNavigate()
   const data = [
     {
@@ -80,9 +92,8 @@ const Home = () => {
                     {item.time}
                   </div>
                 </div>
-                <div className="icon">
-                    <i class="fa-regular fa-bookmark"></i>
-                </div>
+                <Bookmark isBookmarked={bookmarkedItemIds.includes(item.id)}
+          handleBookmarkClick={handleBookmarkClick} itemId={item.id} />
               </div>
             );
           })}

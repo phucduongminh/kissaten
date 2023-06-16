@@ -59,7 +59,7 @@ const InforShop = () => {
             </div>
             <div className="title">
               <h4>状態:</h4>
-              <button className="btn">{shopInfo.status ? <p></p> : null}</button>
+              {shopInfo.status ? <button className="btn">開いている</button> : <button className="btn">閉めた</button>}
             </div>
           </div>
         </div>

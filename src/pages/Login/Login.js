@@ -6,12 +6,12 @@ const Login = () => {
     <section className='login'>
       <div className="wrap">
         <div className="login-image">
-          <img src="https://t3.ftcdn.net/jpg/03/24/73/92/360_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg" alt="" />
+          <img src="https://rare-gallery.com/uploads/posts/577884-coffee-4k-wallpaper.jpg" alt="" />
         </div>
         <div className="login-form">
           <div className="heading">
             <div className="image">
-              <img src="https://static.vecteezy.com/system/resources/previews/008/131/223/original/simple-and-clean-restaurant-logo-template-design-in-brown-color-suitable-for-restaurants-cafe-shops-food-stalls-food-menus-etc-free-vector.jpg" alt="" srcset="" />
+              <img src="https://www.pngmart.com/files/1/Coffee-Logo-Transparent-Background.png" alt="" srcset="" />
             </div>
             <h3>LOGIN</h3>
           </div>
