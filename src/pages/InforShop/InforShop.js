@@ -9,10 +9,12 @@ import RatingStar from '../../components/Rating/ratingstar';
 
 const InforShop = () => {
   const [shopInfo, setShopInfo] = useState(null);
+  const [review, setReview] = useState([]);
   const [isDetailMode, setChange] = useState(true)
   const { id } = useParams();
   const numberId = parseInt(id);
   const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState('');
   
   useEffect(() => {
   const axiosShopInfo = async () => {
@@ -21,6 +23,14 @@ const InforShop = () => {
   setShopInfo(data);}
   axiosShopInfo();
   }, [numberId]);
+
+  useEffect(() => {
+    const axiosReview = async () => {
+    const response = await axios.get(`https://localhost:7263/api/Review/getReviewCoffeeShop/${numberId}`);
+    const data = await response.data;
+    setReview(data);}
+    axiosReview();
+    }, [numberId]);
 
   if (!shopInfo) {
     return <div>Loading...</div>;
@@ -33,7 +43,7 @@ const InforShop = () => {
   const handleAddReview = async () => {
     try {
       const response = await fetch(
-        "https://localhost:7263/api/CoffeeShop/AddCoffeeShop",
+        "https://localhost:7263/api/Review/addReviewCoffeeShop",
         {
           method: "POST",
           headers: {
@@ -43,30 +53,23 @@ const InforShop = () => {
           },
 
           body: JSON.stringify({
-            id: 20,
-            name: name,
-            address: address,
-            gmail: "",
-            contactNumber: 0,
-            imageCover: imageCover,
-            averageRating: 0,
-            openHour: "2023-06-12T16:11:07.153Z",
-            closeHour: "2023-06-12T16:11:07.153Z",
-            service: boolservice,
-            description: description,
-            status: "",
-            postedByUser: 0,
-            approved: 0,
+            id: 2,
+            userId: 3,
+            coffeeId: numberId,
+            rating: rating,
+            comment: comment,
+            reviewAt: "",
+            editAt: ""
           }),
         }
       );
       if (response.status === 200) {
-        setMessage("Shop added successfully");
-        console.log("Shop added successfully");
+        //setMessage("Shop added successfully");
+        console.log("Review added successfully");
       } else {
       }
     } catch (error) {
-      setMessage("Error");
+      //setMessage("Error");
       console.error(error);
     }
   };
@@ -82,11 +85,19 @@ const InforShop = () => {
           <div className="service">
             <h3 className="type">サービス</h3>
             <div className="buttons">
-              {shopInfo.service === true ? <button className='btn'>エアコン</button> : <button className='btn'>エアコンがない</button>}
+              {shopInfo.service === true ? (
+                <button className="btn">エアコン</button>
+              ) : (
+                <button className="btn">エアコンがない</button>
+              )}
             </div>
             <div className="title">
               <h4>状態:</h4>
-              {shopInfo.status === null ? <button className="btn">開いている</button> : <button className="btn">閉めた</button>}
+              {shopInfo.status === null ? (
+                <button className="btn">開いている</button>
+              ) : (
+                <button className="btn">閉めた</button>
+              )}
             </div>
           </div>
         </div>
@@ -94,18 +105,18 @@ const InforShop = () => {
           <h2>{shopInfo.name}</h2>
           {/* Hiển thị rating */}
           <div className="rating">
-            <Showrating rating={shopInfo.averageRating}/>
+            <Showrating rating={shopInfo.averageRating} />
           </div>
           <div className="buttons">
             {/* Đổi tên biến change thành isDetailMode để thể hiện chế độ hiển thị */}
             <button
-              className={isDetailMode ? 'btn active' : 'btn'}
+              className={isDetailMode ? "btn active" : "btn"}
               onClick={() => setChange(true)}
             >
               ディテール
             </button>
             <button
-              className={!isDetailMode ? 'btn active' : 'btn'}
+              className={!isDetailMode ? "btn active" : "btn"}
               onClick={() => setChange(false)}
             >
               レビュー
@@ -115,128 +126,81 @@ const InforShop = () => {
           {isDetailMode ? (
             <div className="list-info">
               <div className="info">
-              <div className="title">アドレス</div>
-              <p className='content'>{shopInfo.address}</p>
-            </div>
-            <div className="info">
-              <div className="title">営業時間</div>
-              <p className='content'>{shopInfo.openHour}-{shopInfo.closeHour} 毎日</p>
-            </div>
-            <div className="info">
-              <div className="title">詳細な情報</div>
-              <p className='content'>
-              {shopInfo.description}
-              </p>
-            </div>
-            </div>
-          ) : <div className="comments">
-          <div className="list">
-            <div className="item">
-              <div className="image">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="" />
+                <div className="title">アドレス</div>
+                <p className="content">{shopInfo.address}</p>
               </div>
-              <div className="content">
-                <div className="top">
-                  <div className="name">Le Trung Kien</div>
-                  <div className="status">
-                    <div className="icon">
-                      <span>(1)</span> <i class="fa-solid fa-thumbs-up purple"></i>
+              <div className="info">
+                <div className="title">営業時間</div>
+                <p className="content">
+                  {shopInfo.openHour}-{shopInfo.closeHour} 毎日
+                </p>
+              </div>
+              <div className="info">
+                <div className="title">詳細な情報</div>
+                <p className="content">{shopInfo.description}</p>
+              </div>
+            </div>
+          ) : (
+            <div className="comments">
+              <div className="list">
+              {review.map((review, index) => (
+                <div className="item" key={index}>
+                  <div className="image">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+                      alt=""
+                    />
+                  </div>
+                  <div className="content">
+                    <div className="top">
+                      <div className="name">Le Trung Kien</div>
+                      <div className="status">
+                        <div className="icon">
+                          <span>(0)</span>{" "}
+                          <i class="fa-solid fa-thumbs-up purple"></i>
+                        </div>
+                        <div className="icon">
+                          <span>(0)</span>{" "}
+                          <i class="fa-solid fa-thumbs-down red"></i>
+                        </div>
+                        <div className="icon">
+                          <i class="fa-solid fa-trash red"></i>
+                        </div>
+                      </div>
                     </div>
-                    <div className="icon">
-                      <span>(1)</span> <i class="fa-solid fa-thumbs-down red"></i>
-                    </div>
-                    <div className="icon">
-                    <i class="fa-solid fa-trash red"></i>
+                    <div className="bottom">
+                      <div className="rating">
+                        <Showrating  rating={review.rating}/>
+                      </div>
+                      <div className="text">
+                        {review.comment}
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="bottom">
-                  <div className="rating">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                  </div>
-                  <div className="text">素晴らしい！！本当にきれい！！</div>
-                </div>
+                ))}
+              </div>
+              <div className="input-comment">
+                <RatingStar value={rating} onClick={handleRatingChange} />
+                <textarea
+                  name=""
+                  id=""
+                  cols="30"
+                  rows="10"
+                  required
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                ></textarea>
+                <button className="btn" onClick={handleAddReview}>
+                  発信
+                </button>
               </div>
             </div>
-            <div className="item">
-              <div className="image">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="" />
-              </div>
-              <div className="content">
-                <div className="top">
-                  <div className="name">Dang Dinh Minh</div>
-                  <div className="status">
-                    <div className="icon">
-                      <span>(1)</span> <i class="fa-solid fa-thumbs-up purple"></i>
-                    </div>
-                    <div className="icon">
-                      <span>(1)</span> <i class="fa-solid fa-thumbs-down red"></i>
-                    </div>
-                    <div className="icon">
-                    <i class="fa-solid fa-trash red"></i>
-                    </div>
-                  </div>
-                </div>
-                <div className="bottom">
-                  <div className="rating">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                  </div>
-                  <div className="text">サービスがとてもいいと思いますね！！！</div>
-                </div>
-              </div>
-            </div>
-            <div className="item">
-              <div className="image">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="" />
-              </div>
-              <div className="content">
-                <div className="top">
-                  <div className="name">Pham Thanh Nam</div>
-                  <div className="status">
-                    <div className="icon">
-                      <span>(1)</span> <i class="fa-solid fa-thumbs-up purple"></i>
-                    </div>
-                    <div className="icon">
-                      <span>(1)</span> <i class="fa-solid fa-thumbs-down red"></i>
-                    </div>
-                    <div className="icon">
-                    <i class="fa-solid fa-trash red"></i>
-                    </div>
-                  </div>
-                </div>
-                <div className="bottom">
-                  <div className="rating">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                  </div>
-                  <div className="text">この喫茶店の価格は本当に合理的なです。</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="input-comment">
-            <RatingStar value={rating} onClick={handleRatingChange} />
-            <textarea name="" id="" cols="30" rows="10"></textarea>
-            <button className='btn' onClick={handleAddReview}>発信</button>
-          </div>
-         </div>  
-         }
-         
-       </div>
-     </div>
-   </section>
- )
+          )}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default InforShop;

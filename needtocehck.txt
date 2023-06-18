@@ -71,3 +71,5 @@ Check the render method of `App`.
 Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
       An unhandled exception has occurred while executing the request.
       System.IO.IOException: The client reset the request stream.
+
+Cop CSS bị lỗi vì lẫn lộn tên trường )))))))
