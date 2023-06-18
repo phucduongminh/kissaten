@@ -37,12 +37,12 @@ const Signup = () => {
   };
 
   return (
-    <section className='login'>
+    <section className='signup'>
       <div className="wrap">
-        <div className="login-image">
+        <div className="signup-image">
           <img src="https://rare-gallery.com/uploads/posts/577884-coffee-4k-wallpaper.jpg" alt="" />
         </div>
-        <div className="login-form">
+        <div className="signup-form">
           <div className="heading">
             <div className="image">
               <img src="https://www.pngmart.com/files/1/Coffee-Logo-Transparent-Background.png" alt="" srcset="" />
@@ -64,8 +64,8 @@ const Signup = () => {
             <input type="email" value={gmail}
                     onChange={(e) => setGmail(e.target.value)}/>
           </div>
-          <button onClick={signupClick}>BUTTON</button>
-          <a href="!">Link + Lorem ipsum dolor sit amet consectetur</a>
+          <button onClick={signupClick}>サインアップ</button>
+          <a href="!">Đã có tài khoản, Login</a>
         </div>
       </div>
     </section>

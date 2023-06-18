@@ -1,0 +1,89 @@
+.prehome-heading {
+    display: flex;
+    align-items: center;
+  }
+  
+  .prehome-heading .filter label {
+    margin-right: 5px;
+  }
+  .prehome-heading .filter select {
+    width: 150px;
+    max-width: 150px;
+    margin-left: 5px;
+    padding: 5px;
+  }
+  
+  .prehome-heading .title {
+    margin-left: 200px;
+    padding: 0;
+    font-size: 32px;
+    flex: 2;
+    text-align: center;
+  }
+  
+  .prehome-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  
+  .prehome-item {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  
+  .prehome-item .image {
+    width: 100px;
+  }
+  
+  .prehome-item .content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+  }
+  
+  .prehome-item .content .name {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  .prehome-item .content .rating{
+    font-size: 12px;
+  }
+  
+  i.fill {
+    color: #d8d355;
+  }
+  .prehome-item .content .description {
+    font-size: 12px;
+  }
+  
+  .prehome-item .content .description i {
+    margin-right: 10px;
+  }
+  
+  .prehome-item .icon {
+    font-size: 20px;
+  }
+  .prehome-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 50px;
+  }
+  
+  .prehome-pagination .page {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  }

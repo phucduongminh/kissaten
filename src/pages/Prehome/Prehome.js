@@ -1,20 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './Prehome.css'
-import { useNavigate } from 'react-router-dom'
-import Bookmark from '../../components/Bookmark/bookmark'
 
 const Prehome = () => {
-  const [bookmarkedItemIds, setBookmarkedItemIds] = useState([]);
-
-  const handleBookmarkClick = (itemId) => {
-    if (bookmarkedItemIds.includes(itemId)) {
-      setBookmarkedItemIds(bookmarkedItemIds.filter((id) => id !== itemId)); // Remove item from bookmarkedItemIds if already bookmarked
-    } else {
-      setBookmarkedItemIds([...bookmarkedItemIds, itemId]); // Add item to bookmarkedItemIds
-    }
-  };
-
-  const navigate = useNavigate()
   const data = [
     {
       id: 1,
@@ -50,9 +37,9 @@ const Prehome = () => {
     },
   ]
   return (
-    <section className='home'>
+    <section className='prehome'>
       <div className="wrap">
-        <div className="home-heading">
+        <div className="prehome-heading">
           <h2 className="title">ホームページ</h2>
           <div className="filter">
             <label htmlFor="">Sort by</label>
@@ -63,13 +50,12 @@ const Prehome = () => {
             </select>
           </div>
         </div>
-        <div className="home-list">
+        <div className="prehome-list">
         {data.map((item, index) => {
             return (
               <div
-                className="home-item"
+                className="prehome-item"
                 key={index}
-                onClick={() => navigate(`/inforshop/${item.id}`)}
               >
                 <div className="image">
                   <img src={item.image} alt="" />
@@ -92,13 +78,11 @@ const Prehome = () => {
                     {item.time}
                   </div>
                 </div>
-                <Bookmark isBookmarked={bookmarkedItemIds.includes(item.id)}
-          handleBookmarkClick={handleBookmarkClick} itemId={item.id} />
               </div>
             );
           })}
         </div>
-        <div className="home-pagination">
+        <div className="prehome-pagination">
           <a className='page' href="!">
             <i class="fa-solid fa-chevron-left"></i>
           </a>

@@ -1,7 +1,30 @@
-import React from 'react'
-import './Login.css'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { login } from './loginActions';
+import './Login.css';
 
 const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  //const [errorMessage, setErrorMessage] = useState('');
+  //{errorMessage && <div className="error-message">{errorMessage}</div>}
+  const dispatch = useDispatch();
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    
+    dispatch(login(username, password));
+  };
+
   return (
     <section className='login'>
       <div className="wrap">
@@ -13,22 +36,22 @@ const Login = () => {
             <div className="image">
               <img src="https://www.pngmart.com/files/1/Coffee-Logo-Transparent-Background.png" alt="" srcset="" />
             </div>
-            <h3>LOGIN</h3>
+            <h3>ログイン</h3>
           </div>
           <div className="form-group">
             <div className="title">Tên đăng nhập</div>
-            <input type="text" />
+            <input type="text" value={username} onChange={handleUsernameChange} />
           </div>
           <div className="form-group">
             <div className="title">Mật khẩu</div>
-            <input type="password" />
+            <input type="password" value={password} onChange={handlePasswordChange} />
           </div>
-          <button>BUTTON</button>
-          <a href="!">Link + Lorem ipsum dolor sit amet consectetur</a>
+          <button onClick={handleSubmit}>ログイン</button>
+          <a href="!">Nếu chưa có tài khoản, Signup</a>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

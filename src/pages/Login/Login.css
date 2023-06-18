@@ -67,16 +67,22 @@
 
 .login button {
   margin: auto;
-  width: 100px;
+  width: fit-content;
   padding: 15px 20px;
   border: none;
   background: #feebc0;
   border-radius: 10px;
-  font-weight: 600;
+  font-weight: 1000;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 .login a {
   text-align: center;
   color: #8e5dfe;
+}
+
+.error-message {
+  color: rgb(240, 46, 46);
+  font-size: 14px;
+  margin-top: 8px;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 //import axios from 'axios';
 import './Preheader.css'
+import { useNavigate } from 'react-router-dom'
 
 const Preheader = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -8,6 +9,7 @@ const Preheader = () => {
   const [area, setArea] = useState('all');
   const [hasAC, setHasAC] = useState(false);
   const [status, setStatus] = useState('all');
+  const navigate = useNavigate()
 
   const handleSearchClick = () => {
     setPopupOpen(true);
@@ -24,9 +26,9 @@ const Preheader = () => {
   }; 
 
   return (
-    <header className="header">
+    <header className="preheader">
       <div className="wrap">
-        <div className="header-logo">
+        <div className="preheader-logo">
           <div className="image">
             <img
               src="	https://www.pngmart.com/files/1/Coffee-Logo-Transparent-Background.png"
@@ -35,7 +37,7 @@ const Preheader = () => {
           </div>
           <div className="name">KISSATEN</div>
         </div>
-        <div className="header-search">
+        <div className="preheader-search">
           <div className="form-input">
             <input type="text" placeholder="検索" />
             <button className="btn" onClick={handleSearchClick}>
@@ -43,8 +45,8 @@ const Preheader = () => {
             </button>
           </div>
         </div>
-        <div className="header-login">
-          <button className="btn">
+        <div className="preheader-login">
+          <button className="btn" onClick={() => navigate(`/login`)}>
             <i class="fa-solid fa-user"></i> ログイン
           </button>
         </div>
@@ -84,7 +86,7 @@ const Preheader = () => {
               </div>
 
               <div class="left-section">
-                <li>
+              <li>
                   <label>営業時間:</label>
                   <section>
                     <input
@@ -93,7 +95,7 @@ const Preheader = () => {
                       name="status"
                       id="status1"
                       value="open"
-                      checked={status === "開いている"}
+                      checked={status === "open"}
                       onChange={(e) => setStatus(e.target.value)}
                     />
                     <label class="form-check-label" htmlFor="status1">

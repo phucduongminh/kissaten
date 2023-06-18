@@ -170,7 +170,7 @@ const Header = () => {
                       name="status"
                       id="status1"
                       value="open"
-                      checked={status === "開いている"}
+                      checked={status === "open"}
                       onChange={(e) => setStatus(e.target.value)}
                     />
                     <label class="form-check-label" htmlFor="status1">

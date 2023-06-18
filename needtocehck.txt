@@ -73,3 +73,27 @@ Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
       System.IO.IOException: The client reset the request stream.
 
 Cop CSS bị lỗi vì lẫn lộn tên trường )))))))
+
+get review theo id review ))))))
+
+get list bookmark fail
+
+Trong file loginActions.js, sau khi gửi yêu cầu đăng nhập thành công, bạn đang dispatch action LOGIN_SUCCESS và truyền payload là { username }. Tuy nhiên, để lưu thông tin người dùng đã đăng nhập vào Redux store, bạn cần lưu nhiều thông tin hơn chỉ là username. Bạn có thể lưu thông tin người dùng như id, username, email, v.v. vào state của loginReducer trong store. Điều này sẽ giúp bạn có thể sử dụng thông tin người dùng ở nhiều nơi trong ứng dụng.
+
+Module not found: Error: Can't resolve 'redux-thunk' in 'G:\kissaten-branch\kissaten-test\kissaten\src'
+ERROR in ./src/index.js 12:0-32
+Module not found: Error: Can't resolve 'redux-thunk' in 'G:\kissaten-branch\kissaten-test\kissaten\src'  
+
+ERROR in ./src/index.js 13:0-40
+Module not found: Error: Can't resolve './rootReducer' in 'G:\kissaten-branch\kissaten-test\kissaten\src'
+
+ERROR in ./src/index.js 15:14-25
+export 'default' (imported as 'createStore') was not found in 'redux' (possible exports: __DO_NOT_USE__ActionTypes, applyMiddleware, bindActionCreators, combineReducers, compose, createStore, legacy_createStore)
+
+ERROR in [eslint]
+src\pages\Login\loginActions.js
+  Line 33:11:  'setErrorMessage' is not defined  no-undef
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 4 errors
