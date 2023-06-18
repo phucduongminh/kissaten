@@ -4,33 +4,16 @@ import './inforShop.css';
 import { useParams } from "react-router-dom";
 
 import axios from 'axios';
+import Showrating from '../../components/Rating/showrating';
+import RatingStar from '../../components/Rating/ratingstar';
 
 const InforShop = () => {
   const [shopInfo, setShopInfo] = useState(null);
   const [isDetailMode, setChange] = useState(true)
   const { id } = useParams();
   const numberId = parseInt(id);
-  /*const numberId = parseInt(id);
-
-  useEffect(() => {
-    const fetchShopInfo = async () => {
-      const response = await fetch("https://localhost:7263/api/CoffeeShop/GetInfoCoffeeShop",{
-        method: 'POST',
-        headers: {
-        'Content-Type':'application/json',
-        'Accept':'application/json',
-        'Access-Control-Allow-Origin':'*'},
-        
-        body: JSON.stringify({
-          "id": 20,
-        })
-      });
-      const data = await response.json();
-      setShopInfo(data);
-    };
-
-    fetchShopInfo();
-  }, []);*/
+  const [rating, setRating] = useState(0);
+  
   useEffect(() => {
   const axiosShopInfo = async () => {
   const response = await axios.post(`https://localhost:7263/api/CoffeeShop/GetInfoCoffeeShop/${numberId}`);
@@ -43,6 +26,51 @@ const InforShop = () => {
     return <div>Loading...</div>;
   }
 
+  const handleRatingChange = (newRating) => {
+    setRating(newRating);
+  };
+
+  const handleAddReview = async () => {
+    try {
+      const response = await fetch(
+        "https://localhost:7263/api/CoffeeShop/AddCoffeeShop",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+
+          body: JSON.stringify({
+            id: 20,
+            name: name,
+            address: address,
+            gmail: "",
+            contactNumber: 0,
+            imageCover: imageCover,
+            averageRating: 0,
+            openHour: "2023-06-12T16:11:07.153Z",
+            closeHour: "2023-06-12T16:11:07.153Z",
+            service: boolservice,
+            description: description,
+            status: "",
+            postedByUser: 0,
+            approved: 0,
+          }),
+        }
+      );
+      if (response.status === 200) {
+        setMessage("Shop added successfully");
+        console.log("Shop added successfully");
+      } else {
+      }
+    } catch (error) {
+      setMessage("Error");
+      console.error(error);
+    }
+  };
+
   return (
     <section className="inforShop">
       <div className="wrap">
@@ -54,12 +82,11 @@ const InforShop = () => {
           <div className="service">
             <h3 className="type">サービス</h3>
             <div className="buttons">
-              <button className='btn'>エアコン</button>
-              <button className='btn'>デリバリー</button>
+              {shopInfo.service === true ? <button className='btn'>エアコン</button> : <button className='btn'>エアコンがない</button>}
             </div>
             <div className="title">
               <h4>状態:</h4>
-              {shopInfo.status ? <button className="btn">開いている</button> : <button className="btn">閉めた</button>}
+              {shopInfo.status === null ? <button className="btn">開いている</button> : <button className="btn">閉めた</button>}
             </div>
           </div>
         </div>
@@ -67,9 +94,7 @@ const InforShop = () => {
           <h2>{shopInfo.name}</h2>
           {/* Hiển thị rating */}
           <div className="rating">
-            {[...Array(5)].map((_, index) => (
-              <i className="fa-solid fa-star" key={index}></i>
-            ))}
+            <Showrating rating={shopInfo.averageRating}/>
           </div>
           <div className="buttons">
             {/* Đổi tên biến change thành isDetailMode để thể hiện chế độ hiển thị */}
@@ -201,8 +226,9 @@ const InforShop = () => {
             </div>
           </div>
           <div className="input-comment">
+            <RatingStar value={rating} onClick={handleRatingChange} />
             <textarea name="" id="" cols="30" rows="10"></textarea>
-            <button className='btn'>発信</button>
+            <button className='btn' onClick={handleAddReview}>発信</button>
           </div>
          </div>  
          }

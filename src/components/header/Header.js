@@ -56,41 +56,44 @@ const Header = () => {
 
   const handleAddSubmit = async () => {
     try {
-      const response = await fetch("https://localhost:7263/api/CoffeeShop/AddCoffeeShop", {
-  method: 'POST',
-  headers: {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'Access-Control-Allow-Origin':'*'},
-  
-  body: JSON.stringify({
-    "id": 20,
-    "name": name,
-    "address": address,
-    "gmail": "",
-    "contactNumber": 0,
-    "imageCover": imageCover,
-    "averageRating": 0,
-    "openHour": "2023-06-12T16:11:07.153Z",
-    "closeHour": "2023-06-12T16:11:07.153Z",
-    "service": boolservice,
-    "description": description,
-    "status": "",
-    "postedByUser": 0,
-    "approved": 0
-  })
-});
-if (response.status === 200) {
-    setMessage("Shop added successfully");
-    console.log("Shop added successfully");
-} else {
+      const response = await fetch(
+        "https://localhost:7263/api/CoffeeShop/AddCoffeeShop",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
 
-}
-}  catch (error) {
-  setMessage("Error");
-  console.error(error);
-}
-};
+          body: JSON.stringify({
+            id: 20,
+            name: name,
+            address: address,
+            gmail: "",
+            contactNumber: 0,
+            imageCover: imageCover,
+            averageRating: 0,
+            openHour: "2023-06-12T16:11:07.153Z",
+            closeHour: "2023-06-12T16:11:07.153Z",
+            service: boolservice,
+            description: description,
+            status: "",
+            postedByUser: 0,
+            approved: 0,
+          }),
+        }
+      );
+      if (response.status === 200) {
+        setMessage("Shop added successfully");
+        console.log("Shop added successfully");
+      } else {
+      }
+    } catch (error) {
+      setMessage("Error");
+      console.error(error);
+    }
+  };
 
   return (
     <header className="header">
