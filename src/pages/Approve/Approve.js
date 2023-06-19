@@ -16,18 +16,18 @@ const Approve = () => {
             <div className="content">
               <div className="name">Name</div>
               <div className="rating">
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
               </div>
               <div className="description">
-                <i class="fa-solid fa-location-dot"></i>
+                <i className="fa-solid fa-location-dot"></i>
                 &nbsp;155 Cầu Giấy
               </div>
               <div className="description">
-                <i class="fa-solid fa-clock"></i>155 Cầu Giấy
+                <i className="fa-solid fa-clock"></i>155 Cầu Giấy
               </div>
             </div>
             <div className="buttons">
@@ -45,18 +45,18 @@ const Approve = () => {
             <div className="content">
               <div className="name">Name</div>
               <div className="rating">
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
               </div>
               <div className="description">
-                <i class="fa-solid fa-location-dot"></i>
+                <i className="fa-solid fa-location-dot"></i>
                 &nbsp;155 Cầu Giấy
               </div>
               <div className="description">
-                <i class="fa-solid fa-clock"></i>155 Cầu Giấy
+                <i className="fa-solid fa-clock"></i>155 Cầu Giấy
               </div>
             </div>
             <div className="buttons">
@@ -74,18 +74,18 @@ const Approve = () => {
             <div className="content">
               <div className="name">Name</div>
               <div className="rating">
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
               </div>
               <div className="description">
-                <i class="fa-solid fa-location-dot"></i>
+                <i className="fa-solid fa-location-dot"></i>
                 &nbsp;155 Cầu Giấy
               </div>
               <div className="description">
-                <i class="fa-solid fa-clock"></i>155 Cầu Giấy
+                <i className="fa-solid fa-clock"></i>155 Cầu Giấy
               </div>
             </div>
             <div className="buttons">
@@ -103,18 +103,18 @@ const Approve = () => {
             <div className="content">
               <div className="name">Name</div>
               <div className="rating">
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
-                <i class="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
+                <i className="fa-solid fa-star fill"></i>
               </div>
               <div className="description">
-                <i class="fa-solid fa-location-dot"></i>
+                <i className="fa-solid fa-location-dot"></i>
                 &nbsp;155 Cầu Giấy
               </div>
               <div className="description">
-                <i class="fa-solid fa-clock"></i>155 Cầu Giấy
+                <i className="fa-solid fa-clock"></i>155 Cầu Giấy
               </div>
             </div>
             <div className="buttons">
@@ -125,7 +125,7 @@ const Approve = () => {
         </div>
         <div className="approve-pagination">
           <a className="page" href="!">
-            <i class="fa-solid fa-chevron-left"></i>
+            <i className="fa-solid fa-chevron-left"></i>
           </a>
           <a className="page" href="!">
             1
@@ -137,7 +137,7 @@ const Approve = () => {
             3
           </a>
           <a className="page" href="!">
-            <i class="fa-solid fa-chevron-right"></i>
+            <i className="fa-solid fa-chevron-right"></i>
           </a>
         </div>
       </div>

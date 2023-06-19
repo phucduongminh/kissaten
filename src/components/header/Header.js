@@ -111,18 +111,18 @@ const Header = () => {
           <div className="form-input">
             <input type="text" placeholder="検索" />
             <button className="btn" onClick={handleSearchClick}>
-              <i class="fa-solid fa-magnifying-glass"></i>
+              <i className="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
         </div>
         <div className="header-login">
           <button className="btn">
-            <i class="fa-solid fa-user"></i> DMQ
+            <i className="fa-solid fa-user"></i> DMQ
           </button>
         </div>
         <div className="header-add">
           <button className="btn" onClick={handleSearchClick1}>
-            <i class="fa-solid fa-plus"> 喫茶店</i>
+            <i className="fa-solid fa-plus"> 喫茶店</i>
           </button>
         </div>
       </div>
@@ -131,7 +131,7 @@ const Header = () => {
           <div className="popup-content">
             <h2>検索</h2>
             <button className="close-button" onClick={handlePopupClose}>
-              <i class="fa-sharp fa-solid fa-xmark"></i>
+              <i className="fa-sharp fa-solid fa-xmark"></i>
             </button>
             <form onSubmit={handleSearchSubmit}>
               <div className="form-group">
@@ -160,41 +160,41 @@ const Header = () => {
                 </select>
               </div>
 
-              <div class="left-section">
+              <div className="left-section">
                 <li>
                   <label>営業時間:</label>
                   <section>
                     <input
                       type="radio"
-                      class="form-check-input"
+                      className="form-check-input"
                       name="status"
                       id="status1"
                       value="open"
                       checked={status === "open"}
                       onChange={(e) => setStatus(e.target.value)}
                     />
-                    <label class="form-check-label" htmlFor="status1">
+                    <label className="form-check-label" htmlFor="status1">
                       開いている
                     </label>
                   </section>
                   <section>
                     <input
                       type="radio"
-                      class="form-check-input"
+                      className="form-check-input"
                       name="status"
                       id="status2"
                       value="all"
                       checked={status === "all"}
                       onChange={(e) => setStatus(e.target.value)}
                     />
-                    <label class="form-check-label" htmlFor="status2">
+                    <label className="form-check-label" htmlFor="status2">
                       すべて
                     </label>
                   </section>
                 </li>
               </div>
 
-              <div class="right-section">
+              <div className="right-section">
                 <li>
                   <label>サービス:</label>
                   <section>
@@ -226,7 +226,7 @@ const Header = () => {
             <h2>Thêm Quán</h2>
             <form>
               <button className="close-button" onClick={handlePopupClose1}>
-                <i class="fa-sharp fa-solid fa-xmark"></i>
+                <i className="fa-sharp fa-solid fa-xmark"></i>
               </button>
               <div className="left-section1">
                 <div className="form-group">

@@ -1,5 +1,5 @@
 import React from 'react';
-//import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Header from './components/header/Header';
@@ -16,8 +16,8 @@ import Preheader from './components/preheader/Preheader';
 import './App.css';
 
 const App = () => {
-  //const user = useSelector((state) => state.login.user);
-  const user = 0;
+  const user = useSelector((state) => state.login.user);
+  //const user = 0;
 
   return (
     <div className="App">
@@ -25,13 +25,12 @@ const App = () => {
         <Route
           path="/"
           element={
-            user ? (
-              <div>
-                <Header />
-                <Home />
-              </div>
-            ) : (
+            user ?  (
               <Navigate to="/home" replace={true} />
+            ) : (
+              <div>
+                <Preheader /><Prehome />
+              </div>
             )
           }
         />
@@ -41,7 +40,7 @@ const App = () => {
         <Route path="/approve" element={<div><Header /><Approve /></div>} />
         <Route path="/search" element={<div><Header /><Search /></div>} />
         <Route path="/signup" element={<div><Signup /></div>} />
-        <Route path="/home" element={<div><Preheader /><Prehome /></div>} />
+        <Route path="/home" element={<div><Header /><Home /></div>} />
       </Routes>
     </div>
   );

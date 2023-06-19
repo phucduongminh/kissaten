@@ -2,13 +2,17 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from './loginActions';
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  //const [errorMessage, setErrorMessage] = useState('');
-  //{errorMessage && <div className="error-message">{errorMessage}</div>}
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const navigateToHome = () => {
+    navigate('/');
+  }
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -20,9 +24,7 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    
-    dispatch(login(username, password));
+    dispatch(login(username, password, navigateToHome));
   };
 
   return (
@@ -47,7 +49,7 @@ const Login = () => {
             <input type="password" value={password} onChange={handlePasswordChange} />
           </div>
           <button onClick={handleSubmit}>ログイン</button>
-          <a href="!">Nếu chưa có tài khoản, Signup</a>
+          <a href="/signup">Nếu chưa có tài khoản, Signup</a>
         </div>
       </div>
     </section>

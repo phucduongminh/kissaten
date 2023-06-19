@@ -157,14 +157,14 @@ const InforShop = () => {
                       <div className="status">
                         <div className="icon">
                           <span>(0)</span>{" "}
-                          <i class="fa-solid fa-thumbs-up purple"></i>
+                          <i className="fa-solid fa-thumbs-up purple"></i>
                         </div>
                         <div className="icon">
                           <span>(0)</span>{" "}
-                          <i class="fa-solid fa-thumbs-down red"></i>
+                          <i className="fa-solid fa-thumbs-down red"></i>
                         </div>
                         <div className="icon">
-                          <i class="fa-solid fa-trash red"></i>
+                          <i className="fa-solid fa-trash red"></i>
                         </div>
                       </div>
                     </div>

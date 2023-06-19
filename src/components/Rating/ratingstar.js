@@ -5,7 +5,7 @@ import './ratingstar.css'
 const StarIcon = ({ filled }) => {
   return (
     <span style={{ color: filled ? '#fcba04' : 'gray'}}>
-      {filled ? <i class="fa-solid fa-star"></i> : <i class="fa-regular fa-star"></i>}
+      {filled ? <i className="fa-solid fa-star"></i> : <i className="fa-regular fa-star"></i>}
     </span>
   );
 };

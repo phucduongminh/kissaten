@@ -12,7 +12,7 @@ const Bookmark = () => {
           <div className="bookmark-filter">
             <div className="box">
               <p className="title">Filter</p>
-              <i class="fa-solid fa-filter"></i>
+              <i className="fa-solid fa-filter"></i>
             </div>
             <div className="filter">
               <div className="title">Filter</div>
@@ -49,29 +49,29 @@ const Bookmark = () => {
               <div className="content">
                 <div className="name">Name</div>
                 <div className="rating">
-                  <i class="fa-solid fa-star fill"></i>
-                  <i class="fa-solid fa-star fill"></i>
-                  <i class="fa-solid fa-star fill"></i>
-                  <i class="fa-solid fa-star fill"></i>
-                  <i class="fa-solid fa-star fill"></i>
+                  <i className="fa-solid fa-star fill"></i>
+                  <i className="fa-solid fa-star fill"></i>
+                  <i className="fa-solid fa-star fill"></i>
+                  <i className="fa-solid fa-star fill"></i>
+                  <i className="fa-solid fa-star fill"></i>
                 </div>
                 <div className="description">
-                  <i class="fa-solid fa-location-dot"></i>
+                  <i className="fa-solid fa-location-dot"></i>
                   &nbsp;155 Cầu Giấy
                 </div>
                 <div className="description">
-                  <i class="fa-solid fa-clock"></i>155 Cầu Giấy
+                  <i className="fa-solid fa-clock"></i>155 Cầu Giấy
                 </div>
               </div>
               <div className="icon">
-              <i class="fa-solid fa-bookmark fill"></i>
+              <i className="fa-solid fa-bookmark fill"></i>
             </div>
             </div>
           </div>
         </div>
         <div className="bookmark-pagination">
           <a className='page' href="!">
-            <i class="fa-solid fa-chevron-left"></i>
+            <i className="fa-solid fa-chevron-left"></i>
           </a>
           <a className='page' href="!">
             1
@@ -83,7 +83,7 @@ const Bookmark = () => {
             3
           </a>
           <a className='page' href="!">
-            <i class="fa-solid fa-chevron-right"></i>
+            <i className="fa-solid fa-chevron-right"></i>
           </a>
         </div>
       </div>

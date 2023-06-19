@@ -33,23 +33,23 @@ const Search = () => {
                 <div className="content">
                   <div className="name">{item.name}</div>
                   <div className="rating">
-                    <i class="fa-solid fa-star fill"></i>
-                    <i class="fa-solid fa-star fill"></i>
-                    <i class="fa-solid fa-star fill"></i>
-                    <i class="fa-solid fa-star fill"></i>
-                    <i class="fa-solid fa-star fill"></i>
+                    <i className="fa-solid fa-star fill"></i>
+                    <i className="fa-solid fa-star fill"></i>
+                    <i className="fa-solid fa-star fill"></i>
+                    <i className="fa-solid fa-star fill"></i>
+                    <i className="fa-solid fa-star fill"></i>
                   </div>
                   <div className="description">
-                    <i class="fa-solid fa-location-dot"></i>
+                    <i className="fa-solid fa-location-dot"></i>
                     {item.address}
                   </div>
                   <div className="description">
-                    <i class="fa-solid fa-clock"></i>
+                    <i className="fa-solid fa-clock"></i>
                     {item.time}
                   </div>
                 </div>
                 <div className="icon">
-                    <i class="fa-regular fa-bookmark"></i>
+                    <i className="fa-regular fa-bookmark"></i>
                 </div>
               </div>
             );
@@ -57,7 +57,7 @@ const Search = () => {
         </div>
         <div className="search-pagination">
           <a className='page' href="!">
-            <i class="fa-solid fa-chevron-left"></i>
+            <i className="fa-solid fa-chevron-left"></i>
           </a>
           <a className='page' href="!">
             1
@@ -69,7 +69,7 @@ const Search = () => {
             3
           </a>
           <a className='page' href="!">
-            <i class="fa-solid fa-chevron-right"></i>
+            <i className="fa-solid fa-chevron-right"></i>
           </a>
         </div>
       </div>

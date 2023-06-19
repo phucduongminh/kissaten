@@ -64,6 +64,8 @@
     padding: 12px;
     background: #c68b59;
     border-radius: 20px;
+    color: azure;
+    font-weight: bold;
   }
   
   .signup button {
@@ -80,5 +82,10 @@
   .signup a {
     text-align: center;
     color: #8e5dfe;
+}
+
+.error {
+  color: rgb(240, 46, 46);
+  font-size: 14px;
 }
   

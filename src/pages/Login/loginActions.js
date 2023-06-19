@@ -2,13 +2,12 @@ export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
-export const login = (username, password) => {
-
+export const login = (username, password, navigateToHome) => {
   return (dispatch) => {
     // Gửi request đăng nhập, ví dụ: gọi API login
     dispatch({ type: LOGIN_REQUEST });
     // Gửi thông tin đăng nhập đến API
-    fetch('api/login', {
+    fetch('https://localhost:7263/api/User/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -18,13 +17,13 @@ export const login = (username, password) => {
           password: password }),
       })
         .then((response) => {
-          if (response.ok) {
+          if (response.status === 200) {
             // Đăng nhập thành công
-            //window.location.href = '/home'; // Chuyển hướng đến trang chủ
+            console.log("Login OK");
             dispatch({ type: LOGIN_SUCCESS, payload: {username} });
+            navigateToHome();
           } else {
             // Xử lý lỗi đăng nhập
-            //setErrorMessage('Tên đăng nhập hoặc mật khẩu không chính xác.');
             dispatch({ type: LOGIN_FAILURE, error: {} });
           }
         })
@@ -38,5 +37,3 @@ export const login = (username, password) => {
 export const logout = () => ({
     type: 'LOGOUT'
 });  
-
-// Các action creators khác (ví dụ: logout, setUser) cũng có thể được định nghĩa ở đây
