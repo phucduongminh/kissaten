@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 //import axios from 'axios';
 import './header.css'
-import { useParams } from "react-router-dom";
+//import { useParams } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({username,uid}) => {
   const [isPopupOpen, setPopupOpen] = useState(false);
-  const [cafeName, setCafeName] = useState('');
-  const [area, setArea] = useState('');
-  const [hasAC, setHasAC] = useState(false);
-  const [status, setStatus] = useState('open');
-  const { username } = useParams();
+  const [cafeName, setCafeName] = useState("");
+  const [area, setArea] = useState("");
+  const [hasAC, setHasAC] = useState("false");
+  const [status, setStatus] = useState("open");
+  //const { username } = useParams();
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSearchClick = () => {
     setPopupOpen(true);
@@ -20,9 +22,18 @@ const Header = () => {
     setPopupOpen(false);
   };
 
+  const handleHasACChange = (e) => {
+    if (e.target.checked) {
+      setHasAC("true");
+    } else {
+      setHasAC("false");
+    }
+  };
+
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    // Xử lý logic tìm kiếm ở đây
+    setPopupOpen(false);
+    navigate(`/search/${cafeName}/${area}/${hasAC}/${status}/${uid}`);
     console.log("Đã submit tìm kiếm");
   }; 
 
@@ -56,7 +67,8 @@ const Header = () => {
   //const boolservice = Boolean(service);
   const boolservice = (service.toLowerCase() === "true");
 
-  const handleAddSubmit = async () => {
+  const handleAddSubmit = async (e) => {
+    e.preventDefault();
     try {
       const response = await fetch(
         "https://localhost:7263/api/CoffeeShop/AddCoffeeShop",
@@ -75,11 +87,11 @@ const Header = () => {
             contactNumber: 0,
             imageCover: imageCover,
             averageRating: 0,
-            openHour: "2023-06-12T16:11:07.153Z",
-            closeHour: "2023-06-12T16:11:07.153Z",
+            openHour: openHour,
+            closeHour: closeHour,
             service: boolservice,
             description: description,
-            status: "",
+            status: "open",
             postedByUser: 0,
             approved: 0,
           }),
@@ -154,7 +166,7 @@ const Header = () => {
                   onChange={(e) => setArea(e.target.value)}
                   required
                 >
-                  <option value=""></option>
+                  <option value="string"></option>
                   <option value="Hai Bà Trưng">Hai Bà Trưng</option>
                   <option value="Đống Đa">Đống Đa</option>
                   <option value="Hoàn Kiếm">Hoàn Kiếm</option>
@@ -204,7 +216,7 @@ const Header = () => {
                       className="checkbox"
                       id="has-ac"
                       checked={hasAC}
-                      onChange={(e) => setHasAC(e.target.checked)}
+                      onChange={handleHasACChange}
                     />
                     <label className="checkbox-label" htmlFor="has-ac">
                       エアコン

@@ -1,15 +1,36 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import './search.css'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import axios from 'axios';
+import Showrating from '../../components/Rating/showrating';
+
 const Search = () => {
   const navigate = useNavigate()
-  const data = [
-  ]
+  const [shopInfo, setShopInfo] = useState([]);
+  const {cafeName,area,service,status,uid} = useParams();
+  const booleanValue = Boolean(service);
+
+  useEffect(() => {
+    const search = { 
+      name: cafeName,
+      address: area,
+      service: booleanValue,
+      status: status};
+    const axiosShopInfo = async () => {
+    const response = await axios.post(`https://localhost:7263/api/CoffeeShop/SearchCoffeeShop`,JSON.stringify(search), {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const data = await response.data;
+    setShopInfo(data);}
+    axiosShopInfo();
+    }, );
   return (
     <section className='search'>
       <div className="wrap">
         <div className="search-heading">
-          <h2 className="title">ホームページ</h2>
+          <h2 className="title">検索結果</h2>
           <div className="filter">
             <label htmlFor="">Sort by</label>
             <select name="" id="">
@@ -20,24 +41,20 @@ const Search = () => {
           </div>
         </div>
         <div className="search-list">
-        {data.map((item, index) => {
+        {shopInfo.map((item, index) => {
             return (
               <div
-                className="search-item"
+                className="prehome-item"
                 key={index}
-                onClick={() => navigate(`/inforshop/${item.id}`)}
+                onClick={() => navigate(`/inforshop/${item.id}/${uid}`)}
               >
                 <div className="image">
-                  <img src={item.image} alt="" />
+                  <img src={item.imageCover} alt="" />
                 </div>
                 <div className="content">
                   <div className="name">{item.name}</div>
                   <div className="rating">
-                    <i className="fa-solid fa-star fill"></i>
-                    <i className="fa-solid fa-star fill"></i>
-                    <i className="fa-solid fa-star fill"></i>
-                    <i className="fa-solid fa-star fill"></i>
-                    <i className="fa-solid fa-star fill"></i>
+                    <Showrating  rating={item.averageRating}/>
                   </div>
                   <div className="description">
                     <i className="fa-solid fa-location-dot"></i>
@@ -45,11 +62,8 @@ const Search = () => {
                   </div>
                   <div className="description">
                     <i className="fa-solid fa-clock"></i>
-                    {item.time}
+                    {item.openHour}-{item.closeHour} 毎日
                   </div>
-                </div>
-                <div className="icon">
-                    <i className="fa-regular fa-bookmark"></i>
                 </div>
               </div>
             );
