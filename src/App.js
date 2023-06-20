@@ -18,6 +18,7 @@ import './App.css';
 const App = () => {
   const user = useSelector((state) => state.login.user);
   //const user = 0;
+  //const username = useSelector(state => state.login.user.username);
 
   return (
     <div className="App">
@@ -25,22 +26,70 @@ const App = () => {
         <Route
           path="/"
           element={
-            user ?  (
-              <Navigate to="/:username" replace={true} />
+            user ? (
+              <Navigate to={`/${user.username}`} replace={true} />
             ) : (
               <div>
-                <Preheader /><Prehome />
+                <Preheader />
+                <Prehome />
               </div>
             )
           }
         />
         <Route path="/login" element={<Login />} />
-        <Route path="/inforshop/:id/:uid" element={<div><Header /><InforShop /></div>} />
-        <Route path="/bookmark/uid" element={<div><Header /><Bookmark /></div>} />
-        <Route path="/approve" element={<div><Header /><Approve /></div>} />
-        <Route path="/search" element={<div><Header /><Search /></div>} />
-        <Route path="/signup" element={<div><Signup /></div>} />
-        <Route path="/:username" element={<div><Header /><Home /></div>} />
+        <Route
+          path="/inforshop/:id/:uid"
+          element={
+            <div>
+              <Header />
+              <InforShop />
+            </div>
+          }
+        />
+        <Route
+          path="/bookmark/:uid"
+          element={
+            <div>
+              <Header />
+              <Bookmark />
+            </div>
+          }
+        />
+        <Route
+          path="/approve"
+          element={
+            <div>
+              <Header />
+              <Approve />
+            </div>
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <div>
+              <Header />
+              <Search />
+            </div>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <div>
+              <Signup />
+            </div>
+          }
+        />
+        <Route
+          path="/:username"
+          element={
+            <div>
+              <Header />
+              <Home />
+            </div>
+          }
+        />
       </Routes>
     </div>
   );

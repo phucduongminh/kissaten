@@ -11,7 +11,7 @@ const InforShop = () => {
   const [shopInfo, setShopInfo] = useState(null);
   const [review, setReview] = useState([]);
   const [isDetailMode, setChange] = useState(true)
-  const { id } = useParams();
+  const { id, uid } = useParams();
   const numberId = parseInt(id);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
@@ -53,8 +53,7 @@ const InforShop = () => {
           },
 
           body: JSON.stringify({
-            id: 2,
-            userId: 3,
+            userId: uid,
             coffeeId: numberId,
             rating: rating,
             comment: comment,
@@ -66,6 +65,7 @@ const InforShop = () => {
       if (response.status === 200) {
         //setMessage("Shop added successfully");
         console.log("Review added successfully");
+        window.location.reload();
       } else {
       }
     } catch (error) {
@@ -153,7 +153,7 @@ const InforShop = () => {
                   </div>
                   <div className="content">
                     <div className="top">
-                      <div className="name">Le Trung Kien</div>
+                      <div className="name">User {review.userId}</div>
                       <div className="status">
                         <div className="icon">
                           <span>(0)</span>{" "}

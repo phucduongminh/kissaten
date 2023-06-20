@@ -69,7 +69,6 @@ const Header = () => {
           },
 
           body: JSON.stringify({
-            id: 20,
             name: name,
             address: address,
             gmail: "",

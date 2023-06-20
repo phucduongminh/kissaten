@@ -9,15 +9,15 @@ import { useParams } from "react-router-dom";
 const Home = () => {
   const { username } = useParams();
 
-  /*const [uid,setUid] = useState();
+  const [uid,setUid] = useState('');
 
   useEffect(() => {
     const axiosGetUserId = async () => {
-    const response = await axios.post(`/api/User/${username}/getUserIdByUserName`);
-    const id = await response.id;
-    setUid(id);}
+    const response = await axios.post(`https://localhost:7263/api/User/${username}/getUserIdByUserName`);
+    const data = await response.data;
+    setUid(data);}
     axiosGetUserId();
-    }, [username]);*/
+    }, [username]);
 
   const [shop,setShop]= useState([]);
   useEffect(() => {
@@ -59,7 +59,7 @@ const Home = () => {
               <div
                 className="home-item"
                 key={index}
-                onClick={() => navigate(`/inforshop/${item.id}/${username}`)}
+                onClick={() => navigate(`/inforshop/${item.id}/${uid}`)}
               >
                 <div className="image">
                   <img src={item.imageCover} alt="" />
