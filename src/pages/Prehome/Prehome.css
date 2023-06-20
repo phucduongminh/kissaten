@@ -54,11 +54,9 @@
   
   .prehome-item .content .rating{
     font-size: 12px;
+    color: #fcba04;
   }
   
-  i.fill {
-    color: #d8d355;
-  }
   .prehome-item .content .description {
     font-size: 12px;
   }

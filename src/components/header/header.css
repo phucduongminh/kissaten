@@ -78,6 +78,10 @@
   border: 2px solid gray;
 }
 
+.header-login .btn strong{
+  margin-left: 10px;
+}
+
 .header-add {
   margin-left: 50px;
   text-align: center;

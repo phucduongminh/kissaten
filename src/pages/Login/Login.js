@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const navigateToHome = () => {
-    navigate('/');
+    navigate(`/${username}`);
   }
 
   const handleUsernameChange = (event) => {

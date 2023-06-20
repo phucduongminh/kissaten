@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 //import axios from 'axios';
 import './header.css'
+import { useParams } from "react-router-dom";
 
 const Header = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [cafeName, setCafeName] = useState('');
-  const [area, setArea] = useState('all');
+  const [area, setArea] = useState('');
   const [hasAC, setHasAC] = useState(false);
-  const [status, setStatus] = useState('all');
+  const [status, setStatus] = useState('open');
+  const { username } = useParams();
   const [message, setMessage] = useState("");
 
   const handleSearchClick = () => {
@@ -117,7 +119,7 @@ const Header = () => {
         </div>
         <div className="header-login">
           <button className="btn">
-            <i className="fa-solid fa-user"></i> DMQ
+            <i className="fa-solid fa-user"></i> <strong>{username}</strong>
           </button>
         </div>
         <div className="header-add">
@@ -153,10 +155,10 @@ const Header = () => {
                   onChange={(e) => setArea(e.target.value)}
                   required
                 >
-                  <option value="all">全部</option>
-                  <option value="A">Hai Bà Trưng</option>
-                  <option value="B">Đống Đa</option>
-                  <option value="C">Hoàn Kiếm</option>
+                  <option value=""></option>
+                  <option value="Hai Bà Trưng">Hai Bà Trưng</option>
+                  <option value="Đống Đa">Đống Đa</option>
+                  <option value="Hoàn Kiếm">Hoàn Kiếm</option>
                 </select>
               </div>
 
@@ -169,7 +171,7 @@ const Header = () => {
                       className="form-check-input"
                       name="status"
                       id="status1"
-                      value="open"
+                      value="all"
                       checked={status === "open"}
                       onChange={(e) => setStatus(e.target.value)}
                     />
@@ -184,7 +186,7 @@ const Header = () => {
                       name="status"
                       id="status2"
                       value="all"
-                      checked={status === "all"}
+                      checked={status === "open"}
                       onChange={(e) => setStatus(e.target.value)}
                     />
                     <label className="form-check-label" htmlFor="status2">
@@ -295,7 +297,7 @@ const Header = () => {
                   >
                     <option value=""></option>
                     <option value="true">Có điều hòa</option>
-                    <option value="false">không có điều hòa</option>
+                    <option value="false">Không có điều hòa</option>
                   </select>
                 </div>
                 <div className="form-group">

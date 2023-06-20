@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router-dom'
 const Preheader = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [cafeName, setCafeName] = useState('');
-  const [area, setArea] = useState('all');
+  const [area, setArea] = useState('');
   const [hasAC, setHasAC] = useState(false);
-  const [status, setStatus] = useState('all');
+  const [status, setStatus] = useState('open');
   const navigate = useNavigate()
 
   const handleSearchClick = () => {
@@ -78,15 +78,15 @@ const Preheader = () => {
                   onChange={(e) => setArea(e.target.value)}
                   required
                 >
-                  <option value="all">全部</option>
-                  <option value="A">Hai Bà Trưng</option>
-                  <option value="B">Đống Đa</option>
-                  <option value="C">Hoàn Kiếm</option>
+                  <option value=""></option>
+                  <option value="Hai Bà Trưng">Hai Bà Trưng</option>
+                  <option value="Đống Đa">Đống Đa</option>
+                  <option value="Hoàn Kiếm">Hoàn Kiếm</option>
                 </select>
               </div>
 
               <div className="left-section">
-              <li>
+                <li>
                   <label>営業時間:</label>
                   <section>
                     <input
@@ -94,7 +94,7 @@ const Preheader = () => {
                       className="form-check-input"
                       name="status"
                       id="status1"
-                      value="open"
+                      value="all"
                       checked={status === "open"}
                       onChange={(e) => setStatus(e.target.value)}
                     />
@@ -109,7 +109,7 @@ const Preheader = () => {
                       name="status"
                       id="status2"
                       value="all"
-                      checked={status === "all"}
+                      checked={status === "open"}
                       onChange={(e) => setStatus(e.target.value)}
                     />
                     <label className="form-check-label" htmlFor="status2">

@@ -26,7 +26,7 @@ const App = () => {
           path="/"
           element={
             user ?  (
-              <Navigate to="/home" replace={true} />
+              <Navigate to="/:username" replace={true} />
             ) : (
               <div>
                 <Preheader /><Prehome />
@@ -35,12 +35,12 @@ const App = () => {
           }
         />
         <Route path="/login" element={<Login />} />
-        <Route path="/inforshop/:id" element={<div><Header /><InforShop /></div>} />
-        <Route path="/bookmark" element={<div><Header /><Bookmark /></div>} />
+        <Route path="/inforshop/:id/:uid" element={<div><Header /><InforShop /></div>} />
+        <Route path="/bookmark/uid" element={<div><Header /><Bookmark /></div>} />
         <Route path="/approve" element={<div><Header /><Approve /></div>} />
         <Route path="/search" element={<div><Header /><Search /></div>} />
         <Route path="/signup" element={<div><Signup /></div>} />
-        <Route path="/home" element={<div><Header /><Home /></div>} />
+        <Route path="/:username" element={<div><Header /><Home /></div>} />
       </Routes>
     </div>
   );
