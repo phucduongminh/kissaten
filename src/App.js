@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { useSelector } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ import InforShop from './pages/InforShop/InforShop';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
-import Bookmark from './pages/Bookmark/Bookmark';
+import Bookmarkpage from './pages/Bookmark/Bookmarkpage';
 import Approve from './pages/Approve/Approve';
 import Search from './pages/Search/search';
 import Prehome from './pages/Prehome/Prehome';
@@ -17,17 +17,16 @@ import './App.css';
 
 const App = () => {
   const user = useSelector((state) => state.login.user);
-  //const user = 0;
-  //const username = useSelector(state => state.login.user.username);
-
+  
   return (
     <div className="App">
+      {user && <Header username={user.username} uid={user.uid}/>} {/* Hiển thị <Header /> nếu đã đăng nhập */}
       <Routes>
         <Route
           path="/"
           element={
             user ? (
-              <Navigate to={`/${user.username}`} replace={true} />
+              <Navigate to={`/${user.uid}`} replace={true} />
             ) : (
               <div>
                 <Preheader />
@@ -41,17 +40,25 @@ const App = () => {
           path="/inforshop/:id/:uid"
           element={
             <div>
-              <Header />
               <InforShop />
             </div>
+          }
+        />
+        <Route
+          path="/bookmark"
+          element={
+            user ? (
+              <Navigate to={`/bookmark/${user.uid}`} replace={true} />
+            ) : (
+              <Login />
+            )
           }
         />
         <Route
           path="/bookmark/:uid"
           element={
             <div>
-              <Header />
-              <Bookmark />
+              <Bookmarkpage />
             </div>
           }
         />
@@ -59,16 +66,14 @@ const App = () => {
           path="/approve"
           element={
             <div>
-              <Header />
               <Approve />
             </div>
           }
         />
         <Route
-          path="/search"
+          path="/search/:cafeName/:area/:service/:status/:uid"
           element={
             <div>
-              <Header />
               <Search />
             </div>
           }
@@ -82,10 +87,9 @@ const App = () => {
           }
         />
         <Route
-          path="/:username"
+          path="/:uid"
           element={
             <div>
-              <Header />
               <Home />
             </div>
           }

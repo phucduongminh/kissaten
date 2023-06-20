@@ -22,6 +22,16 @@ const Header = ({username,uid}) => {
     setPopupOpen(false);
   };
 
+  const handleStatusChange = (e) => {
+    const selectedValue = e.target.value;
+
+    if (selectedValue === "open") {
+      setStatus("open");
+    } else {
+      setStatus(null);
+    }
+  };
+
   const handleHasACChange = (e) => {
     if (e.target.checked) {
       setHasAC("true");
@@ -182,9 +192,9 @@ const Header = ({username,uid}) => {
                       className="form-check-input"
                       name="status"
                       id="status1"
-                      value="all"
+                      value="open"
                       checked={status === "open"}
-                      onChange={(e) => setStatus(e.target.value)}
+                      onChange={handleStatusChange}
                     />
                     <label className="form-check-label" htmlFor="status1">
                       開いている
@@ -197,8 +207,8 @@ const Header = ({username,uid}) => {
                       name="status"
                       id="status2"
                       value="all"
-                      checked={status === "open"}
-                      onChange={(e) => setStatus(e.target.value)}
+                      checked={status !== "open"}
+                      onChange={handleStatusChange}
                     />
                     <label className="form-check-label" htmlFor="status2">
                       すべて
