@@ -12,6 +12,11 @@ const Prehome = () => {
     setShop(data);}
     axiosReview();
     }, []);
+
+    if (!shop) {
+      return <div>Loading...</div>;
+    }
+
   return (
     <section className='prehome'>
       <div className="wrap">

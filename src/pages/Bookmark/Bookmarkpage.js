@@ -1,7 +1,22 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './bookmark.css'
+import { useParams } from 'react-router-dom'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Showrating from '../../components/Rating/showrating';
 
-const Bookmark = () => {
+const Bookmarkpage = () => {
+  const {uid} = useParams();
+  const navigate = useNavigate()
+
+  const [shop,setShop]= useState([]);
+  useEffect(() => {
+    const axiosGetshop = async () => {
+    const response = await axios.post(`https://localhost:7263/api/BookMark/${uid}/getListBookMark`);
+    const data = await response.data;
+    setShop(data);}
+    axiosGetshop();
+    }, [uid]);
   return (
     <section className='bookmark'>
       <div className="wrap">
@@ -42,31 +57,38 @@ const Bookmark = () => {
             </div>
           </div>
           <div className="bookmark-list">
-            <div className="bookmark-item">
-              <div className="image">
-                <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" alt="" />
+            {shop.map((item, index) => {
+            return (
+              <div
+                className="home-item"
+                key={index}
+                onClick={() => navigate(`/inforshop/${item.id}/${uid}`)}
+              >
+                <div className="image">
+                  <img src={item.imageCover} alt="" />
+                </div>
+                <div className="content">
+                  <div className="name">{item.name}</div>
+                  <div className="rating">
+                    <Showrating rating={item.averageRating} />
+                  </div>
+                  <div className="description">
+                    <i className="fa-solid fa-location-dot"></i>
+                    {item.address}
+                  </div>
+                  <div className="description">
+                    <i className="fa-solid fa-clock"></i>
+                    {item.openHour}-{item.closeHour} 毎日
+                  </div>
+                </div>
+                <div className="icon">
+                <i
+                  className="fa-solid fa-bookmark fa-shake fa-xl"
+                  style={{ color: "#fad000" }}
+                ></i></div>
               </div>
-              <div className="content">
-                <div className="name">Name</div>
-                <div className="rating">
-                  <i className="fa-solid fa-star fill"></i>
-                  <i className="fa-solid fa-star fill"></i>
-                  <i className="fa-solid fa-star fill"></i>
-                  <i className="fa-solid fa-star fill"></i>
-                  <i className="fa-solid fa-star fill"></i>
-                </div>
-                <div className="description">
-                  <i className="fa-solid fa-location-dot"></i>
-                  &nbsp;155 Cầu Giấy
-                </div>
-                <div className="description">
-                  <i className="fa-solid fa-clock"></i>155 Cầu Giấy
-                </div>
-              </div>
-              <div className="icon">
-              <i className="fa-solid fa-bookmark fill"></i>
-            </div>
-            </div>
+            );
+          })}
           </div>
         </div>
         <div className="bookmark-pagination">
@@ -91,4 +113,4 @@ const Bookmark = () => {
   )
 }
 
-export default Bookmark
+export default Bookmarkpage

@@ -1,8 +1,10 @@
+import axios from 'axios';
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
-export const login = (username, password, navigateToHome) => {
+export const login = (username, password, uid, navigateToHome) => {
+  
   return (dispatch) => {
     // Gửi request đăng nhập, ví dụ: gọi API login
     dispatch({ type: LOGIN_REQUEST });
@@ -16,11 +18,15 @@ export const login = (username, password, navigateToHome) => {
           userName: username, 
           password: password }),
       })
-        .then((response) => {
+        .then(async (response) => {
           if (response.status === 200) {
             // Đăng nhập thành công
             console.log("Login OK");
-            dispatch({ type: LOGIN_SUCCESS, payload: {username} });
+            const response = await axios.post(
+              `https://localhost:7263/api/User/${username}/getUserIdByUserName`
+            );
+            uid = await response.data;
+            dispatch({ type: LOGIN_SUCCESS, payload: { username, uid } });
             navigateToHome();
           } else {
             // Xử lý lỗi đăng nhập

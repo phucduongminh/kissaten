@@ -7,9 +7,9 @@ import Showrating from '../../components/Rating/showrating';
 import { useParams } from "react-router-dom";
 
 const Home = () => {
-  const { username } = useParams();
+  const { uid } = useParams();
 
-  const [uid,setUid] = useState('');
+  /*const [uid,setUid] = useState('');
 
   useEffect(() => {
     const axiosGetUserId = async () => {
@@ -17,7 +17,7 @@ const Home = () => {
     const data = await response.data;
     setUid(data);}
     axiosGetUserId();
-    }, [username]);
+    }, [username]);*/
 
   const [shop,setShop]= useState([]);
   useEffect(() => {
@@ -34,10 +34,19 @@ const Home = () => {
       setBookmarkedItemIds(bookmarkedItemIds.filter((id) => id !== itemId)); // Remove item from bookmarkedItemIds if already bookmarked
     } else {
       setBookmarkedItemIds([...bookmarkedItemIds, itemId]); // Add item to bookmarkedItemIds
+      
+        const axiosSetMark = async () => {
+        await axios.post(`https://localhost:7263/api/BookMark/${uid}/AddBookMark/${itemId}`);}
+        axiosSetMark();
     }
   };
 
+  console.log(bookmarkedItemIds[0]);
+
   const navigate = useNavigate()
+  if (!shop) {
+    return <div>Loading...</div>;
+  }
   
   return (
     <section className='home'>

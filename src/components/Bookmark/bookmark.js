@@ -4,7 +4,7 @@ function Bookmark({ isBookmarked, handleBookmarkClick, itemId, event }) {
     const handleClick = (e) => {
       e.stopPropagation(); // Ngăn chặn lan truyền sự kiện onclick
       handleBookmarkClick(itemId);
-      console.log(itemId);
+      //console.log(itemId);
     };
   
   return (
