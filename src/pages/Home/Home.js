@@ -3,21 +3,11 @@ import './home.css'
 import { useNavigate } from 'react-router-dom'
 import Bookmark from '../../components/Bookmark/bookmark'
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import Showrating from '../../components/Rating/showrating';
-import { useParams } from "react-router-dom";
 
 const Home = () => {
-  const { uid } = useParams();
-
-  /*const [uid,setUid] = useState('');
-
-  useEffect(() => {
-    const axiosGetUserId = async () => {
-    const response = await axios.post(`https://localhost:7263/api/User/${username}/getUserIdByUserName`);
-    const data = await response.data;
-    setUid(data);}
-    axiosGetUserId();
-    }, [username]);*/
+  const user = useSelector((state) => state.login.user);
 
   const [shop,setShop]= useState([]);
   useEffect(() => {
@@ -35,13 +25,13 @@ const Home = () => {
     } else {
       setBookmarkedItemIds([...bookmarkedItemIds, itemId]); // Add item to bookmarkedItemIds
       
-        const axiosSetMark = async () => {
-        await axios.post(`https://localhost:7263/api/BookMark/${uid}/AddBookMark/${itemId}`);}
-        axiosSetMark();
+        /*const axiosSetMark = async () => {
+        await axios.post(`https://localhost:7263/api/BookMark/${user.uid}/AddBookMark/${itemId}`);}
+        axiosSetMark();*/
     }
   };
 
-  console.log(bookmarkedItemIds[0]);
+  console.log(bookmarkedItemIds);
 
   const navigate = useNavigate()
   if (!shop) {
@@ -65,10 +55,10 @@ const Home = () => {
         <div className="home-list">
         {shop.map((item, index) => {
             return (
-              <div
+              user ? (<div
                 className="home-item"
                 key={index}
-                onClick={() => navigate(`/inforshop/${item.id}/${uid}`)}
+                onClick={() => navigate(`/inforshop/${item.id}/${user.uid}`)}
               >
                 <div className="image">
                   <img src={item.imageCover} alt="" />
@@ -89,7 +79,28 @@ const Home = () => {
                 </div>
                 <Bookmark isBookmarked={bookmarkedItemIds.includes(item.id)}
           handleBookmarkClick={handleBookmarkClick} itemId={item.id} />
-              </div>
+              </div>):(<div
+                className="home-item"
+                key={index}
+              >
+                <div className="image">
+                  <img src={item.imageCover} alt="" />
+                </div>
+                <div className="content">
+                  <div className="name">{item.name}</div>
+                  <div className="rating">
+                    <Showrating  rating={item.averageRating}/>
+                  </div>
+                  <div className="description">
+                    <i className="fa-solid fa-location-dot"></i>
+                    {item.address}
+                  </div>
+                  <div className="description">
+                    <i className="fa-solid fa-clock"></i>
+                    {item.openHour}-{item.closeHour} 毎日
+                  </div>
+                </div>
+              </div>)
             );
           })}
         </div>

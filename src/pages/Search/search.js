@@ -3,29 +3,40 @@ import './search.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
 import Showrating from '../../components/Rating/showrating';
+import { useSelector } from 'react-redux';
 
 const Search = () => {
+  const user = useSelector((state) => state.login.user);
   const navigate = useNavigate()
   const [shopInfo, setShopInfo] = useState([]);
-  const {cafeName,area,service,status,uid} = useParams();
+  const {cafeName,area,service,status} = useParams();
   const booleanValue = Boolean(service);
 
   useEffect(() => {
     const search = { 
-      name: cafeName,
-      address: area,
-      service: booleanValue,
-      status: status};
+      "name": cafeName,
+  "address": area,
+  "status": status,
+  "service": booleanValue};
+  try{
     const axiosShopInfo = async () => {
     const response = await axios.post(`https://localhost:7263/api/CoffeeShop/SearchCoffeeShop`,JSON.stringify(search), {
       headers: {
         'Content-Type': 'application/json'
       }
     });
-    const data = await response.data;
-    setShopInfo(data);}
+    if (response.status === 200) {
+      const data = await response.data;
+    setShopInfo(data);
+    } else {
+    }
+  }
     axiosShopInfo();
-    }, );
+    }catch (error) {
+      console.error(error);
+    }
+  } );
+
   return (
     <section className='search'>
       <div className="wrap">
@@ -43,10 +54,10 @@ const Search = () => {
         <div className="search-list">
         {shopInfo.map((item, index) => {
             return (
-              <div
-                className="prehome-item"
+              user ? (<div
+                className="home-item"
                 key={index}
-                onClick={() => navigate(`/inforshop/${item.id}/${uid}`)}
+                onClick={() => navigate(`/inforshop/${item.id}/${user.uid}`)}
               >
                 <div className="image">
                   <img src={item.imageCover} alt="" />
@@ -65,7 +76,28 @@ const Search = () => {
                     {item.openHour}-{item.closeHour} 毎日
                   </div>
                 </div>
-              </div>
+              </div>):(<div
+                className="home-item"
+                key={index}
+              >
+                <div className="image">
+                  <img src={item.imageCover} alt="" />
+                </div>
+                <div className="content">
+                  <div className="name">{item.name}</div>
+                  <div className="rating">
+                    <Showrating  rating={item.averageRating}/>
+                  </div>
+                  <div className="description">
+                    <i className="fa-solid fa-location-dot"></i>
+                    {item.address}
+                  </div>
+                  <div className="description">
+                    <i className="fa-solid fa-clock"></i>
+                    {item.openHour}-{item.closeHour} 毎日
+                  </div>
+                </div>
+              </div>)
             );
           })}
         </div>

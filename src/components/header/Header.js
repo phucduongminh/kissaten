@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-//import axios from 'axios';
 import './header.css'
-//import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-const Header = ({username,uid}) => {
+const Header = () => {
+  const user = useSelector((state) => state.login.user);
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [cafeName, setCafeName] = useState("");
   const [area, setArea] = useState("");
   const [hasAC, setHasAC] = useState("false");
   const [status, setStatus] = useState("open");
-  //const { username } = useParams();
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
@@ -43,11 +42,11 @@ const Header = ({username,uid}) => {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     setPopupOpen(false);
-    navigate(`/search/${cafeName}/${area}/${hasAC}/${status}/${uid}`);
+    navigate(`/search/${cafeName}/${area}/${hasAC}/${status}`);
     console.log("Đã submit tìm kiếm");
   }; 
 
-  const handleSearchClick1 = () => {
+  const handleAddClick = () => {
     setPopupOpen1(true);
   };
 
@@ -130,24 +129,35 @@ const Header = ({username,uid}) => {
           </div>
           <div className="name">KISSATEN</div>
         </div>
-        <div className="header-search">
+        {user ? (<div className="header-search">
           <div className="form-input">
             <input type="text" placeholder="検索" />
             <button className="btn" onClick={handleSearchClick}>
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
-        </div>
+        </div>):(<div className="preheader-search">
+          <div className="form-input">
+            <input type="text" placeholder="検索" />
+            <button className="btn" onClick={handleSearchClick}>
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </div>)}
         <div className="header-login">
+          {user? (
           <button className="btn">
-            <i className="fa-solid fa-user"></i> <strong>{username}</strong>
-          </button>
+            <i className="fa-solid fa-user"></i> <strong>{user.username}</strong>
+          </button>):(
+          <button className="btn" onClick={() => navigate(`/login`)}>
+            <i className="fa-solid fa-user"></i> <strong>ログイン</strong>
+          </button>)}
         </div>
-        <div className="header-add">
-          <button className="btn" onClick={handleSearchClick1}>
+        {user&& <div className="header-add">
+          <button className="btn" onClick={handleAddClick}>
             <i className="fa-solid fa-plus"> 喫茶店</i>
           </button>
-        </div>
+        </div>}
       </div>
       {isPopupOpen && (
         <div className="search-popup">
@@ -170,17 +180,13 @@ const Header = ({username,uid}) => {
 
               <div className="form-group">
                 <label htmlFor="area">検索エリア:</label>
-                <select
+                <input
+                  type="text"
                   id="area"
                   value={area}
                   onChange={(e) => setArea(e.target.value)}
                   required
-                >
-                  <option value="string"></option>
-                  <option value="Hai Bà Trưng">Hai Bà Trưng</option>
-                  <option value="Đống Đa">Đống Đa</option>
-                  <option value="Hoàn Kiếm">Hoàn Kiếm</option>
-                </select>
+                />
               </div>
 
               <div className="left-section">
