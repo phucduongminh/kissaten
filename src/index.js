@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import rootReducer from 'G:/kissaten-branch/kissaten-test/kissaten/src/redux/rootReducer.js';
+import rootReducer from './redux/rootReducer';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 

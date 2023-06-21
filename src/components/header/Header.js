@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './header.css'
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import MenuDropdown from '../MenuDropdown/MenuDropdown'
 
 const Header = () => {
   const user = useSelector((state) => state.login.user);
@@ -146,9 +147,7 @@ const Header = () => {
         </div>)}
         <div className="header-login">
           {user? (
-          <button className="btn">
-            <i className="fa-solid fa-user"></i> <strong>{user.username}</strong>
-          </button>):(
+          <MenuDropdown username={user.username}/>):(
           <button className="btn" onClick={() => navigate(`/login`)}>
             <i className="fa-solid fa-user"></i> <strong>ログイン</strong>
           </button>)}
