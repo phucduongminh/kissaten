@@ -58,7 +58,7 @@ const Home = () => {
               user ? (<div
                 className="home-item"
                 key={index}
-                onClick={() => navigate(`/inforshop/${item.id}/${user.uid}`)}
+                onClick={() => navigate(`/inforshop/${item.id}`)}
               >
                 <div className="image">
                   <img src={item.imageCover} alt="" />

@@ -12,7 +12,7 @@ function Bookmark({ isBookmarked, handleBookmarkClick, itemId, event }) {
       <i
         className={`fa-solid fa-bookmark fa-shake fa-xl ${isBookmarked ? 'bookmarked' : ''}`}
         onClick={handleClick}
-        style={{ color: isBookmarked ? '#fad000' : '#aeb5c1' }}
+        style={{ color: isBookmarked ? '#fad000' : '#f3f3f7' }}
       ></i>
     </div>
   );

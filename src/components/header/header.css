@@ -50,7 +50,7 @@
 }
 
 .preheader-search {
-  flex: 1.29;
+  flex: 1.325;
 }
 
 .preheader-search .form-input {
@@ -78,7 +78,8 @@
 
 
 .header-login .btn {
-  padding: 5px 30px;
+  padding: 5px 35px;
+  padding-right: 8px;
   background: var(--primary-color);
   color: white;
   position: relative;
@@ -95,8 +96,8 @@
 }
 
 .header-login .btn strong{
-  margin-left: 8 px;
-  margin-right: 0 px;
+  margin-left: 5 px;
+  margin-right: 5 px;
 }
 
 .header-add {
