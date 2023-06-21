@@ -1,22 +1,22 @@
 import React, {useState, useEffect} from 'react'
 import './bookmark.css'
-import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Showrating from '../../components/Rating/showrating';
+import { useSelector } from 'react-redux';
 
 const Bookmarkpage = () => {
-  const {uid} = useParams();
-  const navigate = useNavigate()
+  const user = useSelector((state) => state.login.user);
+  const navigate = useNavigate();
 
   const [shop,setShop]= useState([]);
   useEffect(() => {
     const axiosGetshop = async () => {
-    const response = await axios.post(`https://localhost:7263/api/BookMark/${uid}/getListBookMark`);
+    const response = await axios.post(`https://localhost:7263/api/BookMark/${user.uid}/getListBookMark`);
     const data = await response.data;
     setShop(data);}
     axiosGetshop();
-    }, [uid]);
+    }, [user.uid]);
   return (
     <section className='bookmark'>
       <div className="wrap">
@@ -62,7 +62,7 @@ const Bookmarkpage = () => {
               <div
                 className="home-item"
                 key={index}
-                onClick={() => navigate(`/inforshop/${item.id}/${uid}`)}
+                onClick={() => navigate(`/inforshop/${item.id}/${user.uid}`)}
               >
                 <div className="image">
                   <img src={item.imageCover} alt="" />
