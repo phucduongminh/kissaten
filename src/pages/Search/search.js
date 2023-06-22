@@ -43,14 +43,6 @@ const Search = () => {
       <div className="wrap">
         <div className="search-heading">
           <h2 className="title">検索結果</h2>
-          <div className="filter">
-            <label htmlFor="">Sort by</label>
-            <select name="" id="">
-              <option value="">全部</option>
-              <option value="1">平均評価</option>
-              <option value="2">人気がある </option>
-            </select>
-          </div>
         </div>
         <div className="search-list">
         {shopInfo.length > 0 ? (shopInfo.map((item, index) => {
@@ -101,7 +93,7 @@ const Search = () => {
               </div>)
             );
           })): (
-            <div className="no-results">Không tìm thấy kết quả.</div>
+            <div className="no-results">検索結果が見つかりませんでした。</div>
           )}
         </div>
         <div className="search-pagination">

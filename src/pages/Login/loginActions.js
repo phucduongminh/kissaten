@@ -28,14 +28,14 @@ export const login = (username, password, navigateToHome) => {
         localStorage.setItem('user', JSON.stringify(user));
 
         dispatch({ type: LOGIN_SUCCESS, payload: user });
-        toast.success('Đăng nhập thành công', {
+        toast.success('ログインに成功しました。', {
           autoClose: 2500, // Đóng sau 2 giây
         });
         navigateToHome();
       } else {
         // Xử lý lỗi đăng nhập
         dispatch({ type: LOGIN_FAILURE, error: {} });
-        toast.error('Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin đăng nhập.',{
+        toast.error('ログインに失敗しました。ログイン情報を再確認してください。',{
           autoClose: 2500, // Đóng sau 2 giây
         });
       }
@@ -44,7 +44,7 @@ export const login = (username, password, navigateToHome) => {
       // Xử lý lỗi và dispatch action LOGIN_FAILURE
       dispatch({ type: LOGIN_FAILURE, error: error });
       // Hiển thị popup thông báo lỗi
-      toast.error('Lỗi khi gửi yêu cầu đăng nhap.',{
+      toast.error('ログインリクエストの送信中にエラーが発生しました。',{
         autoClose: 2500, // Đóng sau 2 giây
       });
     }

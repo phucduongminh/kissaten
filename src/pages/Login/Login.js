@@ -41,15 +41,15 @@ const Login = () => {
             <h3>ログイン</h3>
           </div>
           <div className="form-group">
-            <div className="title">Tên đăng nhập</div>
+            <div className="title">ユーザー名</div>
             <input type="text" value={username} onChange={handleUsernameChange} />
           </div>
           <div className="form-group">
-            <div className="title">Mật khẩu</div>
+            <div className="title">パスワード</div>
             <input type="password" value={password} onChange={handlePasswordChange} />
           </div>
           <button onClick={handleSubmit}>ログイン</button>
-          <a href="/signup">Nếu chưa có tài khoản, Signup</a>
+          <a href="/signup">新しいアカウントを作成します</a>
         </div>
       </div>
     </section>

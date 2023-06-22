@@ -32,33 +32,33 @@ const Bookmarkpage = () => {
         <div className="bookmark-content">
           <div className="bookmark-filter">
             <div className="box">
-              <p className="title">Filter</p>
+              <p className="title">フイルター</p>
               <i className="fa-solid fa-filter"></i>
             </div>
             <div className="filter">
-              <div className="title">Filter</div>
+              <div className="title">営業時間</div>
               <div className="form-control">
                 <input id='row-1' type="radio" name='radio-1' defaultChecked />
                 <label htmlFor="row-1"></label>
-                <p className="text">filter text</p>
+                <p className="text">すべて</p>
               </div>
               <div className="form-control">
                 <input id='row-2' type="radio" name='radio-1' />
                 <label htmlFor="row-2"></label>
-                <p className="text">filter text</p>
+                <p className="text">開いています</p>
               </div>
             </div>
             <div className="filter">
-              <div className="title">Filter</div>
+              <div className="title">サービス</div>
               <div className="form-control">
                 <input id='row-3' type="radio" name='radio-2' defaultChecked />
                 <label htmlFor="row-3"></label>
-                <p className="text">filter text</p>
+                <p className="text">すべて</p>
               </div>
               <div className="form-control">
                 <input id='row-4' type="radio" name='radio-2' />
                 <label htmlFor="row-4"></label>
-                <p className="text">filter text</p>
+                <p className="text">エアコン</p>
               </div>
             </div>
           </div>

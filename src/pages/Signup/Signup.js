@@ -1,50 +1,56 @@
-import React, {useState} from 'react'
-import './Signup.css'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useState } from "react";
+import "./Signup.css";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
-  const [gmail, setGmail] = useState('');
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [recheckPassword, setRecheckPassword] = useState("");
   const navigate = useNavigate();
 
   const signupClick = async (event) => {
     event.preventDefault();
-    try {
-      const response = await fetch(
-        "https://localhost:7263/api/User/signup",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
 
-          body: JSON.stringify({
-            userName: userName,
-            password: password,
-            gmail: gmail
-          }),
-        }
-      );
+    // Kiểm tra tính khớp của mật khẩu
+    if (password !== recheckPassword) {
+      toast.error("パスワードが一致しません。再度確認してください。", {
+        autoClose: 2500,
+      });
+      return;
+    }
+
+    try {
+      const response = await fetch("https://localhost:7263/api/User/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+          userName: userName,
+          password: password,
+          gmail: "",
+        }),
+      });
+
       if (response.status === 200) {
-        toast.success('Đăng ky thành công', {
-          autoClose: 2500, // Đóng sau 2 giây
+        toast.success("登録が成功しました。", {
+          autoClose: 2500,
         });
-        navigate(`/login`);
+        navigate("/login");
         console.log("signup added successfully");
       } else {
-        toast.error('Đăng ky thất bại. Vui lòng kiểm tra lại thông tin đăng ky.',{
-          autoClose: 2500, // Đóng sau 2 giây
+        toast.error("登録に失敗しました。登録情報を再確認してください。", {
+          autoClose: 2500,
         });
       }
     } catch (error) {
       console.error(error);
-      toast.error('Lỗi khi gửi yêu cầu đăng ky.',{
-        autoClose: 2500, // Đóng sau 2 giây
+      toast.error("ユーザー登録リクエストの送信中にエラーが発生しました。", {
+        autoClose: 2500,
       });
     }
   };
@@ -71,7 +77,7 @@ const Signup = () => {
           </div>
           <form onSubmit={signupClick}>
             <div className="form-group">
-              <div className="title">Tên đăng nhập</div>
+              <div className="title">ユーザー名</div>
               <input
                 type="text"
                 value={userName}
@@ -80,16 +86,7 @@ const Signup = () => {
               />
             </div>
             <div className="form-group">
-              <div className="title">Email</div>
-              <input
-                type="email"
-                value={gmail}
-                onChange={(e) => setGmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <div className="title">Mật khẩu</div>
+              <div className="title">パスワード</div>
               <input
                 type="password"
                 value={password}
@@ -98,16 +95,25 @@ const Signup = () => {
               />
             </div>
             <div className="form-group">
+              <div className="title">パスワードの再確認</div>
+              <input
+                type="password"
+                value={recheckPassword}
+                onChange={(e) => setRecheckPassword(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
               <button type="submit" value="Submit">
                 サインアップ
               </button>
-              <a href="/login">Đã có tài khoản, Login</a>
             </div>
+            <a href="/login">すでにメンバーですか？ログイン</a>
           </form>
         </div>
       </div>
     </section>
   );
-}
+};
 
-export default Signup
+export default Signup;

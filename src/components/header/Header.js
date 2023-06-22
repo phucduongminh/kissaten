@@ -29,7 +29,7 @@ const Header = () => {
     if (selectedValue === "open") {
       setStatus("open");
     } else {
-      setStatus("open");
+      setStatus(null);
     }
   };
 
@@ -41,10 +41,8 @@ const Header = () => {
     }
   };
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
+  const handleSearchSubmit = () => {
     setPopupOpen(false);
-    window.location.reload();
     navigate(`/search/${cafeName}/${area}/${hasAC}/${status}`);
     console.log("Đã submit tìm kiếm");
   }; 
@@ -79,8 +77,7 @@ const Header = () => {
   //const boolservice = Boolean(service);
   const boolservice = (service.toLowerCase() === "true");
 
-  const handleAddSubmit = async (e) => {
-    e.preventDefault();
+  const handleAddSubmit = async () => {
     try {
       const response = await fetch(
         "https://localhost:7263/api/CoffeeShop/AddCoffeeShop",
@@ -110,18 +107,18 @@ const Header = () => {
         }
       );
       if (response.status === 200) {
-        toast.success('Shop added successfully', {
+        toast.success('喫茶店が追加を作成しました。', {
           autoClose: 2500, // Đóng sau 2 giây
         });
         console.log("Shop added successfully");
       } else {
-        toast.error('Shop added Error',{
+        toast.error('喫茶店の追加中にエラーが発生しました。',{
           autoClose: 2500, // Đóng sau 2 giây
         });
       }
     } catch (error) {
       console.error(error);
-      toast.error('Shop added Error',{
+      toast.error('喫茶店の追加中にエラーが発生しました。',{
         autoClose: 2500, // Đóng sau 2 giây
       });
     }
