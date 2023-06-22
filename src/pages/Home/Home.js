@@ -19,6 +19,17 @@ const Home = () => {
     }, []);
   const [bookmarkedItemIds, setBookmarkedItemIds] = useState([]);
 
+  useEffect(() => {
+    const bookmarkedItemIdsFromStorage = localStorage.getItem('bookmarkedItemIds');
+    if (bookmarkedItemIdsFromStorage) {
+      setBookmarkedItemIds(JSON.parse(bookmarkedItemIdsFromStorage));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('bookmarkedItemIds', JSON.stringify(bookmarkedItemIds));
+  }, [bookmarkedItemIds]);
+
   const handleBookmarkClick = (itemId) => {
     if (bookmarkedItemIds.includes(itemId)) {
       setBookmarkedItemIds(bookmarkedItemIds.filter((id) => id !== itemId));
