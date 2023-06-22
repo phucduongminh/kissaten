@@ -21,17 +21,20 @@ const Home = () => {
 
   const handleBookmarkClick = (itemId) => {
     if (bookmarkedItemIds.includes(itemId)) {
-      setBookmarkedItemIds(bookmarkedItemIds.filter((id) => id !== itemId)); // Remove item from bookmarkedItemIds if already bookmarked
+      setBookmarkedItemIds(bookmarkedItemIds.filter((id) => id !== itemId));
+      const axiosDeleteMark = async () => {
+        await axios.delete(`https://localhost:7263/api/BookMark/DeleteBookMarkById/${user.uid}/${itemId}`);}
+        axiosDeleteMark();
+      //console.log(itemId); // Remove item from bookmarkedItemIds if already bookmarked
     } else {
-      setBookmarkedItemIds([...bookmarkedItemIds, itemId]); // Add item to bookmarkedItemIds
-      
-        /*const axiosSetMark = async () => {
+      setBookmarkedItemIds([...bookmarkedItemIds, itemId]); 
+      // Add item to bookmarkedItemIds
+      //console.log(itemId);
+        const axiosSetMark = async () => {
         await axios.post(`https://localhost:7263/api/BookMark/${user.uid}/AddBookMark/${itemId}`);}
-        axiosSetMark();*/
+        axiosSetMark();
     }
   };
-
-  console.log(bookmarkedItemIds);
 
   const navigate = useNavigate()
   if (!shop) {

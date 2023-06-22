@@ -3,6 +3,8 @@ import './header.css'
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import MenuDropdown from '../MenuDropdown/MenuDropdown'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = () => {
   const user = useSelector((state) => state.login.user);
@@ -11,7 +13,6 @@ const Header = () => {
   const [area, setArea] = useState("");
   const [hasAC, setHasAC] = useState("false");
   const [status, setStatus] = useState("open");
-  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSearchClick = () => {
@@ -108,13 +109,20 @@ const Header = () => {
         }
       );
       if (response.status === 200) {
-        setMessage("Shop added successfully");
+        toast.success('Shop added successfully', {
+          autoClose: 2500, // Đóng sau 2 giây
+        });
         console.log("Shop added successfully");
       } else {
+        toast.error('Shop added Error',{
+          autoClose: 2500, // Đóng sau 2 giây
+        });
       }
     } catch (error) {
-      setMessage("Error");
       console.error(error);
+      toast.error('Shop added Error',{
+        autoClose: 2500, // Đóng sau 2 giây
+      });
     }
   };
 
@@ -367,7 +375,6 @@ const Header = () => {
                   Thêm
                 </button>
               </div>
-              <div className="message">{message ? <p>{message}</p> : null}</div>
             </form>
           </div>
         </div>

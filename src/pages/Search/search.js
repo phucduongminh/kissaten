@@ -13,11 +13,12 @@ const Search = () => {
   const booleanValue = Boolean(service);
 
   useEffect(() => {
-    const search = { 
-      "name": cafeName,
-  "address": area,
-  "status": status,
-  "service": booleanValue};
+    const search = {
+      name: cafeName,
+      address: area,
+      status: status,
+      service: booleanValue,
+    };
   try{
     const axiosShopInfo = async () => {
     const response = await axios.post(`https://localhost:7263/api/CoffeeShop/SearchCoffeeShop`,JSON.stringify(search), {
@@ -52,7 +53,7 @@ const Search = () => {
           </div>
         </div>
         <div className="search-list">
-        {shopInfo.map((item, index) => {
+        {shopInfo.length > 0 ? (shopInfo.map((item, index) => {
             return (
               user ? (<div
                 className="home-item"
@@ -99,7 +100,9 @@ const Search = () => {
                 </div>
               </div>)
             );
-          })}
+          })): (
+            <div className="no-results">Không tìm thấy kết quả.</div>
+          )}
         </div>
         <div className="search-pagination">
           <a className='page' href="!">

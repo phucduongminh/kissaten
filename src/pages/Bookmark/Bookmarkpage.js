@@ -17,11 +17,12 @@ const Bookmarkpage = () => {
     setShop(data);}
     axiosGetshop();
     }, [user.uid]);
+
   return (
     <section className='bookmark'>
       <div className="wrap">
         <h2 className='bookmark-title'>
-          Title
+          ブックマーク
         </h2>
         <div className="bookmark-content">
           <div className="bookmark-filter">
@@ -58,11 +59,18 @@ const Bookmarkpage = () => {
           </div>
           <div className="bookmark-list">
             {shop.map((item, index) => {
+              const handleDeleteMark = (e) => {
+                e.stopPropagation();
+                const axiosDeleteMark = async () => {
+                  await axios.delete(`https://localhost:7263/api/BookMark/DeleteBookMarkById/${user.uid}/${item.id}`);}
+                  axiosDeleteMark();
+                window.location.reload();
+              };
             return (
               <div
                 className="home-item"
                 key={index}
-                onClick={() => navigate(`/inforshop/${item.id}/${user.uid}`)}
+                onClick={() => navigate(`/inforshop/${item.id}`)}
               >
                 <div className="image">
                   <img src={item.imageCover} alt="" />
@@ -85,6 +93,7 @@ const Bookmarkpage = () => {
                 <i
                   className="fa-solid fa-bookmark fa-shake fa-xl"
                   style={{ color: "#fad000" }}
+                  onClick={handleDeleteMark}
                 ></i></div>
               </div>
             );

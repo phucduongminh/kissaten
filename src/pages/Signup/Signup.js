@@ -1,13 +1,13 @@
 import React, {useState} from 'react'
-import Alert from '@mui/material/Alert';
 import './Signup.css'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [gmail, setGmail] = useState('');
-  const [message, setMessage] = useState(false);
   const navigate = useNavigate();
 
   const signupClick = async (event) => {
@@ -31,13 +31,21 @@ const Signup = () => {
         }
       );
       if (response.status === 200) {
+        toast.success('Đăng ky thành công', {
+          autoClose: 2500, // Đóng sau 2 giây
+        });
         navigate(`/login`);
         console.log("signup added successfully");
       } else {
+        toast.error('Đăng ky thất bại. Vui lòng kiểm tra lại thông tin đăng ky.',{
+          autoClose: 2500, // Đóng sau 2 giây
+        });
       }
     } catch (error) {
-      setMessage(true);
       console.error(error);
+      toast.error('Lỗi khi gửi yêu cầu đăng ky.',{
+        autoClose: 2500, // Đóng sau 2 giây
+      });
     }
   };
 
@@ -72,20 +80,20 @@ const Signup = () => {
               />
             </div>
             <div className="form-group">
-              <div className="title">Mật khẩu</div>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <div className="form-group">
               <div className="title">Email</div>
               <input
                 type="email"
                 value={gmail}
                 onChange={(e) => setGmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <div className="title">Mật khẩu</div>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
@@ -96,10 +104,6 @@ const Signup = () => {
               <a href="/login">Đã có tài khoản, Login</a>
             </div>
           </form>
-          {message?
-              <Alert variant="outlined" severity="error">
-                This is an error alert — check it out!
-              </Alert>: null}
         </div>
       </div>
     </section>

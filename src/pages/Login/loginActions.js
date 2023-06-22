@@ -29,14 +29,14 @@ export const login = (username, password, navigateToHome) => {
 
         dispatch({ type: LOGIN_SUCCESS, payload: user });
         toast.success('Đăng nhập thành công', {
-          autoClose: 1500, // Đóng sau 2 giây
+          autoClose: 2500, // Đóng sau 2 giây
         });
         navigateToHome();
       } else {
         // Xử lý lỗi đăng nhập
         dispatch({ type: LOGIN_FAILURE, error: {} });
         toast.error('Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin đăng nhập.',{
-          autoClose: 1500, // Đóng sau 2 giây
+          autoClose: 2500, // Đóng sau 2 giây
         });
       }
     } catch (error) {
@@ -44,7 +44,9 @@ export const login = (username, password, navigateToHome) => {
       // Xử lý lỗi và dispatch action LOGIN_FAILURE
       dispatch({ type: LOGIN_FAILURE, error: error });
       // Hiển thị popup thông báo lỗi
-      toast.error('Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin đăng nhập.');
+      toast.error('Lỗi khi gửi yêu cầu đăng nhap.',{
+        autoClose: 2500, // Đóng sau 2 giây
+      });
     }
   };
 };
