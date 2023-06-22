@@ -29,7 +29,7 @@ const Header = () => {
     if (selectedValue === "open") {
       setStatus("open");
     } else {
-      setStatus(null);
+      setStatus("open");
     }
   };
 
@@ -44,6 +44,7 @@ const Header = () => {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     setPopupOpen(false);
+    window.location.reload();
     navigate(`/search/${cafeName}/${area}/${hasAC}/${status}`);
     console.log("Đã submit tìm kiếm");
   }; 
@@ -129,7 +130,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="wrap">
-        <div className="header-logo">
+        <div className="header-logo" onClick={() => navigate(`/`)}>
           <div className="image">
             <img
               src="	https://www.pngmart.com/files/1/Coffee-Logo-Transparent-Background.png"

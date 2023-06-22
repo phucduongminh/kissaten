@@ -4,10 +4,15 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Showrating from '../../components/Rating/showrating';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { deleteBookmark } from '../Login/loginActions';
+
 
 const Bookmarkpage = () => {
   const user = useSelector((state) => state.login.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
 
   const [shop,setShop]= useState([]);
   useEffect(() => {
@@ -62,8 +67,10 @@ const Bookmarkpage = () => {
               const handleDeleteMark = (e) => {
                 e.stopPropagation();
                 const axiosDeleteMark = async () => {
-                  await axios.delete(`https://localhost:7263/api/BookMark/DeleteBookMarkById/${user.uid}/${item.id}`);}
-                  axiosDeleteMark();
+                  await axios.delete(`https://localhost:7263/api/BookMark/DeleteBookMarkById/${user.uid}/${item.id}`);
+                };
+                axiosDeleteMark();
+                dispatch(deleteBookmark(item.id));
                 window.location.reload();
               };
             return (

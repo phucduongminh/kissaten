@@ -57,3 +57,17 @@ export const logout = () => {
 
   return { type: 'LOGOUT' };
 };
+
+export const deleteBookmark = (itemId) => {
+  return {
+    type: 'DELETE_BOOKMARK',
+    payload: itemId,
+  };
+};
+
+export const updateBookmarkedItemIds = (bookmarkedItemIds) => {
+  return {
+    type: 'UPDATE_BOOKMARKED_ITEM_IDS',
+    payload: bookmarkedItemIds,
+  };
+};

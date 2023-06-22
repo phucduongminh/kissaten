@@ -1,6 +1,7 @@
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from './loginActions';
 
 const initialState = {
+  bookmarkedItemIds: [],
   user: null,
   loading: false,
   error: null,
@@ -40,6 +41,17 @@ const loginReducer = (state = initialState, action) => {
         user: null,
         loading: false,
         error: null,
+      };
+      case 'DELETE_BOOKMARK':
+      const itemId = action.payload;
+      return {
+        ...state,
+        bookmarkedItemIds: state.bookmarkedItemIds.filter((id) => id !== itemId),
+      };
+      case 'UPDATE_BOOKMARKED_ITEM_IDS':
+      return {
+        ...state,
+        bookmarkedItemIds: action.payload,
       };
     default:
       return state;
