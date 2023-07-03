@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Redirect  } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
@@ -42,12 +42,13 @@ const App = () => {
         />}
         <Route
           path="/approve"
-          element={
-            <div>
-              <Header/>
-              <Approve />
-            </div>
-          }
+          render={() => {
+            if (user && user.username === 'admin') {
+              return <Approve />;
+            } else {
+              return <Redirect to="/" />;
+            }
+          }}
         />
         <Route
           path="/search/:cafeName/:area/:service/:status"

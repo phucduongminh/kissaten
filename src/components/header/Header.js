@@ -77,7 +77,8 @@ const Header = () => {
   //const boolservice = Boolean(service);
   const boolservice = (service.toLowerCase() === "true");
 
-  const handleAddSubmit = async () => {
+  const handleAddSubmit = async (e) => {
+    e.preventDefault();
     try {
       const response = await fetch(
         "https://localhost:7263/api/CoffeeShop/AddCoffeeShop",
@@ -92,7 +93,7 @@ const Header = () => {
           body: JSON.stringify({
             name: name,
             address: address,
-            gmail: "",
+            gmail: "string",
             contactNumber: 0,
             imageCover: imageCover,
             averageRating: 0,

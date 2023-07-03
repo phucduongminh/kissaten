@@ -103,7 +103,7 @@ const Home = () => {
         <div className="home-list">
           {currentShops.map((item, index) => {
             return (
-              <div
+              user ? (<div
                 className="home-item"
                 key={index}
                 onClick={() => navigate(`/inforshop/${item.id}`)}
@@ -125,14 +125,33 @@ const Home = () => {
                     {item.openHour}-{item.closeHour} 毎日
                   </div>
                 </div>
-                {user && (
                   <Bookmark
                     isBookmarked={bookmarkedItemIds.includes(item.id)}
                     handleBookmarkClick={handleBookmarkClick}
                     itemId={item.id}
                   />
-                )}
-              </div>
+              </div>):(<div
+                className="home-item"
+                key={index}
+              >
+                <div className="image">
+                  <img src={item.imageCover} alt="" />
+                </div>
+                <div className="content">
+                  <div className="name">{item.name}</div>
+                  <div className="rating">
+                    <Showrating rating={item.averageRating} />
+                  </div>
+                  <div className="description">
+                    <i className="fa-solid fa-location-dot"></i>
+                    {item.address}
+                  </div>
+                  <div className="description">
+                    <i className="fa-solid fa-clock"></i>
+                    {item.openHour}-{item.closeHour} 毎日
+                  </div>
+                </div>
+              </div>)
             );
           })}
         </div>

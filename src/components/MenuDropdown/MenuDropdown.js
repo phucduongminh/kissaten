@@ -41,8 +41,8 @@ const MenuDropdown = ({ username }) => {
       {isOpen && (
         <div className="dropdown-menu">
           <ul>
-            <li onClick={() => navigate('/bookmark')}>Bookmark</li>
-            <li onClick={handleLogout}>Logout</li>
+            <li onClick={() => navigate('/bookmark')}><strong>Bookmark</strong></li>
+            <li onClick={handleLogout}><strong>Logout</strong></li>
           </ul>
         </div>
       )}
