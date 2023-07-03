@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route, Redirect  } from 'react-router-dom';
+import { Routes, Route, Navigate  } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
@@ -46,7 +46,7 @@ const App = () => {
             if (user && user.username === 'admin') {
               return <Approve />;
             } else {
-              return <Redirect to="/" />;
+              return <Navigate to="/" />;
             }
           }}
         />

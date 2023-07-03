@@ -96,23 +96,23 @@ const Search = () => {
             <div className="no-results">検索結果が見つかりませんでした。</div>
           )}
         </div>
-        <div className="search-pagination">
-          <a className='page' href="!">
+        {shopInfo.length > 6 && <div className="approve-pagination">
+          <a className="page" href="!">
             <i className="fa-solid fa-chevron-left"></i>
           </a>
-          <a className='page' href="!">
+          <a className="page" href="!">
             1
           </a>
-          <a className='page' href="!">
+          <a className="page" href="!">
             2
           </a>
-          <a className='page' href="!">
+          <a className="page" href="!">
             3
           </a>
-          <a className='page' href="!">
+          <a className="page" href="!">
             <i className="fa-solid fa-chevron-right"></i>
           </a>
-        </div>
+        </div>}
       </div>
     </section>
   )

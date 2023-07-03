@@ -81,7 +81,7 @@ const Header = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://localhost:7263/api/CoffeeShop/AddCoffeeShop",
+        "https://localhost:7263/api/SubCoffeeShop/AddSubCoffeeShop",
         {
           method: "POST",
           headers: {
