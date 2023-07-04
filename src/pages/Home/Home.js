@@ -93,11 +93,11 @@ const Home = () => {
           <h2 className="title">ホームページ</h2>
           <div className="filter">
             <label>Sort by</label>
-            <select name="" id="" select onChange={handlePulldownChange}>
-              <option value="All">全部</option>
-              <option value="Rating">平均評価 ↑</option>
-              <option value="RatingDown">平均評価 ↓</option>
-            </select>
+            <select name="" id="" value={pulldown} onChange={handlePulldownChange}>
+  <option value="All">全部</option>
+  <option value="Rating">平均評価 ↑</option>
+  <option value="RatingDown">平均評価 ↓</option>
+</select>
           </div>
         </div>
         <div className="home-list">

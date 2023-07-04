@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './inforShop.css';
 
 import { useParams } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 import axios from 'axios';
 import Showrating from '../../components/Rating/showrating';
 import RatingStar from '../../components/Rating/ratingstar';
+import UpdateStore from '../../components/Update/updateStore';
 
 const InforShop = () => {
   const [shopInfo, setShopInfo] = useState(null);
@@ -15,6 +17,16 @@ const InforShop = () => {
   const numberId = parseInt(id);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
+  const user = useSelector((state) => state.login.user);
+  const [isPopupOpen, setPopupOpen] = useState(false);
+
+  const handleEditClick = () => {
+    setPopupOpen(true);
+  };
+
+  const handlePopupClose = () => {
+    setPopupOpen(false);
+  };
   
   useEffect(() => {
   const axiosShopInfo = async () => {
@@ -92,13 +104,24 @@ const InforShop = () => {
               )}
             </div>
             <div className="title">
-              <h4>状態:</h4>
+              <h4>状態</h4>
               {shopInfo.status === null ? (
                 <button className="btn">開いている</button>
               ) : (
                 <button className="btn">閉めた</button>
               )}
             </div>
+            
+            
+              {user.username === 'admin' && (
+                <div className="service">
+                <h3>編集</h3>
+                <div className="buttons">
+                <button className="btn" style={{background: '#3EB489',marginRight:0}} onClick={handleEditClick}>情報を編集</button>
+                <button className="btn" style={{background: 'red'}}>喫茶店消去</button>
+                </div>
+                </div>
+              )}
           </div>
         </div>
         <div className="inforShop-right">
@@ -198,6 +221,7 @@ const InforShop = () => {
             </div>
           )}
         </div>
+        {isPopupOpen && (<UpdateStore handlePopupClose={handlePopupClose}/>)}
       </div>
     </section>
   );

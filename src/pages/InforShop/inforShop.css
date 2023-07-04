@@ -40,12 +40,14 @@
   background: #feebc0;
   color: var(--primary-color);
   font-weight: 600;
+  margin-right: 5px;
 }
 .inforShop-left .service .title h4 {
   margin: 0;
   display: inline;
   font-size: 18px;
   color: var(--primary-color);
+  margin-bottom: 10px;
 }
 
 .inforShop-left .service .title .btn {
@@ -54,6 +56,7 @@
   color: var(--primary-color);
   font-weight: 600;
   margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 .inforShop-right {

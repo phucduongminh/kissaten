@@ -17,6 +17,7 @@ import './App.css';
 
 const App = () => {
   const user = useSelector((state) => state.login.user);
+
   return (
     <div className="App">
        <ToastContainer />
@@ -44,7 +45,11 @@ const App = () => {
           path="/approve"
           render={() => {
             if (user && user.username === 'admin') {
-              return <Approve />;
+              return (<div>
+                <Header/>
+                <Approve />
+              </div>)
+              ;
             } else {
               return <Navigate to="/" />;
             }
