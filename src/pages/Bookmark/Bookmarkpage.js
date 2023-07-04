@@ -17,11 +17,11 @@ const Bookmarkpage = () => {
   const [shop,setShop]= useState([]);
   useEffect(() => {
     const axiosGetshop = async () => {
-    const response = await axios.post(`https://localhost:7263/api/BookMark/${user.uid}/getListBookMark`);
+    const response = await axios.post(`https://localhost:7263/api/BookMark/${user?.uid}/getListBookMark`);
     const data = await response.data;
     setShop(data);}
     axiosGetshop();
-    }, [user.uid]);
+    }, [user?.uid]);
 
   return (
     <section className='bookmark'>
@@ -67,7 +67,7 @@ const Bookmarkpage = () => {
               const handleDeleteMark = (e) => {
                 e.stopPropagation();
                 const axiosDeleteMark = async () => {
-                  await axios.delete(`https://localhost:7263/api/BookMark/DeleteBookMarkById/${user.uid}/${item.id}`);
+                  await axios.delete(`https://localhost:7263/api/BookMark/DeleteBookMarkById/${user?.uid}/${item.id}`);
                 };
                 axiosDeleteMark();
                 dispatch(deleteBookmark(item.id));

@@ -37,7 +37,7 @@ const Home = () => {
     const axiosGetBookmarkedItemIds = async () => {
       if (user) {
         const response = await axios.post(
-          `https://localhost:7263/api/BookMark/${user.uid}/getListBookMark`
+          `https://localhost:7263/api/BookMark/${user?.uid}/getListBookMark`
         );
         const data = await response.data;
         const bookmarkedItemIds = data.map((item) => item.id);
@@ -50,14 +50,14 @@ const Home = () => {
   const handleBookmarkClick = async (itemId) => {
     if (bookmarkedItemIds.includes(itemId)) {
       await axios.delete(
-        `https://localhost:7263/api/BookMark/DeleteBookMarkById/${user.uid}/${itemId}`
+        `https://localhost:7263/api/BookMark/DeleteBookMarkById/${user?.uid}/${itemId}`
       );
       dispatch(
         updateBookmarkedItemIds(bookmarkedItemIds.filter((id) => id !== itemId))
       );
     } else {
       await axios.post(
-        `https://localhost:7263/api/BookMark/${user.uid}/AddBookMark/${itemId}`
+        `https://localhost:7263/api/BookMark/${user?.uid}/AddBookMark/${itemId}`
       );
       dispatch(updateBookmarkedItemIds([...bookmarkedItemIds, itemId]));
     }

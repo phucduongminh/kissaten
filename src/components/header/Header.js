@@ -154,7 +154,7 @@ const Header = () => {
         </div>)}
         <div className="header-login">
           {user? (
-          <MenuDropdown username={user.username}/>):(
+          <MenuDropdown username={user?.username}/>):(
           <button className="btn" onClick={() => navigate(`/login`)}>
             <i className="fa-solid fa-user"></i> <strong>ログイン</strong>
           </button>)}

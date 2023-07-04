@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route, Navigate  } from 'react-router-dom';
+import { Routes, Route  } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
@@ -41,20 +41,15 @@ const App = () => {
             </div>
           }
         />}
-        <Route
+        {user?.username === 'admin' && <Route
           path="/approve"
-          render={() => {
-            if (user.username === 'admin') {
-              return (<div>
-                <Header/>
-                <Approve />
-              </div>)
-              ;
-            } else {
-              return <Navigate to="/" />;
-            }
-          }}
-        />
+          element={
+            <div>
+              <Header/>
+              <Approve />
+            </div>
+          }
+        />}
         <Route
           path="/search/:cafeName/:area/:service/:status"
           element={

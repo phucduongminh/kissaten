@@ -13,7 +13,7 @@
   
   .update-content {
     width: 650px;
-    height: 410px;
+    height: 450px;
     background-color: #fcf8f8;
     padding: 20px;
     border-radius: 4px;
@@ -46,8 +46,7 @@
   }
   .update-content .left-section, .right-section {
     display: inline-block;
-    width: 40%;
-    text-align: left;
+    width: 50%;
   }
   
   .update-content.form-group {
@@ -80,8 +79,8 @@
   }
   
   .update-content .form-group textarea {
-    height: 80px;
-    width: 80%;
+    height: 100px;
+    width: 90%;
     resize: none;
   }
   
@@ -176,20 +175,7 @@
     display: block!important;
   }
 
-  .update-content  .left-section{
-    position: absolute;
-    top: 20px;
-    left: 70px;
-  }
-
-  .update-content  .right-section{
-    position: absolute;
-    top: 20px;
-    right: 70px;
-  }
-
   .update-content .add-button{
     position: absolute;
-    bottom: -400px;
-    
+    margin-top: 20px;
   }

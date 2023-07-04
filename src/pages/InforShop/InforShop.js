@@ -8,18 +8,19 @@ import axios from 'axios';
 import Showrating from '../../components/Rating/showrating';
 import RatingStar from '../../components/Rating/ratingstar';
 import UpdateStore from '../../components/Update/updateStore';
+import DeletePopup from '../../components/DeletePopup/DeletePopup';
 
 const InforShop = () => {
   const [shopInfo, setShopInfo] = useState(null);
   const [review, setReview] = useState([]);
   const [isDetailMode, setChange] = useState(true)
-  const { id, uid } = useParams();
+  const { id } = useParams();
   const numberId = parseInt(id);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
   const user = useSelector((state) => state.login.user);
   const [isPopupOpen, setPopupOpen] = useState(false);
-  const [isPopupOpen1, setShowPopup1] = useState(false);
+  const [isPopupOpen1, setPopupOpen1] = useState(false);
 
   const handleEditClick = () => {
     setPopupOpen(true);
@@ -27,6 +28,14 @@ const InforShop = () => {
 
   const handlePopupClose = () => {
     setPopupOpen(false);
+  };
+
+  const handleDeleteClick = () => {
+    setPopupOpen1(true);
+  };
+
+  const handlePopupClose1 = () => {
+    setPopupOpen1(false);
   };
   
   useEffect(() => {
@@ -66,7 +75,7 @@ const InforShop = () => {
           },
 
           body: JSON.stringify({
-            userId: uid,
+            userId: user?.uid,
             coffeeId: numberId,
             rating: rating,
             comment: comment,
@@ -114,12 +123,12 @@ const InforShop = () => {
             </div>
             
             
-              {user.username === 'admin' && (
+              {user?.username === 'admin' && (
                 <div className="service">
                 <h3>編集</h3>
                 <div className="buttons">
                 <button className="btn" style={{background: '#3EB489',marginRight:0}} onClick={handleEditClick}>情報を編集</button>
-                <button className="btn" style={{background: 'red'}}>喫茶店消去</button>
+                <button className="btn" style={{background: 'red'}} onClick={handleDeleteClick}>喫茶店消去</button>
                 </div>
                 </div>
               )}
@@ -223,6 +232,9 @@ const InforShop = () => {
           )}
         </div>
         {isPopupOpen && (<UpdateStore handlePopupClose={handlePopupClose}/>)}
+        {isPopupOpen1 && (
+          <DeletePopup handlePopupClose1={handlePopupClose1} id={numberId} />
+        )}
       </div>
     </section>
   );

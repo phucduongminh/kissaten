@@ -1,18 +1,47 @@
-import React, { useState } from 'react';
+import { Navigate } from "react-router-dom";
+import "./DeletePopup.css";
+import { toast } from 'react-toastify';
 
-const DeletePopup = ({ onDelete, onClose }) => {
+import axios from "axios";
+
+const DeletePopup = ({handlePopupClose1,id}) => {
+    const onClose = (e) => {
+        e.preventDefault(); // Ngăn chặn lan truyền sự kiện onclick
+        handlePopupClose1();
+      };
+      const onDelete = (e) => {
+        e.preventDefault(); // Ngăn chặn lan truyền sự kiện onclick
+        const cancelShop = async () => {
+            try {
+                const response = await axios.delete(`https://localhost:7263/api/CoffeeShop/DeleteCoffeeShop/${id}`);
+              if (response.status === 200) {
+                toast.success('消去が成功しました。', {
+                  autoClose: 2500, // Đóng sau 2 giây
+                });}
+            } catch (error) {
+                toast.error('エラーが発生しました。',{
+                    autoClose: 2500, // Đóng sau 2 giây
+                  });
+            }
+          };
+          cancelShop();
+          <Navigate to="/" replace={true} />
+      };
     return (
-      <div className="popup-overlay">
-        <div className="popup-content">
+      <div className="delete-popup">
+        <div className="delete-content">
           <h3>Bạn chắc chắn muốn xóa quán?</h3>
-          <div className="popup-buttons">
+          <button className="close-button" onClick={onClose}>
+              <i className="fa-sharp fa-solid fa-xmark"></i>
+            </button>
+            <div className="button-container">
             <button className="delete-button" onClick={onDelete}>
               Xóa
             </button>
             <button className="cancel-button" onClick={onClose}>
               Hủy
             </button>
-          </div>
+            </div>
         </div>
       </div>
     );
