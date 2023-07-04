@@ -19,6 +19,7 @@ const InforShop = () => {
   const [comment, setComment] = useState('');
   const user = useSelector((state) => state.login.user);
   const [isPopupOpen, setPopupOpen] = useState(false);
+  const [isPopupOpen1, setShowPopup1] = useState(false);
 
   const handleEditClick = () => {
     setPopupOpen(true);

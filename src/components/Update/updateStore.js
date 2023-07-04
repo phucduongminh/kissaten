@@ -45,7 +45,7 @@ const UpdateStore = ({handlePopupClose}) => {
   return (
     <section className="updatePopup">
     <div className="update-popup">
-          <div className="popup-content">
+          <div className="update-content">
       <h2>Chỉnh sửa quán</h2>
       <form>
       <button className="close-button" onClick={handleClick}>

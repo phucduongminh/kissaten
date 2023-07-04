@@ -66,6 +66,8 @@
     border-radius: 20px;
     color: azure;
     font-weight: bold;
+    width: 100%;
+    
   }
   
   .signup button {

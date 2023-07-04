@@ -44,7 +44,7 @@ const App = () => {
         <Route
           path="/approve"
           render={() => {
-            if (user && user.username === 'admin') {
+            if (user.username === 'admin') {
               return (<div>
                 <Header/>
                 <Approve />

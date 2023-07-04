@@ -1,10 +1,4 @@
-updatePopup {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    padding: 20px;
-  }
-  
-  .update-popup {
+.update-popup {
     position: fixed;
     top: 0;
     left: 0;
@@ -17,7 +11,7 @@ updatePopup {
     align-items: center;
   }
   
-  .popup-content {
+  .update-content {
     width: 650px;
     height: 410px;
     background-color: #fcf8f8;
@@ -27,14 +21,14 @@ updatePopup {
     position: relative;
   }
   
-  .popup-content h2 {
+  .update-content h2 {
     margin-top: 0;
     margin-bottom: 5px;
-    font-size: 50px;
+    font-size: 30px;
     text-align: center;
   }
   
-  .close-button {
+  .update-content .close-button {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -44,23 +38,23 @@ updatePopup {
     color: #000;
     font-size: 20px;
     cursor: pointer;
-  }
+}
   
-  form {
+.update-content form {
     position: relative;
 
   }
-  .left-section, .right-section {
+  .update-content .left-section, .right-section {
     display: inline-block;
     width: 40%;
     text-align: left;
   }
   
-  .form-group {
+  .update-content.form-group {
     margin-bottom: 20px;
   }
   
-  .form-group label {
+  .update-content .form-group label {
     display: inline-block;
     font-weight: bold;
     margin-bottom: 5px;
@@ -69,8 +63,8 @@ updatePopup {
     text-align: left;
   }
   
-  .form-group input,
-  .form-group select {
+  .update-content .form-group input,
+  .update-content .form-group select {
     box-sizing: border-box;
     display: inline-block;
     width: 70%;
@@ -81,34 +75,34 @@ updatePopup {
   
   }
   
-  .form-group select {
+  .update-content .form-group select {
     height: 36px;
   }
   
-  .form-group textarea {
+  .update-content .form-group textarea {
     height: 80px;
     width: 80%;
     resize: none;
   }
   
-  .form-submit {
+  .update-content .form-submit {
     margin-top: 20px;
   }
   
   
   
-  .time {
+  .update-content  .time {
     display: inline-block;
   }
   
-  .description-label{
+  .update-content .description-label{
     display: block !important;
   }
   
   
 
   
-  .add-button {
+  .update-content .add-button {
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -125,7 +119,7 @@ updatePopup {
   
   
   
-  .file-input {
+  .update-content .file-input {
     position: absolute;
     top: 0;
     left: 0;
@@ -135,7 +129,7 @@ updatePopup {
     cursor: pointer;
   }
   
-  .square {
+  .update-content  .square {
     position: relative;
     width: 100px;
     height: 100px;
@@ -146,7 +140,7 @@ updatePopup {
     cursor: pointer;
   }
   
-  .plus {
+  .update-content  .plus {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -154,11 +148,11 @@ updatePopup {
     font-size: 24px;
   }
   
-  .square:hover .plus {
+  .update-content  .square:hover .plus {
     visibility: hidden;
   }
   
-  .image-square {
+  .update-content  .image-square {
     width: 100px;
     height: 100px;
     border: 1px solid black;
@@ -168,33 +162,33 @@ updatePopup {
     justify-content: center;
   }
   
-  .image {
+  .update-content   .image {
     max-width: 100%;
     max-height: 100%;
   }
 
-  #status {
+  .update-content  #status {
     width: 20px;
     margin-left: 70px;
   }
 
-  #status-label {
+  .update-content  #status-label {
     display: block!important;
   }
 
-  .left-section{
+  .update-content  .left-section{
     position: absolute;
     top: 20px;
     left: 70px;
   }
 
-  .right-section{
+  .update-content  .right-section{
     position: absolute;
     top: 20px;
     right: 70px;
   }
 
-  .add-button{
+  .update-content .add-button{
     position: absolute;
     bottom: -400px;
     
