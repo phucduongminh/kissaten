@@ -1,24 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import './inforShop.css';
+import React, { useState, useEffect } from "react";
+import "./inforShop.css";
 
 import { useParams } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
-import axios from 'axios';
-import Showrating from '../../components/Rating/showrating';
-import RatingStar from '../../components/Rating/ratingstar';
-import UpdateStore from '../../components/Update/updateStore';
-import DeletePopup from '../../components/DeletePopup/DeletePopup';
+import axios from "axios";
+import Showrating from "../../components/Rating/showrating";
+import RatingStar from "../../components/Rating/ratingstar";
+import UpdateStore from "../../components/Update/updateStore";
+import DeletePopup from "../../components/DeletePopup/DeletePopup";
 
 const InforShop = () => {
   const [shopInfo, setShopInfo] = useState(null);
   const [review, setReview] = useState([]);
-  const [isDetailMode, setChange] = useState(true)
+  const [isDetailMode, setChange] = useState(true);
   const { id } = useParams();
   const numberId = parseInt(id);
   const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
   const user = useSelector((state) => state.login.user);
+  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [hdrv, setHdrv] = useState(false);
+  const bookmarkedItemIds = useSelector((state) => state.login.bookmarkedItemIds);
+
+// Lấy giá trị bookmarkedItemIds từ Redux store trong useEffect
+useEffect(() => {
+  setIsBookmarked(bookmarkedItemIds.includes(numberId));
+}, [bookmarkedItemIds, numberId]);
+
+  
+
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [isPopupOpen1, setPopupOpen1] = useState(false);
 
@@ -37,22 +48,41 @@ const InforShop = () => {
   const handlePopupClose1 = () => {
     setPopupOpen1(false);
   };
-  
+
   useEffect(() => {
-  const axiosShopInfo = async () => {
-  const response = await axios.post(`https://localhost:7263/api/CoffeeShop/GetInfoCoffeeShop/${numberId}`);
-  const data = await response.data;
-  setShopInfo(data);}
-  axiosShopInfo();
-  }, [numberId]);
+    const axiosShopInfo = async () => {
+      const response = await axios.post(
+        `https://localhost:7263/api/CoffeeShop/GetInfoCoffeeShop/${numberId}`
+      );
+      const data = await response.data;
+      setShopInfo(data);
+      setHdrv(false);
+    };
+    axiosShopInfo();
+  }, [numberId,hdrv]);
+
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     const axiosReview = async () => {
-    const response = await axios.get(`https://localhost:7263/api/Review/getReviewCoffeeShop/${numberId}`);
-    const data = await response.data;
-    setReview(data);}
+      const response = await axios.get(
+        `https://localhost:7263/api/Review/getReviewCoffeeShop/${numberId}`
+      );
+      const data = await response.data;
+      setReview(data);
+      // Lặp qua các đánh giá và lấy tên người dùng từ API
+      const usernames = await Promise.all(
+        data.map(async (review) => {
+          const userResponse = await axios.get(
+            `https://localhost:7263/api/User/${review.userId}/getUserNameByUserId`
+          );
+          return userResponse.data;
+        })
+      );
+      setUsername(usernames);
+    };
     axiosReview();
-    }, [numberId]);
+  }, [numberId, hdrv]);
 
   if (!shopInfo) {
     return <div>Loading...</div>;
@@ -80,14 +110,17 @@ const InforShop = () => {
             rating: rating,
             comment: comment,
             reviewAt: "",
-            editAt: ""
+            editAt: "",
           }),
         }
       );
       if (response.status === 200) {
         //setMessage("Shop added successfully");
-        console.log("Review added successfully");
-        window.location.reload();
+        //console.log("Review added successfully");
+        setHdrv(true);
+        setRating(0);
+        setComment("");
+        //window.location.reload();
       } else {
       }
     } catch (error) {
@@ -102,6 +135,11 @@ const InforShop = () => {
         {/* Truy cập và sử dụng thông tin quán cà phê trong shopInfo */}
         <div className="inforShop-left">
           <div className="image">
+          {isBookmarked && (
+              <div className="bookmark-icon">
+                <i className="fa-solid fa-bookmark fa-shake fa-xl" style={{ color: '#fad000' }}></i>
+              </div>
+            )}
             <img src={shopInfo.imageCover} alt="" />
           </div>
           <div className="service">
@@ -115,23 +153,34 @@ const InforShop = () => {
             </div>
             <div className="title">
               <h4>状態</h4>
-              {shopInfo.status === null ? (
-                <button className="btn">開いている</button>
+              {shopInfo.status === true ? (
+                <button className="btn">混んでいる</button>
               ) : (
-                <button className="btn">閉めた</button>
+                <button className="btn">混んでいない</button>
               )}
             </div>
-            
-            
-              {user?.username === 'admin' && (
-                <div className="service">
+
+            {(user?.username === "admin" || user?.uid === shopInfo.postedByUser) && (
+              <div className="service">
                 <h3>編集</h3>
                 <div className="buttons">
-                <button className="btn" style={{background: '#3EB489',marginRight:0}} onClick={handleEditClick}>情報を編集</button>
-                <button className="btn" style={{background: 'red'}} onClick={handleDeleteClick}>喫茶店消去</button>
+                  <button
+                    className="btn"
+                    style={{ background: "#3EB489", marginRight: 0 }}
+                    onClick={handleEditClick}
+                  >
+                    情報を編集
+                  </button>
+                  <button
+                    className="btn"
+                    style={{ background: "red" }}
+                    onClick={handleDeleteClick}
+                  >
+                    喫茶店消去
+                  </button>
                 </div>
-                </div>
-              )}
+              </div>
+            )}
           </div>
         </div>
         <div className="inforShop-right">
@@ -176,41 +225,36 @@ const InforShop = () => {
           ) : (
             <div className="comments">
               <div className="list">
-              {review.map((review, index) => (
-                <div className="item" key={index}>
-                  <div className="image">
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
-                      alt=""
-                    />
-                  </div>
-                  <div className="content">
-                    <div className="top">
-                      <div className="name">User {review.userId}</div>
-                      <div className="status">
-                        <div className="icon">
-                          <span>(0)</span>{" "}
-                          <i className="fa-solid fa-thumbs-up purple"></i>
-                        </div>
-                        <div className="icon">
-                          <span>(0)</span>{" "}
-                          <i className="fa-solid fa-thumbs-down red"></i>
-                        </div>
-                        <div className="icon">
-                          <i className="fa-solid fa-trash red"></i>
-                        </div>
-                      </div>
+                {review.map((review, index) => (
+                  <div className="item" key={index}>
+                    <div className="image">
+                      <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+                        alt=""
+                      />
                     </div>
-                    <div className="bottom">
-                      <div className="rating">
-                        <Showrating  rating={review.rating}/>
+                    <div className="content">
+                      <div className="top">
+                        <div className="name">{username[index]}</div>
+                        <div className="status">
+                          <div className="icon">
+                            <span>(0)</span>{" "}
+                            <i className="fa-solid fa-thumbs-up purple"></i>
+                          </div>
+                          <div className="icon">
+                            <span>(0)</span>{" "}
+                            <i className="fa-solid fa-thumbs-down red"></i>
+                          </div>
+                        </div>
                       </div>
-                      <div className="text">
-                        {review.comment}
+                      <div className="bottom">
+                        <div className="rating">
+                          <Showrating rating={review.rating} />
+                        </div>
+                        <div className="text">{review.comment}</div>
                       </div>
                     </div>
                   </div>
-                </div>
                 ))}
               </div>
               <div className="input-comment">
@@ -223,6 +267,7 @@ const InforShop = () => {
                   required
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
+                  placeholder="コンメントを入れてください。。。"
                 ></textarea>
                 <button className="btn" onClick={handleAddReview}>
                   発信
@@ -231,13 +276,13 @@ const InforShop = () => {
             </div>
           )}
         </div>
-        {isPopupOpen && (<UpdateStore handlePopupClose={handlePopupClose}/>)}
+        {isPopupOpen && <UpdateStore handlePopupClose={handlePopupClose} id={numberId}/>}
         {isPopupOpen1 && (
           <DeletePopup handlePopupClose1={handlePopupClose1} id={numberId} />
         )}
       </div>
     </section>
   );
-}
+};
 
 export default InforShop;

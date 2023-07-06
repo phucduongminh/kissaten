@@ -60,7 +60,7 @@ const Signup = () => {
       <div className="wrap">
         <div className="signup-image">
           <img
-            src="https://rare-gallery.com/uploads/posts/577884-coffee-4k-wallpaper.jpg"
+            src="../../components/img/background.jpg"
             alt=""
           />
         </div>

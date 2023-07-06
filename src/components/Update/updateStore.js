@@ -1,9 +1,42 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
+
+import axios from "axios";
+import { toast } from 'react-toastify';
 import "./updateStore.css";
 
-const UpdateStore = ({ handlePopupClose }) => {
-  const [imageUrl, setImageUrl] = useState(null);
+const UpdateStore = ({ handlePopupClose,id }) => {
+  const [shopInfo, setShopInfo] = useState(null);
+  const [imageUrl, setImageUrl] = useState('');
+  const [productName, setProductName] = useState('');
+  const [description, setDescription] = useState('');
+  const [address, setAddress] = useState(''); // Giá trị ban đầu của ô địa chỉ
+  const [service, setService] = useState(''); 
+  const [open, setOpenHour] = useState('');
+  const [close, setCloseHour] = useState('');
 
+  useEffect(() => {
+    const axiosShopInfo = async () => {
+      const response = await axios.post(
+        `https://localhost:7263/api/CoffeeShop/GetInfoCoffeeShop/${id}`
+      );
+      const data = await response.data;
+      setShopInfo(data);
+      //console.log(data);
+    };
+    axiosShopInfo();
+  }, [id]);
+
+  useEffect(() => {
+      setImageUrl(shopInfo&& shopInfo.imageCover ?shopInfo.imageCover:'');
+      setProductName(shopInfo&& shopInfo.name?shopInfo.name:'');
+      setDescription(shopInfo&& shopInfo.description?shopInfo.description:'');
+      setAddress(shopInfo&& shopInfo.address?shopInfo.address:'');
+      setOpenHour(shopInfo&& shopInfo.openHour?shopInfo.openHour:'');
+      setCloseHour(shopInfo&& shopInfo.closeHour?shopInfo.closeHour:'');
+      setService(shopInfo&& shopInfo.service?shopInfo.service:'');
+  }, [shopInfo]); 
+
+  //console.log(open);
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -15,27 +48,80 @@ const UpdateStore = ({ handlePopupClose }) => {
     reader.readAsDataURL(file);
   };
 
-  const [productName, setProductName] = useState("Cộng cà phê"); // Giá trị ban đầu của tên sản phẩm
-
   const handleProductNameChange = (event) => {
     setProductName(event.target.value); // Cập nhật giá trị tên sản phẩm khi người dùng thay đổi ô input
   };
-
-  const [description, setDescription] = useState("Đây là giới thiệu"); // Giá trị ban đầu của ô giới thiệu
+ // Giá trị ban đầu của ô giới thiệu
 
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value); // Cập nhật giá trị ô giới thiệu khi người dùng thay đổi ô input
   };
 
-  const [address, setAddress] = useState("155 Cầu Giấy"); // Giá trị ban đầu của ô địa chỉ
-
   const handleAddressChange = (event) => {
     setAddress(event.target.value); // Cập nhật giá trị địa chỉ khi người dùng thay đổi ô input
+  };
+
+  const handleOpenChange = (event) => {
+    setOpenHour(event.target.value); // Cập nhật giá trị địa chỉ khi người dùng thay đổi ô input
+  };
+  
+  const handleCloseChange = (event) => {
+    setCloseHour(event.target.value); // Cập nhật giá trị địa chỉ khi người dùng thay đổi ô input
   };
 
   const handleClick = (e) => {
     e.preventDefault(); // Ngăn chặn lan truyền sự kiện onclick
     handlePopupClose();
+  };
+
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(
+        "https://localhost:7263/api/CoffeeShop/EditCoffeeShop",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+
+          body: JSON.stringify({
+            id: id,
+            name: productName,
+            address: address,
+            gmail: "string",
+            contactNumber: 0,
+            imageCover: imageUrl,
+            averageRating: 0,
+            openHour: open,
+            closeHour: close,
+            service: service,
+            description: description,
+            status: "open",
+            postedByUser: 0,
+            approved: 0,
+          }),
+        }
+      );
+      if (response.status === 200) {
+        toast.success('編集を作成しました。', {
+          autoClose: 2500, // Đóng sau 2 giây
+        });
+        window.location.reload();
+        //console.log("Shop added successfully");
+      } else {
+        toast.error('エラーが発生しました。',{
+          autoClose: 2500, // Đóng sau 2 giây
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error('エラーが発生しました。',{
+        autoClose: 2500, // Đóng sau 2 giây
+      });
+    }
   };
 
   return (
@@ -60,25 +146,27 @@ const UpdateStore = ({ handlePopupClose }) => {
                 />
               </div>
               <div className="form-group time">
-                <label htmlFor="opening-time">Giờ mở:</label>
-                <select id="opening-time" name="opening-time" required>
+                <label htmlFor="opening-time">Giờ mở cửa:</label>
+                <select id="opening-time" name="opening-time" onChange={handleOpenChange} value={open} >
                   <option value="">Chọn giờ mở</option>
                   <option value="08:00">08:00</option>
-                  <option value="09:00" defaultValue>
-                    09:00
-                  </option>
-                  <option value="10:00">10:00</option>
+                    <option value="08:30">08:30</option>
+                    <option value="09:00">09:00</option>
+                    <option value="09:30">09:30</option>
+                    <option value="10:00">10:00</option>
                 </select>
               </div>
               <div className="form-group time">
-                <label htmlFor="closing-time">Giờ đóng:</label>
-                <select id="closing-time" name="closing-time" required>
+                <label htmlFor="closing-time">Giờ đóng cửa:</label>
+                <select id="closing-time" name="closing-time" onChange={handleCloseChange} value={close}>
                   <option value="">Chọn giờ đóng</option>
-                  <option value="18:00">18:00</option>
-                  <option value="19:00">19:00</option>
-                  <option value="20:00" defaultValue>
-                    20:00
-                  </option>
+                  <option value="20:00">20:00</option>
+                    <option value="20:30">20:30</option>
+                    <option value="21:00">21:00</option>
+                    <option value="21:30">21:30</option>
+                    <option value="22:00">22:00</option>
+                    <option value="22:30">22:30</option>
+                    <option value="23:00">23:00</option>
                 </select>
               </div>
               <div className="form-group">
@@ -97,13 +185,10 @@ const UpdateStore = ({ handlePopupClose }) => {
             <div className="right-section">
               <div className="form-group">
                 <label htmlFor="service">Dịch vụ:</label>
-                <select id="service" name="service" required>
+                <select id="service" name="service" value={service} required>
                   <option value="">Chọn dịch vụ</option>
-                  <option value="Dịch vụ A" defaultValue>
-                    Điều hoà
-                  </option>
-                  <option value="Dịch vụ B">Dịch vụ B</option>
-                  <option value="Dịch vụ C">Dịch vụ C</option>
+                  <option value={true}>Có điều hòa</option>
+                    <option value={false}>Không có điều hòa</option>
                 </select>
               </div>
               <div className="form-group">
@@ -147,7 +232,7 @@ const UpdateStore = ({ handlePopupClose }) => {
               </div>
             </div>
           </form>
-          <button className="add-button">Update</button>
+          <button className="add-button" onClick={handleEditSubmit}>Update</button>
         </div>
       </div>
     </section>

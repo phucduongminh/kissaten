@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { logout } from '../../pages/Login/loginActions';
 import './MenuDropdown.css';
 
 const MenuDropdown = ({ username }) => {
+  const user = useSelector((state) => state.login.user);
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -41,6 +43,9 @@ const MenuDropdown = ({ username }) => {
       {isOpen && (
         <div className="dropdown-menu">
           <ul>
+          {(user?.username === "admin") && (
+            <li onClick={() => navigate('/approve')}><strong>Approve</strong></li>
+            )}
             <li onClick={() => navigate('/bookmark')}><strong>Bookmark</strong></li>
             <li onClick={handleLogout}><strong>Logout</strong></li>
           </ul>

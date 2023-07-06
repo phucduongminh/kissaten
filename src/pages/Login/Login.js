@@ -31,7 +31,7 @@ const Login = () => {
     <section className='login'>
       <div className="wrap">
         <div className="login-image">
-          <img src="https://rare-gallery.com/uploads/posts/577884-coffee-4k-wallpaper.jpg" alt="" />
+          <img src="../../components/img/background.jpg" alt="" />
         </div>
         <div className="login-form">
           <div className="heading">

@@ -30,6 +30,8 @@ const Approve = () => {
                 await axios.delete(`https://localhost:7263/api/SubCoffeeShop/DeleteSubCoffeeShop/${item.id}`);
               };
               cancelShop();
+              
+              window.location.reload();
             };
             const approveShop = async (e) => {
               e.stopPropagation();
@@ -70,6 +72,7 @@ const Approve = () => {
                     await axios.delete(`https://localhost:7263/api/SubCoffeeShop/DeleteSubCoffeeShop/${item.id}`);
                   };
                   cancelShop();
+                  window.location.reload();
                 } else {
                   toast.error('エラーが発生しました。',{
                     autoClose: 2500, // Đóng sau 2 giây
@@ -83,9 +86,8 @@ const Approve = () => {
               }
             };
             return (
-              <div className="approve-item">
               <div
-                className="home-item"
+                className="approve-item"
                 key={index}
               >
                 <div className="image">
@@ -110,7 +112,6 @@ const Approve = () => {
               <button className="red" onClick={denyShop}>キャンセル</button>
             </div>
               </div>
-              </div>
             );
           })): (
             <div className="no-results"><br></br><br></br>承認を待っている喫茶店がありません。</div>
@@ -133,6 +134,7 @@ const Approve = () => {
             <i className="fa-solid fa-chevron-right"></i>
           </a>
         </div>}
+      
     </section>
   );
 };

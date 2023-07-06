@@ -16,6 +16,7 @@
   display: flex;
   gap: 20px;
   padding: 10px;
+  margin-top: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -66,11 +67,12 @@ i.fill {
 }
 
 .approve-item .buttons button.green {
-  background: #9c9;
+  background-color: #9c9;
+  margin-right: 5px;
 }
 
 .approve-item .buttons button.red {
-  background: #ff5757;
+  background-color: #ff5757;
 }
 
 .approve-pagination {

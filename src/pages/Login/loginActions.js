@@ -18,7 +18,7 @@ export const login = (username, password, navigateToHome) => {
 
       if (response.status === 200) {
         // Đăng nhập thành công
-        const uidResponse = await axios.post(
+        const uidResponse = await axios.get(
           `https://localhost:7263/api/User/${username}/getUserIdByUserName`
         );
         const uid = await uidResponse.data;

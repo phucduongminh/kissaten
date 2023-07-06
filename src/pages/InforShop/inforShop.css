@@ -20,6 +20,12 @@
   overflow: hidden;
 }
 
+.inforShop-left .image .bookmark-icon{
+  overflow: show;
+  position: absolute;
+  margin-left: 15px;
+  margin-top: 1px;
+}
 .inforShop-left .service {
 
 }
