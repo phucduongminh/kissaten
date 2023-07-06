@@ -10,10 +10,17 @@ const Header = () => {
   const user = useSelector((state) => state.login.user);
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [cafeName, setCafeName] = useState("");
-  const [area, setArea] = useState("");
-  const [hasAC, setHasAC] = useState("false");
-  const [status, setStatus] = useState("open");
+  const [area, setArea] = useState(" ");
+  const [hasAC, setHasAC] = useState(false);
+  //const currentDate = new Date();
+//const currentHour = currentDate.getHours();
+//const currentMinute = currentDate.getMinutes();
+
+//const formattedTime = `${currentHour}:${currentMinute < 10 ? '0' : ''}${currentMinute}`;
+  const [status, setStatus] = useState("8:30");
   const navigate = useNavigate();
+
+  
 
   const handleSearchClick = () => {
     setPopupOpen(true);
@@ -26,8 +33,8 @@ const Header = () => {
   const handleStatusChange = (e) => {
     const selectedValue = e.target.value;
 
-    if (selectedValue === "open") {
-      setStatus("open");
+    if (selectedValue === "8:30") {
+      setStatus("8:30");
     } else {
       setStatus(null);
     }
@@ -35,16 +42,19 @@ const Header = () => {
 
   const handleHasACChange = (e) => {
     if (e.target.checked) {
-      setHasAC("true");
+      setHasAC(true);
     } else {
-      setHasAC("false");
+      setHasAC(false);
     }
   };
 
   const handleSearchSubmit = () => {
     setPopupOpen(false);
+    //const areaParam = area !== null ? area : 'null';
+    if(area===" ") {setArea("no")};
+    if(status===null) {setStatus("8:30")};
     navigate(`/search/${cafeName}/${area}/${hasAC}/${status}`);
-    console.log("Đã submit tìm kiếm");
+    //console.log("Đã submit tìm kiếm");
   }; 
 
   const handleAddClick = () => {
@@ -191,7 +201,7 @@ const Header = () => {
                   id="area"
                   value={area}
                   onChange={(e) => setArea(e.target.value)}
-                  required
+                  
                 />
               </div>
 
@@ -205,7 +215,7 @@ const Header = () => {
                       name="status"
                       id="status1"
                       value="open"
-                      checked={status === "open"}
+                      checked={status === "8:30"}
                       onChange={handleStatusChange}
                     />
                     <label className="form-check-label" htmlFor="status1">
@@ -219,7 +229,7 @@ const Header = () => {
                       name="status"
                       id="status2"
                       value="all"
-                      checked={status !== "open"}
+                      checked={status !== "8:30"}
                       onChange={handleStatusChange}
                     />
                     <label className="form-check-label" htmlFor="status2">

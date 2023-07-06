@@ -31,7 +31,7 @@ const Login = () => {
     <section className='login'>
       <div className="wrap">
         <div className="login-image">
-          <img src="../../components/img/background.jpg" alt="" />
+          <img src="https://images.pexels.com/photos/683039/pexels-photo-683039.jpeg?cs=srgb&dl=pexels-afta-putta-gunawan-683039.jpg&fm=jpg" alt="" />
         </div>
         <div className="login-form">
           <div className="heading">

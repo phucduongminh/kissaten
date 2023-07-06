@@ -9,7 +9,8 @@ const UpdateStore = ({ handlePopupClose,id }) => {
   const [imageUrl, setImageUrl] = useState('');
   const [productName, setProductName] = useState('');
   const [description, setDescription] = useState('');
-  const [address, setAddress] = useState(''); // Giá trị ban đầu của ô địa chỉ
+  const [address, setAddress] = useState('');
+  const [status, setStatus] = useState(''); // Giá trị ban đầu của ô địa chỉ
   const [service, setService] = useState(''); 
   const [open, setOpenHour] = useState('');
   const [close, setCloseHour] = useState('');
@@ -34,6 +35,7 @@ const UpdateStore = ({ handlePopupClose,id }) => {
       setOpenHour(shopInfo&& shopInfo.openHour?shopInfo.openHour:'');
       setCloseHour(shopInfo&& shopInfo.closeHour?shopInfo.closeHour:'');
       setService(shopInfo&& shopInfo.service?shopInfo.service:'');
+      setStatus(shopInfo&& shopInfo.status?shopInfo.status:'');
   }, [shopInfo]); 
 
   //console.log(open);
@@ -69,6 +71,14 @@ const UpdateStore = ({ handlePopupClose,id }) => {
     setCloseHour(event.target.value); // Cập nhật giá trị địa chỉ khi người dùng thay đổi ô input
   };
 
+  const handleStatusChange = (e) => {
+    if (e.target.checked) {
+      setStatus(true);
+    } else {
+      setStatus(false);
+    }
+  };
+
   const handleClick = (e) => {
     e.preventDefault(); // Ngăn chặn lan truyền sự kiện onclick
     handlePopupClose();
@@ -99,7 +109,7 @@ const UpdateStore = ({ handlePopupClose,id }) => {
             closeHour: close,
             service: service,
             description: description,
-            status: "open",
+            status: status,
             postedByUser: 0,
             approved: 0,
           }),
@@ -228,7 +238,8 @@ const UpdateStore = ({ handlePopupClose,id }) => {
                   Tình trạng:
                 </label>
                 Quán đông
-                <input type="checkbox" id="status" name="status"></input>
+                <input type="checkbox" id="status" name="status" checked={status}
+                      onChange={handleStatusChange}></input>
               </div>
             </div>
           </form>

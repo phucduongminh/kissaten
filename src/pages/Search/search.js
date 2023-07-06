@@ -10,13 +10,14 @@ const Search = () => {
   const navigate = useNavigate()
   const [shopInfo, setShopInfo] = useState([]);
   const {cafeName,area,service,status} = useParams();
+  const address = area === "no"? "":area;
   const booleanValue = Boolean(service);
-
+  console.log(status);
   useEffect(() => {
     const search = {
       name: cafeName,
-      address: area,
-      status: status,
+      address: address,
+      hour: status,
       service: booleanValue,
     };
   try{
@@ -36,7 +37,7 @@ const Search = () => {
     }catch (error) {
       console.error(error);
     }
-  } );
+  }, [cafeName, address,status, booleanValue] );
 
   return (
     <section className='search'>

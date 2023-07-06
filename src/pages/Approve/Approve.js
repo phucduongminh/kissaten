@@ -57,7 +57,7 @@ const Approve = () => {
                       closeHour: item.closeHour,
                       service: item.service,
                       description: item.description,
-                      status: item.status,
+                      status: true,
                       postedByUser: 0,
                       approved: 0,
                     }),

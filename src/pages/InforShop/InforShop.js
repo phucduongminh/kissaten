@@ -156,7 +156,7 @@ useEffect(() => {
               {shopInfo.status === true ? (
                 <button className="btn">混んでいる</button>
               ) : (
-                <button className="btn">混んでいない</button>
+                <button className="btn" style={{ background: "#3EB410"}}>混んでいない</button>
               )}
             </div>
 
