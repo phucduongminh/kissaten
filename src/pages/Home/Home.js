@@ -23,7 +23,8 @@ const Home = () => {
         `https://localhost:7263/api/CoffeeShop/SortCoffeeShopSortBy/${pulldown}`
       );
       const data = await response.data;
-      setShop(data);
+      const filteredShop = data.filter(item => item.approved === 1);
+      setShop(filteredShop);
     };
     axiosGetshop();
   }, [pulldown]);
@@ -102,7 +103,6 @@ const Home = () => {
         </div>
         <div className="home-list">
           {currentShops.map((item, index) => {
-            if (item.approved === 1) {
             return (
               user ? (<div
                 className="home-item"
@@ -153,9 +153,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>)
-            );} else {
-              return null; // Không hiển thị nếu shop chưa được phê duyệt
-            }
+            );
           })}
         </div>
         {shop.length > 6 && <div className="home-pagination">
