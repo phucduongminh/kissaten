@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from 'react-toastify';
 import "./updateStore.css";
 
-const UpdateStore = ({ handlePopupClose,id }) => {
+const UpdateStore = ({ handlePopupClose,id,uid }) => {
   const [shopInfo, setShopInfo] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
   const [productName, setProductName] = useState('');
@@ -104,14 +104,14 @@ const UpdateStore = ({ handlePopupClose,id }) => {
             gmail: "string",
             contactNumber: 0,
             imageCover: imageUrl,
-            averageRating: 0,
+            averageRating: null,
             openHour: open,
             closeHour: close,
             service: service,
             description: description,
             status: status,
-            postedByUser: 0,
-            approved: 0,
+            postedByUser: null,
+            approved: null,
           }),
         }
       );

@@ -276,7 +276,7 @@ useEffect(() => {
             </div>
           )}
         </div>
-        {isPopupOpen && <UpdateStore handlePopupClose={handlePopupClose} id={numberId}/>}
+        {isPopupOpen && <UpdateStore handlePopupClose={handlePopupClose} id={numberId} uid={user?.uid}/>}
         {isPopupOpen1 && (
           <DeletePopup handlePopupClose1={handlePopupClose1} id={numberId} />
         )}
