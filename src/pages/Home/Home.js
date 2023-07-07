@@ -102,6 +102,7 @@ const Home = () => {
         </div>
         <div className="home-list">
           {currentShops.map((item, index) => {
+            if (item.approved === 1) {
             return (
               user ? (<div
                 className="home-item"
@@ -152,10 +153,12 @@ const Home = () => {
                   </div>
                 </div>
               </div>)
-            );
+            );} else {
+              return null; // Không hiển thị nếu shop chưa được phê duyệt
+            }
           })}
         </div>
-        <div className="home-pagination">
+        {shop.length > 6 && <div className="home-pagination">
           <div className="page">
             <i className="fa-solid fa-chevron-left"></i>
           </div>
@@ -171,7 +174,7 @@ const Home = () => {
           <div className="page">
             <i className="fa-solid fa-chevron-right"></i>
           </div>
-        </div>
+        </div>}
       </div>
     </section>
   );

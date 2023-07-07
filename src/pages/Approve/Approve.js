@@ -85,6 +85,7 @@ const Approve = () => {
                 });
               }
             };
+            if (item.approved === 0) {
             return (
               <div
                 className="approve-item"
@@ -112,7 +113,9 @@ const Approve = () => {
               <button className="red" onClick={denyShop}>キャンセル</button>
             </div>
               </div>
-            );
+            ); } else {
+              return null; // Không hiển thị nếu shop chưa được phê duyệt
+            }
           })): (
             <div className="no-results"><br></br><br></br>承認を待っている喫茶店がありません。</div>
           )}

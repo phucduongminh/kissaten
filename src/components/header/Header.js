@@ -12,12 +12,8 @@ const Header = () => {
   const [cafeName, setCafeName] = useState("");
   const [area, setArea] = useState(" ");
   const [hasAC, setHasAC] = useState(false);
-  //const currentDate = new Date();
-//const currentHour = currentDate.getHours();
-//const currentMinute = currentDate.getMinutes();
-
-//const formattedTime = `${currentHour}:${currentMinute < 10 ? '0' : ''}${currentMinute}`;
-  const [status, setStatus] = useState("8:30");
+  
+  const [status, setStatus] = useState("open");
   const navigate = useNavigate();
 
   
@@ -33,8 +29,8 @@ const Header = () => {
   const handleStatusChange = (e) => {
     const selectedValue = e.target.value;
 
-    if (selectedValue === "8:30") {
-      setStatus("8:30");
+    if (selectedValue === "open") {
+      setStatus("open");
     } else {
       setStatus(null);
     }
@@ -50,11 +46,9 @@ const Header = () => {
 
   const handleSearchSubmit = () => {
     setPopupOpen(false);
-    //const areaParam = area !== null ? area : 'null';
     if(area===" ") {setArea("no")};
-    if(status===null) {setStatus("8:30")};
+    if(status===null) {setStatus("all")};
     navigate(`/search/${cafeName}/${area}/${hasAC}/${status}`);
-    //console.log("Đã submit tìm kiếm");
   }; 
 
   const handleAddClick = () => {
@@ -84,14 +78,13 @@ const Header = () => {
   const [description, setDescription] = useState('');
   const [service, setService] = useState('');
   const [address, setAddress] = useState('');
-  //const boolservice = Boolean(service);
   const boolservice = (service.toLowerCase() === "true");
 
   const handleAddSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://localhost:7263/api/SubCoffeeShop/AddSubCoffeeShop",
+        "https://localhost:7263/api/CoffeeShop/AddCoffeeShop",
         {
           method: "POST",
           headers: {
@@ -111,8 +104,8 @@ const Header = () => {
             closeHour: closeHour,
             service: boolservice,
             description: description,
-            status: "open",
-            postedByUser: 0,
+            status: false,
+            postedByUser: user.uid,
             approved: 0,
           }),
         }
@@ -215,7 +208,7 @@ const Header = () => {
                       name="status"
                       id="status1"
                       value="open"
-                      checked={status === "8:30"}
+                      checked={status === "open"}
                       onChange={handleStatusChange}
                     />
                     <label className="form-check-label" htmlFor="status1">
@@ -229,7 +222,7 @@ const Header = () => {
                       name="status"
                       id="status2"
                       value="all"
-                      checked={status !== "8:30"}
+                      checked={status !== "open"}
                       onChange={handleStatusChange}
                     />
                     <label className="form-check-label" htmlFor="status2">
@@ -294,9 +287,11 @@ const Header = () => {
                     value={openHour}
                     onChange={(e) => setOpenHour(e.target.value)}
                   >
-                    <option value=""></option>
-                    <option value="08:00">08:00</option>
+                    <option value="">Chọn giờ mở</option>
+                  <option value="08:00">08:00</option>
+                    <option value="08:30">08:30</option>
                     <option value="09:00">09:00</option>
+                    <option value="09:30">09:30</option>
                     <option value="10:00">10:00</option>
                   </select>
                 </div>
@@ -309,10 +304,14 @@ const Header = () => {
                     value={closeHour}
                     onChange={(e) => setCloseHour(e.target.value)}
                   >
-                    <option value=""></option>
-                    <option value="18:00">18:00</option>
-                    <option value="19:00">19:00</option>
-                    <option value="20:00">20:00</option>
+                    <option value="">Chọn giờ đóng</option>
+                  <option value="20:00">20:00</option>
+                    <option value="20:30">20:30</option>
+                    <option value="21:00">21:00</option>
+                    <option value="21:30">21:30</option>
+                    <option value="22:00">22:00</option>
+                    <option value="22:30">22:30</option>
+                    <option value="23:00">23:00</option>
                   </select>
                 </div>
                 <div className="form-group">
