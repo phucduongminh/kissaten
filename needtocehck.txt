@@ -1,0 +1,99 @@
+ERROR
+Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `App`.
+Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `App`.
+    at createFiberFromTypeAndProps (http://localhost:3000/static/js/bundle.js:37945:21)
+    at createFiberFromElement (http://localhost:3000/static/js/bundle.js:37966:19)
+    at updateElement (http://localhost:3000/static/js/bundle.js:26491:23)
+    at updateSlot (http://localhost:3000/static/js/bundle.js:26584:26)
+    at reconcileChildrenArray (http://localhost:3000/static/js/bundle.js:26730:26)
+    at reconcileChildFibers (http://localhost:3000/static/js/bundle.js:27117:20)
+    at reconcileChildren (http://localhost:3000/static/js/bundle.js:30056:32)
+    at updateHostComponent (http://localhost:3000/static/js/bundle.js:30693:7)
+    at beginWork (http://localhost:3000/static/js/bundle.js:32138:18)
+    at beginWork$1 (http://localhost:3000/static/js/bundle.js:37077:18)
+
+
+
+(
+            <div className="comments">
+              <div className="list">
+                {shopInfo.reviews.map((review, index) => (
+                  <div className="item" key={index}>
+                    <div className="image">
+                      <img src={review.avatar} alt="" />
+                    </div>
+                    <div className="content">
+                      <div className="top">
+                        <div className="name">{review.name}</div>
+                        <div className="status">
+                          <div className="icon">
+                            <span>({review.likes})</span>{' '}
+                            <i className="fa-solid fa-thumbs-up purple"></i>
+                          </div>
+                          <div className="icon">
+                            <span>({review.dislikes})</span>{' '}
+                            <i className="fa-solid fa-thumbs-down red"></i>
+                          </div>
+                          <div className="icon">
+                            <i className="fa-solid fa-trash red"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bottom">
+                        <div className="rating">
+                          {[...Array(5)].map((_, index) => (
+                            <i className="fa-solid fa-star" key={index}></i>
+                          ))}
+                        </div>
+                        <div className="text">{review.comment}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="input-comment">
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <button className="btn">発信</button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
+      An unhandled exception has occurred while executing the request.
+      System.IO.IOException: The client reset the request stream.
+
+Cop CSS bị lỗi vì lẫn lộn tên trường )))))))
+
+get review theo id review ))))))
+
+get list bookmark fail
+
+Trong file loginActions.js, sau khi gửi yêu cầu đăng nhập thành công, bạn đang dispatch action LOGIN_SUCCESS và truyền payload là { username }. Tuy nhiên, để lưu thông tin người dùng đã đăng nhập vào Redux store, bạn cần lưu nhiều thông tin hơn chỉ là username. Bạn có thể lưu thông tin người dùng như id, username, email, v.v. vào state của loginReducer trong store. Điều này sẽ giúp bạn có thể sử dụng thông tin người dùng ở nhiều nơi trong ứng dụng.
+
+Module not found: Error: Can't resolve 'redux-thunk' in 'G:\kissaten-branch\kissaten-test\kissaten\src'
+ERROR in ./src/index.js 12:0-32
+Module not found: Error: Can't resolve 'redux-thunk' in 'G:\kissaten-branch\kissaten-test\kissaten\src'  
+
+ERROR in ./src/index.js 13:0-40
+Module not found: Error: Can't resolve './rootReducer' in 'G:\kissaten-branch\kissaten-test\kissaten\src'
+
+ERROR in ./src/index.js 15:14-25
+export 'default' (imported as 'createStore') was not found in 'redux' (possible exports: __DO_NOT_USE__ActionTypes, applyMiddleware, bindActionCreators, combineReducers, compose, createStore, legacy_createStore)
+
+ERROR in [eslint]
+src\pages\Login\loginActions.js
+  Line 33:11:  'setErrorMessage' is not defined  no-undef
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 4 errors
