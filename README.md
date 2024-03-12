@@ -7,4 +7,4 @@ Backend Và Database
 
 BEとデータベース
 
-https://github.com/phucduongminh/itss_be
+https://github.com/phucduongminh/kissaten_be.git
